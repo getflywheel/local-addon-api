@@ -1,6 +1,6 @@
 {
 	"name": "@getflywheel/local",
-	"version": "5.3.1",
+	"version": "5.3.1+2",
 	"dependencies": {
 		"@types/electron": "^1.6.10",
 		"@types/node": "^12.7.12",
@@ -14,5 +14,12 @@
 		"main.d.ts",
 		"README.md"
 	],
-	"types": "types.d.ts"
+	"scripts": {
+		"generate-typedocs": "typedoc --includeDeclarations --excludeExternals --mode file index.d.ts main.d.ts renderer.d.ts --out ./typedocs"
+	},
+	"types": "types.d.ts",
+	"devDependencies": {
+		"typedoc": "^0.17.4",
+		"typescript": "^3.8.3"
+	}
 }

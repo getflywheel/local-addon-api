@@ -54,7 +54,7 @@ declare module '@getflywheel/local' {
 	export type SiteServices = { [serviceName: string]: SiteService };
 
 	export type SitePort = number;
-	export type SiteStatus = 'running' | 'halted' | 'starting' | 'stopping';
+	export type SiteStatus = 'running' | 'halted';
 
 	export interface SiteJSON {
 		id: string
