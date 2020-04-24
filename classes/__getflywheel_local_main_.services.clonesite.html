@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DeleteSite | @getflywheel/local</title>
+	<title>CloneSite | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -60,10 +60,10 @@
 					<a href="../modules/__getflywheel_local_main_.services.html">Services</a>
 				</li>
 				<li>
-					<a href="__getflywheel_local_main_.services.deletesite.html">DeleteSite</a>
+					<a href="__getflywheel_local_main_.services.clonesite.html">CloneSite</a>
 				</li>
 			</ul>
-			<h1>Class DeleteSite</h1>
+			<h1>Class CloneSite</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +74,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">DeleteSite</span>
+						<span class="target">CloneSite</span>
 					</li>
 				</ul>
 			</section>
@@ -85,9 +85,8 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="__getflywheel_local_main_.services.deletesite.html#deletesite" class="tsd-kind-icon">delete<wbr>Site</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="__getflywheel_local_main_.services.deletesite.html#deletesites" class="tsd-kind-icon">delete<wbr>Sites</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="__getflywheel_local_main_.services.deletesite.html#listen" class="tsd-kind-icon">listen</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="__getflywheel_local_main_.services.clonesite.html#clonesite" class="tsd-kind-icon">clone<wbr>Site</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="__getflywheel_local_main_.services.clonesite.html#listen" class="tsd-kind-icon">listen</a></li>
 							</ul>
 						</section>
 					</div>
@@ -96,70 +95,33 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="deletesite" class="tsd-anchor"></a>
-					<h3>delete<wbr>Site</h3>
+					<a name="clonesite" class="tsd-anchor"></a>
+					<h3>clone<wbr>Site</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">delete<wbr>Site<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>site<span class="tsd-signature-symbol">: </span><a href="__getflywheel_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">; </span>trashFiles<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>updateHosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">clone<wbr>Site<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>newSiteName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>site<span class="tsd-signature-symbol">: </span><a href="__getflywheel_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="__getflywheel_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/9c6e6bc/main.d.ts#L935">main.d.ts:935</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/9c6e6bc/main.d.ts#L903">main.d.ts:903</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>site<span class="tsd-signature-symbol">: </span><a href="__getflywheel_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">; </span>trashFiles<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>updateHosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>newSiteName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>site<span class="tsd-signature-symbol">: </span><a href="__getflywheel_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>new<wbr>Site<wbr>Name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
 										<li class="tsd-parameter">
 											<h5>site<span class="tsd-signature-symbol">: </span><a href="__getflywheel_local_.site.html" class="tsd-signature-type">Site</a></h5>
 										</li>
-										<li class="tsd-parameter">
-											<h5>trash<wbr>Files<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>update<wbr>Hosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
-										</li>
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="deletesites" class="tsd-anchor"></a>
-					<h3>delete<wbr>Sites</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">delete<wbr>Sites<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>siteIds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>trashFiles<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>updateHosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/9c6e6bc/main.d.ts#L937">main.d.ts:937</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>siteIds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>trashFiles<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>updateHosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5>site<wbr>Ids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>trash<wbr>Files<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>update<wbr>Hosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="__getflywheel_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -173,7 +135,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/9c6e6bc/main.d.ts#L933">main.d.ts:933</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/9c6e6bc/main.d.ts#L901">main.d.ts:901</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -225,30 +187,27 @@
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
 						<a href="__getflywheel_local_main_.services.changesitedomain.html" class="tsd-kind-icon">Change<wbr>Site<wbr>Domain</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="__getflywheel_local_main_.services.clonesite.html" class="tsd-kind-icon">Clone<wbr>Site</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="__getflywheel_local_main_.services.configtemplates.html" class="tsd-kind-icon">Config<wbr>Templates</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
-						<a href="__getflywheel_local_main_.services.deletesite.html" class="tsd-kind-icon">Delete<wbr>Site</a>
+						<a href="__getflywheel_local_main_.services.clonesite.html" class="tsd-kind-icon">Clone<wbr>Site</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="__getflywheel_local_main_.services.deletesite.html#deletesite" class="tsd-kind-icon">delete<wbr>Site</a>
+								<a href="__getflywheel_local_main_.services.clonesite.html#clonesite" class="tsd-kind-icon">clone<wbr>Site</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="__getflywheel_local_main_.services.deletesite.html#deletesites" class="tsd-kind-icon">delete<wbr>Sites</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="__getflywheel_local_main_.services.deletesite.html#listen" class="tsd-kind-icon">listen</a>
+								<a href="__getflywheel_local_main_.services.clonesite.html#listen" class="tsd-kind-icon">listen</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="__getflywheel_local_main_.services.configtemplates.html" class="tsd-kind-icon">Config<wbr>Templates</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="__getflywheel_local_main_.services.deletesite.html" class="tsd-kind-icon">Delete<wbr>Site</a>
+					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
 						<a href="__getflywheel_local_main_.services.exportsite.html" class="tsd-kind-icon">Export<wbr>Site</a>
 					</li>
