@@ -27,6 +27,7 @@ declare module '@getflywheel/local/main' {
 		changeSiteDomain: Services.ChangeSiteDomain
 		importSite: Services.ImportSite
 		addSite: Services.AddSite
+		cloneSite: Services.CloneSite
 		exportSite: Services.ExportSite
 		deleteSite: Services.DeleteSite
 		siteInfo: Services.SiteInfo
@@ -889,6 +890,20 @@ declare module '@getflywheel/local/main' {
 			}: IAddSite): Promise<Local.Site>;
 
 			finishAddingSite(site: Local.Site): void;
+		}
+
+		interface ICloneSite {
+			site: Local.Site
+			newSiteName: string
+		}
+
+		export class CloneSite {
+			listen(): void;
+
+			cloneSite({
+				site,
+				newSiteName,
+			}: ICloneSite): Promise<Local.Site>;
 		}
 
 		interface IExportSite {
