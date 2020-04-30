@@ -53,9 +53,9 @@ declare module '@getflywheel/local/main' {
 
 		static getWorkspaceSites (workspace?: string) : Local.Sites;
 
-		static getSite (siteID: Local.Site['id']) : Local.Site;
+		static getSite (siteID: Local.Site['id']) : Local.Site | null;
 
-		static getSiteByProperty (property: string, value: any) : Local.Site;
+		static getSiteByProperty (property: string, value: any) : Local.Site | null;
 
 		static addSite (siteID: Local.Site['id'], site: Local.SiteJSON) : void;
 
@@ -796,13 +796,16 @@ declare module '@getflywheel/local/main' {
 			onProvisionError(site: Local.Site, e: Error): Promise<void>;
 
 			provision(site: Local.Site): Promise<void>;
+
+			swapService(site: Local.Site, role: Local.SiteServiceRole, serviceBinVersion: string): Promise<void>;
 		}
 
 		export class SiteProcessManager {
 			start(site: Local.Site, updateStatus?: boolean, compileConfigs?: boolean): Promise<void>;
 
-			stop(site: Local.Site, { dumpDatabase }?: {
+			stop(site: Local.Site, { dumpDatabase, updateStatus }?: {
 				dumpDatabase: boolean;
+				updateStatus?: boolean;
 			}): Promise<void>;
 
 			restart(site: Local.Site): Promise<void>;
