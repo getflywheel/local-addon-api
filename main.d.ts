@@ -190,6 +190,11 @@ declare module '@getflywheel/local/main' {
 		Linux = 'linux',
 	}
 
+	export enum ProfileTypes {
+		TEAMS = 'teams',
+		USER = 'user',
+		HUB = 'hub',
+	}
 	type Scalar = string | number | boolean;
 	type ConfigVariables = { [key: string]: Scalar | Scalar[] | ConfigVariables };
 
