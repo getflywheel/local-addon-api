@@ -18,6 +18,7 @@ declare module '@getflywheel/local/main' {
 		siteData: typeof SiteData
 		userData: typeof UserData
 		sendIPCEvent: typeof sendIPCEvent
+		addIpcAsyncListener: typeof addIpcAsyncListener
 		appState: Services.AppState
 		addonInstaller: Services.AddonInstaller
 		siteProvisioner: Services.SiteProvisioner
@@ -45,6 +46,14 @@ declare module '@getflywheel/local/main' {
 	}
 
 	export function sendIPCEvent(channel: string, ...args: any[]): void;
+
+	/**
+	 * Utility function for setting up IPC listener on the main thread and replying to it. This should be used only with
+	 * LocalRenderer.ipcAsync()
+	 *
+	 * @see LocalRenderer.ipcAsync()
+	 */
+	export function addIpcAsyncListener(channel: string, callback: (...any) => any): void;
 
 	export function formatHomePath(string: any, untrailingslashit?: boolean): any;
 
@@ -802,7 +811,12 @@ declare module '@getflywheel/local/main' {
 
 			provision(site: Local.Site): Promise<void>;
 
-			swapService(site: Local.Site, role: Local.SiteServiceRole, serviceBinVersion: string): Promise<void>;
+			swapService(
+				site: Local.Site,
+				role: Local.SiteServiceRole,
+				serviceName: LightningService['serviceName'],
+				serviceBinVersion: LightningService['binVersion'],
+			): Promise<void>;
 		}
 
 		export class SiteProcessManager {

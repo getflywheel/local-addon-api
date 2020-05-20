@@ -21,6 +21,16 @@ declare module '@getflywheel/local/renderer' {
 		showBottomHr: boolean
 	}
 
-	function confirm(args: ConfirmArgs): Promise<any>;
+	/**
+	 * Utility function to send an IPC event to the renderer thread and await either a success or error response and
+	 * return it as a Promise.
+	 *
+	 * The channel will automatically be tokenized to ensure a response came from the expected request.
+	 *
+	 * @see LocalMain.addIpcAsyncListener()
+	 */
+	export function ipcAsync(channel: string, ...additionalArgs: any[]): Promise<any>;
+
+	export function confirm(args: ConfirmArgs): Promise<any>;
 
 }

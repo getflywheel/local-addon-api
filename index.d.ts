@@ -49,6 +49,7 @@ declare module '@getflywheel/local' {
 		database?: string
 		environment?: string
 		blueprint?: string
+		webServer?: string
 	}
 
 	export type SiteServices = { [serviceName: string]: SiteService };
