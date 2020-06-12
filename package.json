@@ -1,6 +1,6 @@
 {
 	"name": "@getflywheel/local",
-	"version": "5.5.1",
+	"version": "5.6.0",
 	"dependencies": {
 		"@types/electron": "^1.6.10",
 		"@types/node": "^12.7.12",

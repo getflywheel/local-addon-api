@@ -25,12 +25,14 @@ declare module '@getflywheel/local/main' {
 		siteProcessManager: Services.SiteProcessManager
 		siteDatabase: Services.SiteDatabase
 		sequelPro: Services.SequelPro
+		connectManifestFlywheel: Services.ConnectManifestFlywheel
 		changeSiteDomain: Services.ChangeSiteDomain
 		importSite: Services.ImportSite
 		addSite: Services.AddSite
 		cloneSite: Services.CloneSite
 		exportSite: Services.ExportSite
 		deleteSite: Services.DeleteSite
+		devkit: Services.DevKit
 		siteInfo: Services.SiteInfo
 		siteShellEntry: Services.SiteShellEntry
 		wpCli: Services.WpCli
@@ -43,6 +45,9 @@ declare module '@getflywheel/local/main' {
 		formatHomePath: typeof formatHomePath
 		blueprints: Services.Blueprints
 		lightningServices: Services.LightningServices
+		liveLinksPro: Services.LiveLinksPro
+		liveLinksFree: Services.LiveLinksFree
+		liveLinksMuPlugin: Services.LiveLinksMuPlugin
 	}
 
 	export function sendIPCEvent(channel: string, ...args: any[]): void;
@@ -859,6 +864,17 @@ declare module '@getflywheel/local/main' {
 			new: string;
 		}
 
+		export class ConnectManifestFlywheel {
+			create(
+				manifestRequestToken: number,
+				direction: ConnectDirection,
+				flywheelSiteID: FlywheelSite['id'],
+				environment: flywheelSiteEnvironment,
+				siteId: string,
+				fullSync: boolean,
+			): Promise<{ manifestRequestToken, response }>;
+		}
+
 		export class ChangeSiteDomain {
 			getSelectedSite(): Local.Site | null;
 
@@ -959,6 +975,10 @@ declare module '@getflywheel/local/main' {
 			deleteSites({ siteIds, trashFiles, updateHosts }: IDeleteSites): Promise<void>;
 		}
 
+		export class DevKit {
+			listModifications(direction: 'push' | 'pull', args: any, allModifiedFiles: boolean): Promise<any[]>;
+		}
+
 		export class SiteInfo {
 			listen(): void;
 
@@ -990,7 +1010,9 @@ declare module '@getflywheel/local/main' {
 		export class WpCli {
 			listen(): void;
 
-			run(site: Local.Site, args: string[], opts?: WpCliRunOpts): Promise<string>;
+			run(site: Local.Site, args: string[], opts?: WpCliRunOpts): Promise<string | null>;
+
+			getOption(site: Local.Site, option: string): Promise<string | null>;
 
 			coreUpdate(site: Local.Site, version?: string): Promise<void>;
 
@@ -1115,6 +1137,26 @@ declare module '@getflywheel/local/main' {
 		export class Blueprints {
 			saveBlueprint({ name, siteId, filter }: IBlueprintsOptions): void;
 		}
+
+		export class LiveLinksMuPlugin {
+			getMuPluginsPath(site: Local.Site) : string;
+
+			add(site: Local.Site) : void;
+
+			remove(site: Local.Site) : void;
+		}
+
+		export class LiveLinks {
+			start(site: Local.Site) : Promise<GenericObject>;
+
+			stop(site: Local.Site) : Promise<void>;
+
+			getProcesses() : any;
+		}
+
+		export class LiveLinksPro extends LiveLinks {}
+
+		export class LiveLinksFree extends LiveLinks {}
 	}
 
 }

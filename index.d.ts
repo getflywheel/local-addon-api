@@ -57,6 +57,12 @@ declare module '@getflywheel/local' {
 	export type SitePort = number;
 	export type SiteStatus = 'running' | 'halted' | 'starting' | 'stopping';
 
+	export type SiteLiveLinkProSettings = {
+		subdomain: string
+		basicAuthUsername: string
+		basicAuthPassword: string
+	};
+
 	export interface SiteJSON {
 		id: string
 		path: string
@@ -73,6 +79,8 @@ declare module '@getflywheel/local' {
 		name: string
 		domain: string
 		workspace?: string | null
+
+		liveLinkProSettings?: SiteLiveLinkProSettings;
 
 		/* Deprecated */
 		flywheelConnect?: string
@@ -120,6 +128,8 @@ declare module '@getflywheel/local' {
 		sslSHA1?: string;
 
 		hostConnections?: SiteJSON['hostConnections'];
+
+		liveLinkProSettings?: SiteJSON['liveLinkProSettings'];
 
 		/* Deprecated */
 		flywheelConnect?: string;
