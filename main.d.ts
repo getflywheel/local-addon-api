@@ -1152,6 +1152,11 @@ declare module '@getflywheel/local/main' {
 			stop(site: Local.Site) : Promise<void>;
 
 			getProcesses() : any;
+
+			/**
+	 		 * Hook to call on app shutdown, etc. to do any necessary cleanup
+			 */
+			onDestroy(): void;
 		}
 
 		export class LiveLinksPro extends LiveLinks {}
