@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CloneSite | @getflywheel/local</title>
+	<title>LiveLinksMuPlugin | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -60,10 +60,10 @@
 					<a href="../modules/_local_main_.services.html">Services</a>
 				</li>
 				<li>
-					<a href="_local_main_.services.clonesite.html">CloneSite</a>
+					<a href="_local_main_.services.livelinksmuplugin.html">LiveLinksMuPlugin</a>
 				</li>
 			</ul>
-			<h1>Class CloneSite</h1>
+			<h1>Class LiveLinksMuPlugin</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +74,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CloneSite</span>
+						<span class="target">LiveLinksMuPlugin</span>
 					</li>
 				</ul>
 			</section>
@@ -85,8 +85,9 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.clonesite.html#clonesite" class="tsd-kind-icon">clone<wbr>Site</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.clonesite.html#listen" class="tsd-kind-icon">listen</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.livelinksmuplugin.html#add" class="tsd-kind-icon">add</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.livelinksmuplugin.html#getmupluginspath" class="tsd-kind-icon">get<wbr>MuPlugins<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.livelinksmuplugin.html#remove" class="tsd-kind-icon">remove</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,49 +96,70 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="clonesite" class="tsd-anchor"></a>
-					<h3>clone<wbr>Site</h3>
+					<a name="add" class="tsd-anchor"></a>
+					<h3>add</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">clone<wbr>Site<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>newSiteName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L930">main.d.ts:930</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1137">main.d.ts:1137</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>newSiteName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol"> }</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5>new<wbr>Site<wbr>Name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a></h5>
-										</li>
-									</ul>
+									<h5>site: <a href="_local_.site.html" class="tsd-signature-type">Site</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="listen" class="tsd-anchor"></a>
-					<h3>listen</h3>
+					<a name="getmupluginspath" class="tsd-anchor"></a>
+					<h3>get<wbr>MuPlugins<wbr>Path</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>MuPlugins<wbr>Path<span class="tsd-signature-symbol">(</span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L928">main.d.ts:928</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1135">main.d.ts:1135</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>site: <a href="_local_.site.html" class="tsd-signature-type">Site</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1139">main.d.ts:1139</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>site: <a href="_local_.site.html" class="tsd-signature-type">Site</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -157,13 +179,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
-						<a href="_local_main_.services.clonesite.html" class="tsd-kind-icon">Clone<wbr>Site</a>
+						<a href="_local_main_.services.livelinksmuplugin.html" class="tsd-kind-icon">Live<wbr>Links<wbr>MuPlugin</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.clonesite.html#clonesite" class="tsd-kind-icon">clone<wbr>Site</a>
+								<a href="_local_main_.services.livelinksmuplugin.html#add" class="tsd-kind-icon">add</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.clonesite.html#listen" class="tsd-kind-icon">listen</a>
+								<a href="_local_main_.services.livelinksmuplugin.html#getmupluginspath" class="tsd-kind-icon">get<wbr>MuPlugins<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_local_main_.services.livelinksmuplugin.html#remove" class="tsd-kind-icon">remove</a>
 							</li>
 						</ul>
 					</li>

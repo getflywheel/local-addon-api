@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Ports | @getflywheel/local</title>
+	<title>LiveLinks | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -60,10 +60,10 @@
 					<a href="../modules/_local_main_.services.html">Services</a>
 				</li>
 				<li>
-					<a href="_local_main_.services.ports.html">Ports</a>
+					<a href="_local_main_.services.livelinks.html">LiveLinks</a>
 				</li>
 			</ul>
-			<h1>Class Ports</h1>
+			<h1>Class LiveLinks</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +74,15 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Ports</span>
+						<span class="target">LiveLinks</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="_local_main_.services.livelinkspro.html" class="tsd-signature-type">LiveLinksPro</a>
+							</li>
+							<li>
+								<a href="_local_main_.services.livelinksfree.html" class="tsd-signature-type">LiveLinksFree</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -85,8 +93,10 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.ports.html#allocateports" class="tsd-kind-icon">allocate<wbr>Ports</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.ports.html#getavailableport" class="tsd-kind-icon">get<wbr>Available<wbr>Port</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.livelinks.html#getprocesses" class="tsd-kind-icon">get<wbr>Processes</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.livelinks.html#ondestroy" class="tsd-kind-icon">on<wbr>Destroy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.livelinks.html#start" class="tsd-kind-icon">start</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.livelinks.html#stop" class="tsd-kind-icon">stop</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,16 +105,55 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="allocateports" class="tsd-anchor"></a>
-					<h3>allocate<wbr>Ports</h3>
+					<a name="getprocesses" class="tsd-anchor"></a>
+					<h3>get<wbr>Processes</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">allocate<wbr>Ports<span class="tsd-signature-symbol">(</span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a>, portServiceAllocationRequests<span class="tsd-signature-symbol">: </span><a href="../modules/_local_main_.services.html#portserviceallocationrequest" class="tsd-signature-type">PortServiceAllocationRequest</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Processes<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1028">main.d.ts:1028</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1147">main.d.ts:1147</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="ondestroy" class="tsd-anchor"></a>
+					<h3>on<wbr>Destroy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Destroy<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1152">main.d.ts:1152</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Hook to call on app shutdown, etc. to do any necessary cleanup</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="start" class="tsd-anchor"></a>
+					<h3>start</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">(</span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#genericobject" class="tsd-signature-type">GenericObject</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1143">main.d.ts:1143</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -112,34 +161,31 @@
 								<li>
 									<h5>site: <a href="_local_.site.html" class="tsd-signature-type">Site</a></h5>
 								</li>
-								<li>
-									<h5>portServiceAllocationRequests: <a href="../modules/_local_main_.services.html#portserviceallocationrequest" class="tsd-signature-type">PortServiceAllocationRequest</a></h5>
-								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#genericobject" class="tsd-signature-type">GenericObject</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getavailableport" class="tsd-anchor"></a>
-					<h3>get<wbr>Available<wbr>Port</h3>
+					<a name="stop" class="tsd-anchor"></a>
+					<h3>stop</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Available<wbr>Port<span class="tsd-signature-symbol">(</span>blacklistedPorts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Local.SitePort</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Local.SitePort</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">stop<span class="tsd-signature-symbol">(</span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1033">main.d.ts:1033</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/cd715c5/main.d.ts#L1145">main.d.ts:1145</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> blacklistedPorts: <span class="tsd-signature-type">Local.SitePort</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>site: <a href="_local_.site.html" class="tsd-signature-type">Site</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Local.SitePort</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -158,13 +204,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
-						<a href="_local_main_.services.ports.html" class="tsd-kind-icon">Ports</a>
+						<a href="_local_main_.services.livelinks.html" class="tsd-kind-icon">Live<wbr>Links</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.ports.html#allocateports" class="tsd-kind-icon">allocate<wbr>Ports</a>
+								<a href="_local_main_.services.livelinks.html#getprocesses" class="tsd-kind-icon">get<wbr>Processes</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.ports.html#getavailableport" class="tsd-kind-icon">get<wbr>Available<wbr>Port</a>
+								<a href="_local_main_.services.livelinks.html#ondestroy" class="tsd-kind-icon">on<wbr>Destroy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_local_main_.services.livelinks.html#start" class="tsd-kind-icon">start</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_local_main_.services.livelinks.html#stop" class="tsd-kind-icon">stop</a>
 							</li>
 						</ul>
 					</li>
