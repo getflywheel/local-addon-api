@@ -25,7 +25,6 @@ declare module '@getflywheel/local/main' {
 		siteProcessManager: Services.SiteProcessManager
 		siteDatabase: Services.SiteDatabase
 		sequelPro: Services.SequelPro
-		connectManifestFlywheel: Services.ConnectManifestFlywheel
 		changeSiteDomain: Services.ChangeSiteDomain
 		importSite: Services.ImportSite
 		addSite: Services.AddSite
@@ -33,6 +32,7 @@ declare module '@getflywheel/local/main' {
 		exportSite: Services.ExportSite
 		deleteSite: Services.DeleteSite
 		devkit: Services.DevKit
+		capi: Services.CAPI
 		siteInfo: Services.SiteInfo
 		siteShellEntry: Services.SiteShellEntry
 		wpCli: Services.WpCli
@@ -864,17 +864,6 @@ declare module '@getflywheel/local/main' {
 			new: string;
 		}
 
-		export class ConnectManifestFlywheel {
-			create(
-				manifestRequestToken: number,
-				direction: ConnectDirection,
-				flywheelSiteID: FlywheelSite['id'],
-				environment: flywheelSiteEnvironment,
-				siteId: string,
-				fullSync: boolean,
-			): Promise<{ manifestRequestToken, response }>;
-		}
-
 		export class ChangeSiteDomain {
 			getSelectedSite(): Local.Site | null;
 
@@ -973,6 +962,10 @@ declare module '@getflywheel/local/main' {
 			deleteSite({ site, trashFiles, updateHosts }: IDeleteSite): Promise<void>;
 
 			deleteSites({ siteIds, trashFiles, updateHosts }: IDeleteSites): Promise<void>;
+		}
+
+		export class CAPI {
+			purgeCache(installId: string, type: any): Promise<void>;
 		}
 
 		export class DevKit {
