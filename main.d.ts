@@ -965,6 +965,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class CAPI {
+			createBackup(installId: string, description: string): Promise<void>;
+
 			purgeCache(installId: string, type: any): Promise<void>;
 		}
 
