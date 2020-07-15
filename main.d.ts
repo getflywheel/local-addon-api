@@ -7,6 +7,7 @@ declare module '@getflywheel/local/main' {
 	import * as Awilix from 'awilix';
 	import * as Electron from 'electron';
 	import * as Winston from 'winston';
+	import * as os from 'os';
 
 	export type ServiceContainer = Awilix.AwilixContainer<ServiceContainerServices>;
 	export const getServiceContainer: () => ServiceContainer;
@@ -15,6 +16,7 @@ declare module '@getflywheel/local/main' {
 		addonLoader: Services.AddonLoader
 		adminer: Services.Adminer
 		electron: typeof Electron
+		os: typeof os
 		siteData: typeof SiteData
 		userData: typeof UserData
 		sendIPCEvent: typeof sendIPCEvent
@@ -985,17 +987,11 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class SiteShellEntry {
-			create(site: Local.Site): Promise<void>;
+			launch(site: Local.Site): Promise<void>;
 
-			createUnix(site: Local.Site): Promise<void>;
+			createShellEntry(site: Local.Site): Promise<void>;
 
-			createWin32(site: Local.Site): Promise<void>;
-
-			launchDarwin(site: Local.Site): Promise<void>;
-
-			launchWin32(site: Local.Site): Promise<void>;
-
-			launchLinux(site: Local.Site): Promise<void>;
+			createBatchEntry(site: Local.Site): Promise<void>;
 		}
 
 		interface WpCliRunOpts {
