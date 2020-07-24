@@ -86,6 +86,8 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.devkit.html#listmodifications" class="tsd-kind-icon">list<wbr>Modifications</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.devkit.html#pull" class="tsd-kind-icon">pull</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.devkit.html#push" class="tsd-kind-icon">push</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,13 +99,13 @@
 					<a name="listmodifications" class="tsd-anchor"></a>
 					<h3>list<wbr>Modifications</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Modifications<span class="tsd-signature-symbol">(</span>direction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"push"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"pull"</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, allModifiedFiles<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Modifications<span class="tsd-signature-symbol">(</span>direction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"push"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"pull"</span>, args<span class="tsd-signature-symbol">: </span><a href="../interfaces/_local_main_.services.idevkitserviceargs.html" class="tsd-signature-type">IDevKitServiceArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/f304b53/main.d.ts#L976">main.d.ts:976</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/26aaea9/main.d.ts#L990">main.d.ts:990</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -112,13 +114,56 @@
 									<h5>direction: <span class="tsd-signature-type">"push"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"pull"</span></h5>
 								</li>
 								<li>
-									<h5>args: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>allModifiedFiles: <span class="tsd-signature-type">boolean</span></h5>
+									<h5>args: <a href="../interfaces/_local_main_.services.idevkitserviceargs.html" class="tsd-signature-type">IDevKitServiceArgs</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="pull" class="tsd-anchor"></a>
+					<h3>pull</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">pull<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/_local_main_.services.idevkitserviceargs.html" class="tsd-signature-type">IDevKitServiceArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/26aaea9/main.d.ts#L994">main.d.ts:994</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <a href="../interfaces/_local_main_.services.idevkitserviceargs.html" class="tsd-signature-type">IDevKitServiceArgs</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="push" class="tsd-anchor"></a>
+					<h3>push</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">push<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/_local_main_.services.idevkitserviceargs.html" class="tsd-signature-type">IDevKitServiceArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/26aaea9/main.d.ts#L992">main.d.ts:992</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <a href="../interfaces/_local_main_.services.idevkitserviceargs.html" class="tsd-signature-type">IDevKitServiceArgs</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -141,6 +186,12 @@
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_local_main_.services.devkit.html#listmodifications" class="tsd-kind-icon">list<wbr>Modifications</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_local_main_.services.devkit.html#pull" class="tsd-kind-icon">pull</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_local_main_.services.devkit.html#push" class="tsd-kind-icon">push</a>
 							</li>
 						</ul>
 					</li>
