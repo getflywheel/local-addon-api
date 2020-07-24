@@ -182,6 +182,7 @@ declare module '@getflywheel/local' {
 		accountId: string | undefined;
 		hostId: HostId | undefined;
 		remoteSiteId?: string | undefined;
+		remoteSiteEnv?: any;
 	}
 
 	/**

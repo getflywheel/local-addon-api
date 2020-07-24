@@ -972,8 +972,26 @@ declare module '@getflywheel/local/main' {
 			purgeCache(installId: string, type: any): Promise<void>;
 		}
 
+		interface IDevKitServiceArgs {
+			includeSql?: boolean
+			requiresProvisioning?: boolean
+			wpengineInstallName: string
+			wpengineInstallId: string
+			wpengineSiteId: string
+			wpenginePrimaryDomain: string
+			wpenginePhpVersion: string
+			localSiteId?: string
+			environment?: any
+			files?: string[],
+			isMagicSync?: boolean,
+		}
+
 		export class DevKit {
-			listModifications(direction: 'push' | 'pull', args: any, allModifiedFiles: boolean): Promise<any[]>;
+			listModifications(direction: 'push' | 'pull', args: IDevKitServiceArgs): Promise<any[]>;
+
+			push(args: IDevKitServiceArgs): Promise<void>;
+
+			pull(args: IDevKitServiceArgs): Promise<void>;
 		}
 
 		export class SiteInfo {
