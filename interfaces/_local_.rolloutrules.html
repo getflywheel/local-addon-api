@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>NewSiteInfo | @getflywheel/local</title>
+	<title>RolloutRules | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/_local_.html">&quot;local&quot;</a>
 				</li>
 				<li>
-					<a href="_local_.newsiteinfo.html">NewSiteInfo</a>
+					<a href="_local_.rolloutrules.html">RolloutRules</a>
 				</li>
 			</ul>
-			<h1>Interface NewSiteInfo</h1>
+			<h1>Interface RolloutRules</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Commonly used arguments for site creation (new site, pulling, importing, etc).</p>
+						<p>Properties in this object relate to gradually rolling out new Local versions with different rules.</p>
 					</div>
 				</div>
 			</section>
@@ -78,12 +78,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">NewSiteInfo</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="_local_main_.iimportsitesettings.html" class="tsd-signature-type">IImportSiteSettings</a>
-							</li>
-						</ul>
+						<span class="target">RolloutRules</span>
 					</li>
 				</ul>
 			</section>
@@ -94,15 +89,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#blueprint" class="tsd-kind-icon">blueprint</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#database" class="tsd-kind-icon">database</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#environment" class="tsd-kind-icon">environment</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#multisite" class="tsd-kind-icon">multi<wbr>Site</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#phpversion" class="tsd-kind-icon">php<wbr>Version</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#sitedomain" class="tsd-kind-icon">site<wbr>Domain</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#sitename" class="tsd-kind-icon">site<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#sitepath" class="tsd-kind-icon">site<wbr>Path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.newsiteinfo.html#webserver" class="tsd-kind-icon">web<wbr>Server</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.rolloutrules.html#autoupdate" class="tsd-kind-icon">auto<wbr>Update</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.rolloutrules.html#rolloutpercentage" class="tsd-kind-icon">rollout<wbr>Percentage</a></li>
 							</ul>
 						</section>
 					</div>
@@ -111,92 +99,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="blueprint" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> blueprint</h3>
-					<div class="tsd-signature tsd-kind-icon">blueprint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="autoupdate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> auto<wbr>Update</h3>
+					<div class="tsd-signature tsd-kind-icon">auto<wbr>Update<span class="tsd-signature-symbol">:</span> <a href="../modules/_local_.html#autoupdateenabled" class="tsd-signature-type">AutoupdateEnabled</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L51">index.d.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L348">index.d.ts:348</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="database" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> database</h3>
-					<div class="tsd-signature tsd-kind-icon">database<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="rolloutpercentage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> rollout<wbr>Percentage</h3>
+					<div class="tsd-signature tsd-kind-icon">rollout<wbr>Percentage<span class="tsd-signature-symbol">:</span> <a href="../modules/_local_.html#rolloutpercentage" class="tsd-signature-type">RolloutPercentage</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L49">index.d.ts:49</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="environment" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> environment</h3>
-					<div class="tsd-signature tsd-kind-icon">environment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L50">index.d.ts:50</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="multisite" class="tsd-anchor"></a>
-					<h3>multi<wbr>Site</h3>
-					<div class="tsd-signature tsd-kind-icon">multi<wbr>Site<span class="tsd-signature-symbol">:</span> <a href="../enums/_local_.multisite.html" class="tsd-signature-type">MultiSite</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L47">index.d.ts:47</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="phpversion" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> php<wbr>Version</h3>
-					<div class="tsd-signature tsd-kind-icon">php<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L48">index.d.ts:48</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="sitedomain" class="tsd-anchor"></a>
-					<h3>site<wbr>Domain</h3>
-					<div class="tsd-signature tsd-kind-icon">site<wbr>Domain<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L46">index.d.ts:46</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="sitename" class="tsd-anchor"></a>
-					<h3>site<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">site<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L44">index.d.ts:44</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="sitepath" class="tsd-anchor"></a>
-					<h3>site<wbr>Path</h3>
-					<div class="tsd-signature tsd-kind-icon">site<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L45">index.d.ts:45</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="webserver" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> web<wbr>Server</h3>
-					<div class="tsd-signature tsd-kind-icon">web<wbr>Server<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L52">index.d.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/d370ff7/index.d.ts#L347">index.d.ts:347</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -251,48 +169,27 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_local_.iprocessopts.html" class="tsd-kind-icon">IProcess<wbr>Opts</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_.newsiteinfo.html" class="tsd-kind-icon">New<wbr>Site<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_.releasemanifest.html" class="tsd-kind-icon">Release<wbr>Manifest</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_.newsiteinfo.html" class="tsd-kind-icon">New<wbr>Site<wbr>Info</a>
+						<a href="_local_.rolloutrules.html" class="tsd-kind-icon">Rollout<wbr>Rules</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#blueprint" class="tsd-kind-icon">blueprint</a>
+								<a href="_local_.rolloutrules.html#autoupdate" class="tsd-kind-icon">auto<wbr>Update</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#database" class="tsd-kind-icon">database</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#environment" class="tsd-kind-icon">environment</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#multisite" class="tsd-kind-icon">multi<wbr>Site</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#phpversion" class="tsd-kind-icon">php<wbr>Version</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#sitedomain" class="tsd-kind-icon">site<wbr>Domain</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#sitename" class="tsd-kind-icon">site<wbr>Name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#sitepath" class="tsd-kind-icon">site<wbr>Path</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_.newsiteinfo.html#webserver" class="tsd-kind-icon">web<wbr>Server</a>
+								<a href="_local_.rolloutrules.html#rolloutpercentage" class="tsd-kind-icon">rollout<wbr>Percentage</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_.releasemanifest.html" class="tsd-kind-icon">Release<wbr>Manifest</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_.rolloutrules.html" class="tsd-kind-icon">Rollout<wbr>Rules</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_local_.sitebanner.html" class="tsd-kind-icon">Site<wbr>Banner</a>
 					</li>
