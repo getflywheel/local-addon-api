@@ -763,10 +763,6 @@ declare module '@getflywheel/local/main' {
 			}>
 		}
 
-		export interface LightningDBService extends LightningService {
-			waitForDB(noPassword?: boolean): Promise<boolean>;
-		}
-
 		export class AddonInstaller {
 			get addonsPath(): any;
 

@@ -82,8 +82,6 @@ declare module '@getflywheel/local' {
 
 		liveLinkProSettings?: SiteLiveLinkProSettings;
 
-		autoEnableInstantReload?: boolean
-
 		/* Deprecated */
 		flywheelConnect?: string
 		sslSHA1?: string
@@ -132,8 +130,6 @@ declare module '@getflywheel/local' {
 		hostConnections?: SiteJSON['hostConnections'];
 
 		liveLinkProSettings?: SiteJSON['liveLinkProSettings'];
-
-		autoEnableInstantReload?: boolean;
 
 		/* Deprecated */
 		flywheelConnect?: string;
@@ -283,69 +279,14 @@ declare module '@getflywheel/local' {
 		version: string;
 	}
 
-	/**
- 	 * This is the percentage of users that should update to this Local version.
- 	 */
-	export type RolloutPercentage = number;
-
-	/**
-	 * Set to true to have Local detect this version and prompt users to update automatically.
-	 * Set to false to allow users to update manually.
- 	 */
-	export type AutoupdateEnabled = boolean;
-
-	/**
-	 * Local reads from this file to learn about a new Local release.
-     */
 	export interface ReleaseManifest {
-		/**
-		 * URL for the Local release zip.
-	 	 */
 		url: string;
-
-		/**
-		 * SemVer compatible Local version.
-	 	 */
 		name: string;
-
-		/**
-		 * SemVer compatible Local version.
-		 */
-		version?: string;
-
-		/**
-		 * Hand written notes about the release.
-		 */
-		notes?: string;
-
-		/**
-	 	 * A link to the public changelog for this release.
-	 	 */
+		notes: string;
 		changelogUrl: string;
-
-		/**
-	 	 * URL to hosted notes about this specific Local release. This page will be embedded into Local using an iframe.
-	 	 */
-		releaseNotesUrl?: string;
-
-		/**
-	 	 * The publish date for this release formatted as an ISO 8601 string.
-	 	 */
 		pub_date: string;
-
-		/**
-	 	 * Size in bytes of the Local update.
-	 	 */
 		size: string;
-
-		rollout?: RolloutRules;
-	}
-	/**
-	 * Properties in this object relate to gradually rolling out new Local versions with different rules.
-	 */
-	export interface RolloutRules {
-		rolloutPercentage?: RolloutPercentage;
-		autoUpdate?: AutoupdateEnabled;
+		version: string;
 	}
 
 }
