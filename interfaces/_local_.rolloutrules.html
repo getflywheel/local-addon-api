@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MultiSite | @getflywheel/local</title>
+	<title>RolloutRules | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/_local_.html">&quot;local&quot;</a>
 				</li>
 				<li>
-					<a href="_local_.multisite.html">MultiSite</a>
+					<a href="_local_.rolloutrules.html">RolloutRules</a>
 				</li>
 			</ul>
-			<h1>Enumeration MultiSite</h1>
+			<h1>Interface RolloutRules</h1>
 		</div>
 	</div>
 </header>
@@ -70,54 +70,51 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>NOTE: all enum declarations must be copied over to <code>index.d.ts</code> as well.</p>
+						<p>Properties in this object relate to gradually rolling out new Local versions with different rules.</p>
 					</div>
 				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">RolloutRules</span>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumeration members</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_local_.multisite.html#no" class="tsd-kind-icon">No</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_local_.multisite.html#subdir" class="tsd-kind-icon">Subdir</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_local_.multisite.html#subdomain" class="tsd-kind-icon">Subdomain</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.rolloutrules.html#autoupdate" class="tsd-kind-icon">auto<wbr>Update</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.rolloutrules.html#rolloutpercentage" class="tsd-kind-icon">rollout<wbr>Percentage</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Enumeration members</h2>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="no" class="tsd-anchor"></a>
-					<h3>No</h3>
-					<div class="tsd-signature tsd-kind-icon">No<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;&quot;</span></div>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="autoupdate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> auto<wbr>Update</h3>
+					<div class="tsd-signature tsd-kind-icon">auto<wbr>Update<span class="tsd-signature-symbol">:</span> <a href="../modules/_local_.html#autoupdateenabled" class="tsd-signature-type">AutoupdateEnabled</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L11">index.d.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L348">index.d.ts:348</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="subdir" class="tsd-anchor"></a>
-					<h3>Subdir</h3>
-					<div class="tsd-signature tsd-kind-icon">Subdir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;ms-subdir&quot;</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="rolloutpercentage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> rollout<wbr>Percentage</h3>
+					<div class="tsd-signature tsd-kind-icon">rollout<wbr>Percentage<span class="tsd-signature-symbol">:</span> <a href="../modules/_local_.html#rolloutpercentage" class="tsd-signature-type">RolloutPercentage</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L12">index.d.ts:12</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="subdomain" class="tsd-anchor"></a>
-					<h3>Subdomain</h3>
-					<div class="tsd-signature tsd-kind-icon">Subdomain<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;ms-subdomain&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L13">index.d.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L347">index.d.ts:347</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -143,34 +140,19 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="_local_.addonstatus.html" class="tsd-kind-icon">Addon<wbr>Status</a>
+						<a href="../enums/_local_.addonstatus.html" class="tsd-kind-icon">Addon<wbr>Status</a>
 					</li>
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="_local_.hostid.html" class="tsd-kind-icon">Host<wbr>Id</a>
-					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-enum tsd-parent-kind-module">
-						<a href="_local_.multisite.html" class="tsd-kind-icon">Multi<wbr>Site</a>
-						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_local_.multisite.html#no" class="tsd-kind-icon">No</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_local_.multisite.html#subdir" class="tsd-kind-icon">Subdir</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_local_.multisite.html#subdomain" class="tsd-kind-icon">Subdomain</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="_local_.siteservicerole.html" class="tsd-kind-icon">Site<wbr>Service<wbr>Role</a>
+						<a href="../enums/_local_.hostid.html" class="tsd-kind-icon">Host<wbr>Id</a>
 					</li>
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="_local_.siteservicetype.html" class="tsd-kind-icon">Site<wbr>Service<wbr>Type</a>
+						<a href="../enums/_local_.multisite.html" class="tsd-kind-icon">Multi<wbr>Site</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/_local_.siteservicerole.html" class="tsd-kind-icon">Site<wbr>Service<wbr>Role</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/_local_.siteservicetype.html" class="tsd-kind-icon">Site<wbr>Service<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-module">
 						<a href="../classes/_local_.site.html" class="tsd-kind-icon">Site</a>
@@ -179,28 +161,40 @@
 						<a href="../classes/_local_.sitepaths.html" class="tsd-kind-icon">Site<wbr>Paths</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_local_.addonpackage.html" class="tsd-kind-icon">Addon<wbr>Package</a>
+						<a href="_local_.addonpackage.html" class="tsd-kind-icon">Addon<wbr>Package</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_local_.hostconnection.html" class="tsd-kind-icon">Host<wbr>Connection</a>
+						<a href="_local_.hostconnection.html" class="tsd-kind-icon">Host<wbr>Connection</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_local_.iprocessopts.html" class="tsd-kind-icon">IProcess<wbr>Opts</a>
+						<a href="_local_.iprocessopts.html" class="tsd-kind-icon">IProcess<wbr>Opts</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_local_.newsiteinfo.html" class="tsd-kind-icon">New<wbr>Site<wbr>Info</a>
+						<a href="_local_.newsiteinfo.html" class="tsd-kind-icon">New<wbr>Site<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_local_.releasemanifest.html" class="tsd-kind-icon">Release<wbr>Manifest</a>
+						<a href="_local_.releasemanifest.html" class="tsd-kind-icon">Release<wbr>Manifest</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_.rolloutrules.html" class="tsd-kind-icon">Rollout<wbr>Rules</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_local_.rolloutrules.html#autoupdate" class="tsd-kind-icon">auto<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_local_.rolloutrules.html#rolloutpercentage" class="tsd-kind-icon">rollout<wbr>Percentage</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_.sitebanner.html" class="tsd-kind-icon">Site<wbr>Banner</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_local_.rolloutrules.html" class="tsd-kind-icon">Rollout<wbr>Rules</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_local_.sitebanner.html" class="tsd-kind-icon">Site<wbr>Banner</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_local_.sitejson.html" class="tsd-kind-icon">SiteJSON</a>
+						<a href="_local_.sitejson.html" class="tsd-kind-icon">SiteJSON</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="../modules/_local_.html#autoupdateenabled" class="tsd-kind-icon">Autoupdate<wbr>Enabled</a>
@@ -251,10 +245,11 @@
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>

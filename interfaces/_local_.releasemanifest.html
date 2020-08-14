@@ -67,6 +67,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Local reads from this file to learn about a new Local release.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -86,6 +93,8 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.releasemanifest.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.releasemanifest.html#notes" class="tsd-kind-icon">notes</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.releasemanifest.html#pub_date" class="tsd-kind-icon">pub_<wbr>date</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.releasemanifest.html#releasenotesurl" class="tsd-kind-icon">release<wbr>Notes<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.releasemanifest.html#rollout" class="tsd-kind-icon">rollout</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.releasemanifest.html#size" class="tsd-kind-icon">size</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.releasemanifest.html#url" class="tsd-kind-icon">url</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_.releasemanifest.html#version" class="tsd-kind-icon">version</a></li>
@@ -102,9 +111,14 @@
 					<div class="tsd-signature tsd-kind-icon">changelog<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L286">index.d.ts:286</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L324">index.d.ts:324</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A link to the public changelog for this release.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="name" class="tsd-anchor"></a>
@@ -112,19 +126,29 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L284">index.d.ts:284</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L309">index.d.ts:309</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SemVer compatible Local version.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="notes" class="tsd-anchor"></a>
-					<h3>notes</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> notes</h3>
 					<div class="tsd-signature tsd-kind-icon">notes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L285">index.d.ts:285</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L319">index.d.ts:319</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Hand written notes about the release.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="pub_date" class="tsd-anchor"></a>
@@ -132,7 +156,37 @@
 					<div class="tsd-signature tsd-kind-icon">pub_<wbr>date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L287">index.d.ts:287</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L334">index.d.ts:334</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The publish date for this release formatted as an ISO 8601 string.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="releasenotesurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> release<wbr>Notes<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">release<wbr>Notes<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L329">index.d.ts:329</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>URL to hosted notes about this specific Local release. This page will be embedded into Local using an iframe.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="rollout" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> rollout</h3>
+					<div class="tsd-signature tsd-kind-icon">rollout<span class="tsd-signature-symbol">:</span> <a href="_local_.rolloutrules.html" class="tsd-signature-type">RolloutRules</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L341">index.d.ts:341</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -142,9 +196,14 @@
 					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L288">index.d.ts:288</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L339">index.d.ts:339</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Size in bytes of the Local update.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="url" class="tsd-anchor"></a>
@@ -152,19 +211,29 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L283">index.d.ts:283</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L304">index.d.ts:304</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>URL for the Local release zip.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="version" class="tsd-anchor"></a>
-					<h3>version</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> version</h3>
 					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L289">index.d.ts:289</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L314">index.d.ts:314</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>SemVer compatible Local version.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -238,6 +307,12 @@
 								<a href="_local_.releasemanifest.html#pub_date" class="tsd-kind-icon">pub_<wbr>date</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_local_.releasemanifest.html#releasenotesurl" class="tsd-kind-icon">release<wbr>Notes<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_local_.releasemanifest.html#rollout" class="tsd-kind-icon">rollout</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_local_.releasemanifest.html#size" class="tsd-kind-icon">size</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -251,13 +326,22 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_.rolloutrules.html" class="tsd-kind-icon">Rollout<wbr>Rules</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_local_.sitebanner.html" class="tsd-kind-icon">Site<wbr>Banner</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_local_.sitejson.html" class="tsd-kind-icon">SiteJSON</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/_local_.html#autoupdateenabled" class="tsd-kind-icon">Autoupdate<wbr>Enabled</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="../modules/_local_.html#logginglevel" class="tsd-kind-icon">Logging<wbr>Level</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/_local_.html#rolloutpercentage" class="tsd-kind-icon">Rollout<wbr>Percentage</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="../modules/_local_.html#sitelivelinkprosettings" class="tsd-kind-icon">Site<wbr>Live<wbr>Link<wbr>Pro<wbr>Settings</a>

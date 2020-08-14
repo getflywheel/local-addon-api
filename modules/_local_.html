@@ -93,6 +93,7 @@
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_local_.iprocessopts.html" class="tsd-kind-icon">IProcess<wbr>Opts</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_local_.newsiteinfo.html" class="tsd-kind-icon">New<wbr>Site<wbr>Info</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_local_.releasemanifest.html" class="tsd-kind-icon">Release<wbr>Manifest</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_local_.rolloutrules.html" class="tsd-kind-icon">Rollout<wbr>Rules</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_local_.sitebanner.html" class="tsd-kind-icon">Site<wbr>Banner</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_local_.sitejson.html" class="tsd-kind-icon">SiteJSON</a></li>
 							</ul>
@@ -100,7 +101,9 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_local_.html#autoupdateenabled" class="tsd-kind-icon">Autoupdate<wbr>Enabled</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_local_.html#logginglevel" class="tsd-kind-icon">Logging<wbr>Level</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_local_.html#rolloutpercentage" class="tsd-kind-icon">Rollout<wbr>Percentage</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_local_.html#sitelivelinkprosettings" class="tsd-kind-icon">Site<wbr>Live<wbr>Link<wbr>Pro<wbr>Settings</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_local_.html#siteport" class="tsd-kind-icon">Site<wbr>Port</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_local_.html#siteservice" class="tsd-kind-icon">Site<wbr>Service</a></li>
@@ -122,14 +125,45 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="autoupdateenabled" class="tsd-anchor"></a>
+					<h3>Autoupdate<wbr>Enabled</h3>
+					<div class="tsd-signature tsd-kind-icon">Autoupdate<wbr>Enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L295">index.d.ts:295</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Set to true to have Local detect this version and prompt users to update automatically.
+							Set to false to allow users to update manually.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="logginglevel" class="tsd-anchor"></a>
 					<h3>Logging<wbr>Level</h3>
 					<div class="tsd-signature tsd-kind-icon">Logging<wbr>Level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"warn"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"info"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"error"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"debug"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"verbose"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L218">index.d.ts:218</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L222">index.d.ts:222</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="rolloutpercentage" class="tsd-anchor"></a>
+					<h3>Rollout<wbr>Percentage</h3>
+					<div class="tsd-signature tsd-kind-icon">Rollout<wbr>Percentage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L289">index.d.ts:289</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This is the percentage of users that should update to this Local version.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="sitelivelinkprosettings" class="tsd-anchor"></a>
@@ -137,7 +171,7 @@
 					<div class="tsd-signature tsd-kind-icon">Site<wbr>Live<wbr>Link<wbr>Pro<wbr>Settings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>basicAuthPassword<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>basicAuthUsername<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>subdomain<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L60">index.d.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L60">index.d.ts:60</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -161,7 +195,7 @@
 					<div class="tsd-signature tsd-kind-icon">Site<wbr>Port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L57">index.d.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L57">index.d.ts:57</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -171,7 +205,7 @@
 					<div class="tsd-signature tsd-kind-icon">Site<wbr>Service<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>ports<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>role<span class="tsd-signature-symbol">?: </span><a href="../enums/_local_.siteservicerole.html" class="tsd-signature-type">SiteServiceRole</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><a href="../enums/_local_.siteservicetype.html" class="tsd-signature-type">SiteServiceType</a><span class="tsd-signature-symbol">; </span>version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L33">index.d.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L33">index.d.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -203,7 +237,7 @@
 					<div class="tsd-signature tsd-kind-icon">Site<wbr>Services<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L55">index.d.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L55">index.d.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -218,10 +252,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="sitestatus" class="tsd-anchor"></a>
 					<h3>Site<wbr>Status</h3>
-					<div class="tsd-signature tsd-kind-icon">Site<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"running"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"halted"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"starting"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"stopping"</span></div>
+					<div class="tsd-signature tsd-kind-icon">Site<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"running"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"halted"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"starting"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"stopping"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"updating-wp"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L58">index.d.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L58">index.d.ts:58</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -231,7 +265,7 @@
 					<div class="tsd-signature tsd-kind-icon">Sites<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L196">index.d.ts:196</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L200">index.d.ts:200</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -249,7 +283,7 @@
 					<div class="tsd-signature tsd-kind-icon">SitesJSON<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L101">index.d.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L103">index.d.ts:103</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -274,7 +308,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/a54bd95/index.d.ts#L235">index.d.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/ff5a185/index.d.ts#L239">index.d.ts:239</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -339,13 +373,22 @@
 						<a href="../interfaces/_local_.releasemanifest.html" class="tsd-kind-icon">Release<wbr>Manifest</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_local_.rolloutrules.html" class="tsd-kind-icon">Rollout<wbr>Rules</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_local_.sitebanner.html" class="tsd-kind-icon">Site<wbr>Banner</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_local_.sitejson.html" class="tsd-kind-icon">SiteJSON</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_local_.html#autoupdateenabled" class="tsd-kind-icon">Autoupdate<wbr>Enabled</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="_local_.html#logginglevel" class="tsd-kind-icon">Logging<wbr>Level</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_local_.html#rolloutpercentage" class="tsd-kind-icon">Rollout<wbr>Percentage</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="_local_.html#sitelivelinkprosettings" class="tsd-kind-icon">Site<wbr>Live<wbr>Link<wbr>Pro<wbr>Settings</a>
