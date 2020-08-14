@@ -35,7 +35,6 @@ declare module '@getflywheel/local/main' {
 		deleteSite: Services.DeleteSite
 		devkit: Services.DevKit
 		capi: Services.CAPI
-		siteInfo: Services.SiteInfo
 		siteShellEntry: Services.SiteShellEntry
 		wpCli: Services.WpCli
 		ports: Services.Ports
@@ -763,6 +762,10 @@ declare module '@getflywheel/local/main' {
 			}>
 		}
 
+		export interface LightningDBService extends LightningService {
+			waitForDB(noPassword?: boolean): Promise<boolean>;
+		}
+
 		export class AddonInstaller {
 			get addonsPath(): any;
 
@@ -994,16 +997,6 @@ declare module '@getflywheel/local/main' {
 			pull(args: IDevKitServiceArgs): Promise<void>;
 		}
 
-		export class SiteInfo {
-			listen(): void;
-
-			getWpVersion(site: Local.Site): Promise<string | null>;
-
-			getWpLatestVersion(site: Local.Site): Promise<string | null>;
-
-			getOpenSSLVersion(site: Local.Site): Promise<string | null>;
-		}
-
 		export class SiteShellEntry {
 			launch(site: Local.Site): Promise<void>;
 
@@ -1014,6 +1007,9 @@ declare module '@getflywheel/local/main' {
 
 		interface WpCliRunOpts {
 			ignoreErrors?: boolean;
+			skipThemes?: boolean;
+			skipPlugins?: boolean;
+			env?: NodeJS.ProcessEnv;
 		}
 
 		export class WpCli {
@@ -1028,6 +1024,10 @@ declare module '@getflywheel/local/main' {
 			isInstalled(site: Local.Site): Promise<boolean>;
 
 			isMultisite(site: Local.Site): Promise<boolean>;
+
+			getWpVersion(site: Local.Site): Promise<string | null>;
+
+			getWpLatestVersion(site: Local.Site): Promise<string | null>;
 		}
 
 		type PortServiceAllocationRequest = {
