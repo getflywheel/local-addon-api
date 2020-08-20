@@ -36,6 +36,7 @@ declare module '@getflywheel/local/main' {
 		devkit: Services.DevKit
 		capi: Services.CAPI
 		siteShellEntry: Services.SiteShellEntry
+		browserManager: Services.BrowserManager
 		wpCli: Services.WpCli
 		ports: Services.Ports
 		configTemplates: Services.ConfigTemplates
@@ -1003,6 +1004,12 @@ declare module '@getflywheel/local/main' {
 			createShellEntry(site: Local.Site): Promise<void>;
 
 			createBatchEntry(site: Local.Site): Promise<void>;
+		}
+
+		export class BrowserManager {
+			getAvailableBrowsers() : Promise<string[]>;
+
+			openInBrowser(siteUrl: string): void;
 		}
 
 		interface WpCliRunOpts {
