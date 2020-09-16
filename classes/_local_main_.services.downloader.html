@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IExportSite | @getflywheel/local</title>
+	<title>Downloader | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -60,21 +60,28 @@
 					<a href="../modules/_local_main_.services.html">Services</a>
 				</li>
 				<li>
-					<a href="_local_main_.services.iexportsite.html">IExportSite</a>
+					<a href="_local_main_.services.downloader.html">Downloader</a>
 				</li>
 			</ul>
-			<h1>Interface IExportSite</h1>
+			<h1>Class Downloader</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This service sets up the necessary IPC handlers for getting queues from the main thread into the renderer.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IExportSite</span>
+						<span class="target">Downloader</span>
 					</li>
 				</ul>
 			</section>
@@ -83,47 +90,32 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.iexportsite.html#filter" class="tsd-kind-icon">filter</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.iexportsite.html#outputpath" class="tsd-kind-icon">output<wbr>Path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.iexportsite.html#site" class="tsd-kind-icon">site</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.downloader.html#listen" class="tsd-kind-icon">listen</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="filter" class="tsd-anchor"></a>
-					<h3>filter</h3>
-					<div class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L973">main.d.ts:973</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="outputpath" class="tsd-anchor"></a>
-					<h3>output<wbr>Path</h3>
-					<div class="tsd-signature tsd-kind-icon">output<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L972">main.d.ts:972</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="site" class="tsd-anchor"></a>
-					<h3>site</h3>
-					<div class="tsd-signature tsd-kind-icon">site<span class="tsd-signature-symbol">:</span> <a href="_local_.sitejson.html" class="tsd-signature-type">SiteJSON</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L971">main.d.ts:971</a></li>
-						</ul>
-					</aside>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="listen" class="tsd-anchor"></a>
+					<h3>listen</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L819">main.d.ts:819</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -139,17 +131,11 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_local_main_.services.iexportsite.html" class="tsd-kind-icon">IExport<wbr>Site</a>
+					<li class="current tsd-kind-class tsd-parent-kind-namespace">
+						<a href="_local_main_.services.downloader.html" class="tsd-kind-icon">Downloader</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.iexportsite.html#filter" class="tsd-kind-icon">filter</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.iexportsite.html#outputpath" class="tsd-kind-icon">output<wbr>Path</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.iexportsite.html#site" class="tsd-kind-icon">site</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_local_main_.services.downloader.html#listen" class="tsd-kind-icon">listen</a>
 							</li>
 						</ul>
 					</li>
@@ -171,14 +157,14 @@
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 		</div>
 	</div>

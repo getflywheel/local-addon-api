@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IExportSite | @getflywheel/local</title>
+	<title>IHandledError | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -60,10 +60,10 @@
 					<a href="../modules/_local_main_.services.html">Services</a>
 				</li>
 				<li>
-					<a href="_local_main_.services.iexportsite.html">IExportSite</a>
+					<a href="_local_main_.services.ihandlederror.html">IHandledError</a>
 				</li>
 			</ul>
-			<h1>Interface IExportSite</h1>
+			<h1>Interface IHandledError</h1>
 		</div>
 	</div>
 </header>
@@ -74,9 +74,13 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IExportSite</span>
+						<span class="target">IHandledError</span>
 					</li>
 				</ul>
+			</section>
+			<section class="tsd-panel tsd-kind-interface tsd-parent-kind-namespace">
+				<h3 class="tsd-before-signature">Indexable</h3>
+				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>metaKey: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
@@ -85,9 +89,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.iexportsite.html#filter" class="tsd-kind-icon">filter</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.iexportsite.html#outputpath" class="tsd-kind-icon">output<wbr>Path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.iexportsite.html#site" class="tsd-kind-icon">site</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.ihandlederror.html#dialogmessage" class="tsd-kind-icon">dialog<wbr>Message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.ihandlederror.html#dialogtitle" class="tsd-kind-icon">dialog<wbr>Title</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.ihandlederror.html#error" class="tsd-kind-icon">error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.ihandlederror.html#message" class="tsd-kind-icon">message</a></li>
 							</ul>
 						</section>
 					</div>
@@ -96,32 +101,42 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="filter" class="tsd-anchor"></a>
-					<h3>filter</h3>
-					<div class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="dialogmessage" class="tsd-anchor"></a>
+					<h3>dialog<wbr>Message</h3>
+					<div class="tsd-signature tsd-kind-icon">dialog<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L973">main.d.ts:973</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L826">main.d.ts:826</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="outputpath" class="tsd-anchor"></a>
-					<h3>output<wbr>Path</h3>
-					<div class="tsd-signature tsd-kind-icon">output<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="dialogtitle" class="tsd-anchor"></a>
+					<h3>dialog<wbr>Title</h3>
+					<div class="tsd-signature tsd-kind-icon">dialog<wbr>Title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L972">main.d.ts:972</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L825">main.d.ts:825</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="site" class="tsd-anchor"></a>
-					<h3>site</h3>
-					<div class="tsd-signature tsd-kind-icon">site<span class="tsd-signature-symbol">:</span> <a href="_local_.sitejson.html" class="tsd-signature-type">SiteJSON</a></div>
+					<a name="error" class="tsd-anchor"></a>
+					<h3>error</h3>
+					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">Error</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L971">main.d.ts:971</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L823">main.d.ts:823</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="message" class="tsd-anchor"></a>
+					<h3>message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/4a72338/main.d.ts#L824">main.d.ts:824</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -140,16 +155,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_local_main_.services.iexportsite.html" class="tsd-kind-icon">IExport<wbr>Site</a>
+						<a href="_local_main_.services.ihandlederror.html" class="tsd-kind-icon">IHandled<wbr>Error</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.iexportsite.html#filter" class="tsd-kind-icon">filter</a>
+								<a href="_local_main_.services.ihandlederror.html#dialogmessage" class="tsd-kind-icon">dialog<wbr>Message</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.iexportsite.html#outputpath" class="tsd-kind-icon">output<wbr>Path</a>
+								<a href="_local_main_.services.ihandlederror.html#dialogtitle" class="tsd-kind-icon">dialog<wbr>Title</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.iexportsite.html#site" class="tsd-kind-icon">site</a>
+								<a href="_local_main_.services.ihandlederror.html#error" class="tsd-kind-icon">error</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_local_main_.services.ihandlederror.html#message" class="tsd-kind-icon">message</a>
 							</li>
 						</ul>
 					</li>
