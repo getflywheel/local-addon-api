@@ -55,7 +55,27 @@ declare module '@getflywheel/local' {
 	export type SiteServices = { [serviceName: string]: SiteService };
 
 	export type SitePort = number;
-	export type SiteStatus = 'running' | 'halted' | 'starting' | 'stopping' | 'updating-wp';
+	export type SiteStatus =
+		'adding'
+		| 'cloning'
+		| 'container-missing'
+		| 'copying'
+		| 'creating'
+		| 'deleting'
+		| 'exporting'
+		| 'exporting-db'
+		| 'halted'
+		| 'processing'
+		| 'provisioning'
+		| 'provisioning-error'
+		| 'restarting'
+		| 'running'
+		| 'saving'
+		| 'starting'
+		| 'stopping'
+		| 'updating-wp'
+		| 'wordpress-install-error'
+		;
 
 	export type SiteLiveLinkProSettings = {
 		subdomain: string

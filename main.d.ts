@@ -23,6 +23,8 @@ declare module '@getflywheel/local/main' {
 		addIpcAsyncListener: typeof addIpcAsyncListener
 		appState: Services.AppState
 		addonInstaller: Services.AddonInstaller
+		downloader: Services.Downloader
+		errorHandler: Services.ErrorHandler
 		siteProvisioner: Services.SiteProvisioner
 		siteProcessManager: Services.SiteProcessManager
 		siteDatabase: Services.SiteDatabase
@@ -50,6 +52,7 @@ declare module '@getflywheel/local/main' {
 		liveLinksPro: Services.LiveLinksPro
 		liveLinksFree: Services.LiveLinksFree
 		liveLinksMuPlugin: Services.LiveLinksMuPlugin
+		analyticsV2: Services.AnalyticsV2Service
 	}
 
 	export function sendIPCEvent(channel: string, ...args: any[]): void;
@@ -809,6 +812,31 @@ declare module '@getflywheel/local/main' {
 			relaunch(): void;
 		}
 
+		/**
+		 * This service sets up the necessary IPC handlers for getting queues from the main thread into the renderer.
+		 */
+		export class Downloader {
+			listen(): void;
+		}
+
+		export interface IHandledError {
+			error: typeof Error
+			message: string
+			dialogTitle: string
+			dialogMessage: string
+			[metaKey: string]: any
+		}
+
+		/**
+		 * The ErrorHandler service makes it easy to send errors from the renderer and log them to file, show a dialog,
+		 * and send the error to Sentry.
+		 */
+		export class ErrorHandler {
+			listen(): void;
+
+			handleError(handledError: IHandledError): void;
+		}
+
 		export class SiteProvisioner {
 			/**
 			 * Check that the necessary VC Redists are installed if the user is running Windows.
@@ -1178,6 +1206,8 @@ declare module '@getflywheel/local/main' {
 		export class LiveLinksPro extends LiveLinks {}
 
 		export class LiveLinksFree extends LiveLinks {}
+
+		export class AnalyticsV2Service {}
 	}
 
 }
