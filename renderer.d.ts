@@ -1,6 +1,6 @@
 declare module '@getflywheel/local/renderer' {
 
-	import { ReactNode } from 'react';
+	import { FC, ReactNode } from 'react';
 
 	type ReactNodeLike = ReactNode | string | number;
 
@@ -33,4 +33,34 @@ declare module '@getflywheel/local/renderer' {
 
 	export function confirm(args: ConfirmArgs): Promise<any>;
 
+	interface MenuContentRowItem {
+		/* The name of the row to render on the left hand side (left column) of the row */
+		name: string;
+		/* the component to render on the right hand side (right column) of the row */
+		component: FC;
+	}
+
+	export interface PreferencesSection {
+		/* The name to call the section. If this is omitted, a subheader will not be created */
+		subHeader?: string;
+		/* the single row item or list of row itmes to render in the section */
+		rows: MenuContentRowItem | MenuContentRowItem[];
+	}
+
+	/**
+	 * Interface describing the expected shape for a config object that adds a new item to the
+	 * settings view via the 'preferencesMenuItems' filter hook
+	 */
+	export interface AddonSettingsItem {
+		/* the sub path that the menu should be mounted under for React Router */
+		path: string;
+		/* the display name to show in the sidebar and title section of "Preferences" */
+		displayName: string;
+		/* The section, or sections to render */
+		sections: FC | PreferencesSection[];
+		/* the function to call on click of the apply button */
+		onApply: () => void;
+		/* additional props to pass to MenuContentRowItem(s) or the section override component */
+		sectionsProps?: GenericObject;
+	}
 }

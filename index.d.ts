@@ -164,7 +164,21 @@ declare module '@getflywheel/local' {
 
 		clonedImage?: string;
 
-		paths: SitePaths;
+		paths: {
+			readonly app: string;
+
+			readonly sql: string;
+
+			readonly webRoot: string;
+
+			readonly conf: string;
+
+			readonly confTemplates: string;
+
+			readonly logs: string;
+
+			readonly runData: string;
+		};
 
 		phpVersion?: string;
 
@@ -219,26 +233,6 @@ declare module '@getflywheel/local' {
 
 	export type Sites = { [siteID: string]: Site };
 
-	export class SitePaths {
-		site: Site;
-
-		constructor(site: Site);
-
-		readonly app: string;
-
-		readonly sql: string;
-
-		readonly webRoot: string;
-
-		readonly conf: string;
-
-		readonly confTemplates: string;
-
-		readonly logs: string;
-
-		readonly runData: string;
-	}
-
 	type LoggingLevel = 'warn' | 'info' | 'error' | 'debug' | 'verbose' | null;
 
 	export interface IProcessOpts {
@@ -276,6 +270,12 @@ declare module '@getflywheel/local' {
 		linkOnClickIPCEvent?: string;
 		linkHref?: string;
 	}
+
+	export interface SiteOrganization {
+		isStarred: boolean;
+	}
+
+	export type SitesOrganization = {[siteId: string]: SiteOrganization};
 
 	export interface AddonPackage {
 		addonDir: string;

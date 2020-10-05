@@ -28,6 +28,7 @@ declare module '@getflywheel/local/main' {
 		siteProvisioner: Services.SiteProvisioner
 		siteProcessManager: Services.SiteProcessManager
 		siteDatabase: Services.SiteDatabase
+		sitesOrganization: Services.SitesOrganizationService
 		sequelPro: Services.SequelPro
 		changeSiteDomain: Services.ChangeSiteDomain
 		importSite: Services.ImportSite
@@ -888,6 +889,8 @@ declare module '@getflywheel/local/main' {
 
 			exec(site: Local.Site, args: any[]): Promise<string>;
 		}
+
+		export class SitesOrganizationService {}
 
 		export class SequelPro {
 			open(site: Local.Site): void;
