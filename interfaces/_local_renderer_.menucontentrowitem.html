@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>WpCliRunOpts | @getflywheel/local</title>
+	<title>MenuContentRowItem | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,16 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_local_main_.html">&quot;local/main&quot;</a>
+					<a href="../modules/_local_renderer_.html">&quot;local/renderer&quot;</a>
 				</li>
 				<li>
-					<a href="../modules/_local_main_.services.html">Services</a>
-				</li>
-				<li>
-					<a href="_local_main_.services.wpclirunopts.html">WpCliRunOpts</a>
+					<a href="_local_renderer_.menucontentrowitem.html">MenuContentRowItem</a>
 				</li>
 			</ul>
-			<h1>Interface WpCliRunOpts</h1>
+			<h1>Interface MenuContentRowItem</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">WpCliRunOpts</span>
+						<span class="target">MenuContentRowItem</span>
 					</li>
 				</ul>
 			</section>
@@ -85,10 +82,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.wpclirunopts.html#env" class="tsd-kind-icon">env</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.wpclirunopts.html#ignoreerrors" class="tsd-kind-icon">ignore<wbr>Errors</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.wpclirunopts.html#skipplugins" class="tsd-kind-icon">skip<wbr>Plugins</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.services.wpclirunopts.html#skipthemes" class="tsd-kind-icon">skip<wbr>Themes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_renderer_.menucontentrowitem.html#component" class="tsd-kind-icon">component</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_renderer_.menucontentrowitem.html#name" class="tsd-kind-icon">name</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,42 +92,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="env" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> env</h3>
-					<div class="tsd-signature tsd-kind-icon">env<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ProcessEnv</span></div>
+					<a name="component" class="tsd-anchor"></a>
+					<h3>component</h3>
+					<div class="tsd-signature tsd-kind-icon">component<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FC</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/29ae53d/main.d.ts#L1050">main.d.ts:1050</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/29ae53d/renderer.d.ts#L40">renderer.d.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="ignoreerrors" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ignore<wbr>Errors</h3>
-					<div class="tsd-signature tsd-kind-icon">ignore<wbr>Errors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/29ae53d/main.d.ts#L1047">main.d.ts:1047</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="skipplugins" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> skip<wbr>Plugins</h3>
-					<div class="tsd-signature tsd-kind-icon">skip<wbr>Plugins<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/29ae53d/main.d.ts#L1049">main.d.ts:1049</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="skipthemes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> skip<wbr>Themes</h3>
-					<div class="tsd-signature tsd-kind-icon">skip<wbr>Themes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/29ae53d/main.d.ts#L1048">main.d.ts:1048</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/29ae53d/renderer.d.ts#L38">renderer.d.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -144,31 +119,52 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_local_.html">&quot;local&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_local_main_.html">&quot;local/main&quot;</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_local_renderer_.html">&quot;local/renderer&quot;</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_renderer_.addonsettingsitem.html" class="tsd-kind-icon">Addon<wbr>Settings<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_renderer_.confirmargs.html" class="tsd-kind-icon">Confirm<wbr>Args</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_local_main_.services.wpclirunopts.html" class="tsd-kind-icon">Wp<wbr>Cli<wbr>Run<wbr>Opts</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_renderer_.menucontentrowitem.html" class="tsd-kind-icon">Menu<wbr>Content<wbr>Row<wbr>Item</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.wpclirunopts.html#env" class="tsd-kind-icon">env</a>
+								<a href="_local_renderer_.menucontentrowitem.html#component" class="tsd-kind-icon">component</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.wpclirunopts.html#ignoreerrors" class="tsd-kind-icon">ignore<wbr>Errors</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.wpclirunopts.html#skipplugins" class="tsd-kind-icon">skip<wbr>Plugins</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.services.wpclirunopts.html#skipthemes" class="tsd-kind-icon">skip<wbr>Themes</a>
+								<a href="_local_renderer_.menucontentrowitem.html#name" class="tsd-kind-icon">name</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_local_renderer_.preferencessection.html" class="tsd-kind-icon">Preferences<wbr>Section</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/_local_renderer_.html#reactnodelike" class="tsd-kind-icon">React<wbr>Node<wbr>Like</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_local_renderer_.html#confirm" class="tsd-kind-icon">confirm</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_local_renderer_.html#ipcasync" class="tsd-kind-icon">ipc<wbr>Async</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
