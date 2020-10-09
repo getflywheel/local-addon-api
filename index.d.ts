@@ -102,7 +102,9 @@ declare module '@getflywheel/local' {
 
 		liveLinkProSettings?: SiteLiveLinkProSettings;
 
-		autoEnableInstantReload?: boolean
+		autoEnableInstantReload?: boolean;
+
+		callToActionBannerDismissed?: boolean;
 
 		/* Deprecated */
 		flywheelConnect?: string
@@ -113,11 +115,10 @@ declare module '@getflywheel/local' {
 		phpVersion?: string
 		mysqlVersion?: string
 		webServer?: string
+		database?: string
 		ports?: { [portName: string]: SitePort | SitePort[] }
 		environment?: string
 		environmentVersion?: string
-
-		[key: string]: any
 	}
 
 	export type SitesJSON = { [siteID: string]: SiteJSON };
@@ -191,6 +192,8 @@ declare module '@getflywheel/local' {
 		environment?: string;
 
 		environmentVersion?: string;
+
+		callToActionBannerDismissed?: boolean;
 
 		/* End Deprecated properties */
 

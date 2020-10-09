@@ -535,7 +535,7 @@ declare module '@getflywheel/local/main' {
 	}
 
 	export interface IAppState {
-		siteStatuses: { [siteId: string]: string }
+		siteStatuses: { [siteId: string]: Local.SiteStatus }
 		addons: Local.AddonPackage[]
 		enabledAddons: { [name: string]: boolean };
 		loadedAddons: Local.AddonPackage[]
@@ -874,6 +874,8 @@ declare module '@getflywheel/local/main' {
 			attachProcess(site: Local.Site, p: Process): void;
 
 			getSiteStatus(site: Local.Site): Local.SiteStatus;
+
+			getSiteStatuses() : { [siteId: string]: Local.SiteStatus };
 
 			stopAllSites(): Promise<void>;
 		}
