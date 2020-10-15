@@ -276,6 +276,9 @@ declare module '@getflywheel/local' {
 
 	export interface SiteOrganization {
 		isStarred: boolean;
+		sortData?: {
+			siteLastStartedTimestamp: number;
+		};
 	}
 
 	export type SitesOrganization = {[siteId: string]: SiteOrganization};

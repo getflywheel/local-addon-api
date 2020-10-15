@@ -68,6 +68,36 @@ declare module '@getflywheel/local/main' {
 
 	export function formatHomePath(string: any, untrailingslashit?: boolean): any;
 
+
+	/**
+	 * Helper function to create a forked child process.
+	 *
+	 * Utilizes the Node standard lib child_process.fork with some defaults to help keep code DRY
+	 * and help functionality to just work with the Local code base.
+	 *
+	 * Check out the docs for ChildProcess.fork for more info:
+	 * https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options
+	 *
+	 * @param execPath path to file that should be executed
+	 * @param envVarDependencies environment variables that need to be copied over to forked process
+	 */
+	export function workerFork(execPath, envVarDependencies: GenericObject): ChildProcess;
+
+	/**
+ 	 * Returns up a helper function to easily communcicate between the main thread and a child thread/process
+ 	 * by wrapping an event listener for the "message" event with a promise which allows you to await a "call"
+ 	 * to another thread. It also removes the event listener once complete.
+ 	 *
+ 	 * This pairs nicely with the workerFork helper function
+ 	 *
+ 	 * @param childProcess childProcess to bind this helper to
+ 	 *
+ 	 * @returns ChildProcessMessagePromiseHelper
+ 	 */
+	export function childProcessMessagePromiseFactory(
+		childProcess: ChildProcess
+	): <T>(eventName: string, payload?: any) => Promise<T>;
+
 	export class SiteData {
 		static getSites(): Local.Sites;
 
@@ -892,7 +922,12 @@ declare module '@getflywheel/local/main' {
 			exec(site: Local.Site, args: any[]): Promise<string>;
 		}
 
-		export class SitesOrganizationService {}
+		export class SitesOrganizationService {
+			saveSortData({ siteId, sortData }: {
+				siteId: string,
+				sortData: { siteLastStartedTimestamp: number }
+			}): void;
+		}
 
 		export class SequelPro {
 			open(site: Local.Site): void;
