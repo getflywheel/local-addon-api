@@ -3,11 +3,15 @@
 declare module '@getflywheel/local/main' {
 
 	import * as Local from '@getflywheel/local';
+	import * as LocalGraphQL from '@getflywheel/local/graphql';
 	import { ExecFileOptions, ChildProcess } from 'child_process';
 	import * as Awilix from 'awilix';
 	import * as Electron from 'electron';
 	import * as Winston from 'winston';
 	import * as os from 'os';
+	import type { GraphQLSchema, DocumentNode } from 'graphql';
+	import type { IResolvers } from 'graphql-tools';
+	import type { PubSub } from 'graphql-subscriptions';
 
 	export type ServiceContainer = Awilix.AwilixContainer<ServiceContainerServices>;
 	export const getServiceContainer: () => ServiceContainer;
@@ -17,7 +21,7 @@ declare module '@getflywheel/local/main' {
 		adminer: Services.Adminer
 		electron: typeof Electron
 		os: typeof os
-		siteData: typeof SiteData
+		siteData: Services.SiteDataService
 		userData: typeof UserData
 		sendIPCEvent: typeof sendIPCEvent
 		addIpcAsyncListener: typeof addIpcAsyncListener
@@ -54,6 +58,8 @@ declare module '@getflywheel/local/main' {
 		liveLinksFree: Services.LiveLinksFree
 		liveLinksMuPlugin: Services.LiveLinksMuPlugin
 		analyticsV2: Services.AnalyticsV2Service
+		graphql: Services.GraphQLService
+		jobs: Services.JobsService
 	}
 
 	export function sendIPCEvent(channel: string, ...args: any[]): void;
@@ -98,6 +104,9 @@ declare module '@getflywheel/local/main' {
 		childProcess: ChildProcess
 	): <T>(eventName: string, payload?: any) => Promise<T>;
 
+	/**
+	 * @deprecated Use LocalMain.Services.SiteDataService instead
+	 */
 	export class SiteData {
 		static getSites(): Local.Sites;
 
@@ -579,6 +588,40 @@ declare module '@getflywheel/local/main' {
 	}
 
 	/**
+	 * Jobs
+	 */
+	export enum JobStatus {
+		CREATED = 'created',
+		RUNNING = 'running',
+		SUCCESSFUL = 'successful',
+		FAILED = 'failed',
+	}
+
+	export class Job {
+		public id: string;
+
+		public status: JobStatus;
+
+		public logs: string;
+
+		public error: Error;
+
+		public readonly meta: GenericObject;
+
+		constructor(meta: GenericObject);
+
+		await(promise: Promise<any>) : Promise<Job>;
+
+		start(): void;
+
+		succeed(): void;
+
+		fail(e: Error): void;
+
+		log(log: string): void;
+	}
+
+	/**
 	 * Process and Process Groups
 	 */
 	export class ProcessGroup {
@@ -917,7 +960,9 @@ declare module '@getflywheel/local/main' {
 
 			waitForDB(site: Local.Site, noPassword?: boolean): Promise<boolean>;
 
-			getTablePrefix(site: Local.Site, allPrefixes?: boolean): Promise<string | string[]>;
+			getTablePrefix(site: Local.Site, allPrefixes?: boolean, useDatabase?: boolean): Promise<string | string[]>;
+
+			runQuery(site: Local.Site, query: string): Promise<string>;
 
 			exec(site: Local.Site, args: any[]): Promise<string>;
 		}
@@ -1248,6 +1293,52 @@ declare module '@getflywheel/local/main' {
 		export class LiveLinksFree extends LiveLinks {}
 
 		export class AnalyticsV2Service {}
+
+		export class GraphQLService {
+			pubsub: PubSub;
+
+			start() : void;
+
+			registerGraphQLService(
+				serviceId: string,
+				schema?: GraphQLSchema | DocumentNode,
+				resolvers?: IResolvers
+			) : void;
+		}
+
+		export class JobsService {
+			addJob(meta: GenericObject): Job;
+		}
+
+		export class SiteDataService {
+			PUBSUB_TOPIC_SITES_UPDATED:string;
+
+			PUBSUB_TOPIC_SITE_UPDATED: string;
+
+			getSites(): Local.Sites;
+
+			getWorkspaceSites (workspace?: string) : Local.Sites;
+
+			upgradeServices(site: Local.SiteJSON) : Local.SiteServices;
+
+			emitSitesUpdate(sites?: Local.SitesJSON) : void;
+
+			emitSiteUpdate(site: Local.SiteJSON) : void;
+
+			getSite (siteID: Local.Site['id']) : Local.Site | null;
+
+			getSiteByProperty (property: string, value: any) : Local.Site | null;
+
+			addSite (siteID: Local.Site['id'], site: Local.SiteJSON) : void;
+
+			updateSite (siteID: Local.Site['id'], site: Partial<Local.SiteJSON>) : void;
+
+			deleteSite (siteID: Local.Site['id']) : void;
+
+			reformatSites () : void;
+
+			removeHostConnections (host: string) : void;
+		}
 	}
 
 }

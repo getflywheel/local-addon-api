@@ -3,6 +3,8 @@ declare type GenericObject = { [key: string]: any };
 
 declare module '@getflywheel/local' {
 
+	import * as LocalGraphQL from '@getflywheel/local/graphql';
+
 	/**
 	 * NOTE: all enum declarations must be copied over to `index.d.ts` as well.
 	 */
@@ -15,7 +17,6 @@ declare module '@getflywheel/local' {
 
 	export enum SiteServiceType {
 		LIGHTNING = 'lightning',
-		DOCKER_COMPOSE = 'docker-compose',
 	}
 
 	export enum SiteServiceRole {
@@ -30,12 +31,7 @@ declare module '@getflywheel/local' {
 		UPDATING = 'updating',
 	}
 
-	export type SiteService = {
-		version: string
-		type: SiteServiceType
-		ports?: { [portKey: string]: SitePort[] }
-		role?: SiteServiceRole
-	};
+	export type SiteService = LocalGraphQL.SiteService;
 
 	/**
 	 * Commonly used arguments for site creation (new site, pulling, importing, etc).
@@ -44,7 +40,7 @@ declare module '@getflywheel/local' {
 		siteName: string
 		sitePath: string
 		siteDomain: string
-		multiSite: MultiSite
+		multiSite: LocalGraphQL.MultiSite
 		phpVersion?: string
 		database?: string
 		environment?: string
@@ -55,56 +51,25 @@ declare module '@getflywheel/local' {
 	export type SiteServices = { [serviceName: string]: SiteService };
 
 	export type SitePort = number;
-	export type SiteStatus =
-		'adding'
-		| 'cloning'
-		| 'container-missing'
-		| 'copying'
-		| 'creating'
-		| 'deleting'
-		| 'exporting'
-		| 'exporting-db'
-		| 'halted'
-		| 'processing'
-		| 'provisioning'
-		| 'provisioning-error'
-		| 'restarting'
-		| 'running'
-		| 'saving'
-		| 'starting'
-		| 'stopping'
-		| 'updating-wp'
-		| 'wordpress-install-error'
-		;
+	export type SiteStatus = LocalGraphQL.SiteStatus;
 
-	export type SiteLiveLinkProSettings = {
-		subdomain: string
-		basicAuthUsername: string
-		basicAuthPassword: string
-	};
+	export interface SiteJSON extends Omit<
+	LocalGraphQL.Site,
+	'services'
+	| 'hostConnections'
+	| 'isStarred'
+	| 'status'
+	| 'workspace'
+	| 'paths'
+	| 'longPath'
+	| 'url'
+	| 'host'
+	> {
+		services: { [serviceName: string]: LocalGraphQL.SiteService };
 
-	export interface SiteJSON {
-		id: string
-		path: string
-		hostConnections?: HostConnection[] | null
-		localVersion?: string
-		services: SiteServices
-		multiSite: MultiSite
-		multiSiteDomains?: string[]
-		mysql?: {
-			database: string
-			user: string
-			password: string
-		}
-		name: string
-		domain: string
-		workspace?: string | null
+		hostConnections?: LocalGraphQL.Site['hostConnections'] | null;
 
-		liveLinkProSettings?: SiteLiveLinkProSettings;
-
-		autoEnableInstantReload?: boolean;
-
-		callToActionBannerDismissed?: boolean;
+		workspace?: LocalGraphQL.Site['workspace'] | null;
 
 		/* Deprecated */
 		flywheelConnect?: string
@@ -123,14 +88,25 @@ declare module '@getflywheel/local' {
 
 	export type SitesJSON = { [siteID: string]: SiteJSON };
 
-	export class Site implements SiteJSON {
+	/**
+	 * This was done because we need the deprecated properties in SiteJSON along with some of the properties in SiteJSON
+	 * such as services, hostConnections, and workspace that differ from the LocalGraphQL.Site type.
+	 */
+	type SiteBase = Omit<LocalGraphQL.Site,
+	'services' |
+	'hostConnections' |
+	'workspace' |
+	'isStarred' |
+	'status'> & SiteJSON;
+
+	export class Site implements SiteBase {
 		id: string;
 
 		path: string;
 
 		localVersion: string;
 
-		services: SiteServices;
+		services: SiteJSON['services'];
 
 		multiSite: SiteJSON['multiSite'];
 
@@ -156,15 +132,6 @@ declare module '@getflywheel/local' {
 
 		autoEnableInstantReload?: boolean;
 
-		/* Deprecated */
-		flywheelConnect?: string;
-
-		devMode?: boolean;
-
-		container?: string;
-
-		clonedImage?: string;
-
 		paths: {
 			readonly app: string;
 
@@ -181,6 +148,17 @@ declare module '@getflywheel/local' {
 			readonly runData: string;
 		};
 
+		callToActionBannerDismissed?: boolean;
+
+		/* Deprecated */
+		flywheelConnect?: string;
+
+		devMode?: boolean;
+
+		container?: string;
+
+		clonedImage?: string;
+
 		phpVersion?: string;
 
 		webServer?: string;
@@ -192,9 +170,6 @@ declare module '@getflywheel/local' {
 		environment?: string;
 
 		environmentVersion?: string;
-
-		callToActionBannerDismissed?: boolean;
-
 		/* End Deprecated properties */
 
 		constructor(siteJson: SiteJSON);
@@ -203,9 +178,11 @@ declare module '@getflywheel/local' {
 
 		static find(id: SiteJSON['id']): Site;
 
-		getService(serviceName: string) : SiteService & { name: string };
+		getServices(): SiteService[];
 
-		getSiteServiceByRole(role: SiteServiceRole) : SiteService & { name: string } | undefined;
+		getService(serviceName: string) : SiteService;
+
+		getSiteServiceByRole(role: SiteServiceRole) : SiteService | undefined;
 
 		readonly longPath: string;
 
@@ -219,12 +196,7 @@ declare module '@getflywheel/local' {
 	/**
 	 * Represents a host connection with basic host and remote information.
 	 */
-	export interface HostConnection {
-		accountId: string | undefined;
-		hostId: HostId | undefined;
-		remoteSiteId?: string | undefined;
-		remoteSiteEnv?: any;
-	}
+	export type HostConnection = LocalGraphQL.HostConnection;
 
 	/**
 	 * Represents a unique identifier for each supported host.
