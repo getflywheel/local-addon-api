@@ -63,16 +63,12 @@ export type Mutation = {
   addSite?: Maybe<Job>;
   /** Stop and then start services for the specified site. */
   restartSite?: Maybe<Site>;
-  /** Stop and then start services for the specified sites. */
-  restartSites?: Maybe<Array<Maybe<Site>>>;
   /** Star a site. */
   starSite?: Maybe<Site>;
   /** Start Live Link Pro for the specified site. */
   startLiveLinkPro?: Maybe<SiteLiveLinkProSettings>;
   /** Start services for the specified site. */
   startSite?: Maybe<Site>;
-  /** Start services for the specified sites. */
-  startSites?: Maybe<Array<Maybe<Site>>>;
   /** Stops all running sites. */
   stopAllSites?: Maybe<Scalars['Boolean']>;
   /** Stop Live Link Pro for the specified site. */
@@ -97,11 +93,6 @@ export type MutationRestartSiteArgs = {
 };
 
 
-export type MutationRestartSitesArgs = {
-  ids: Array<Maybe<Scalars['ID']>>;
-};
-
-
 export type MutationStarSiteArgs = {
   id: Scalars['ID'];
 };
@@ -114,11 +105,6 @@ export type MutationStartLiveLinkProArgs = {
 
 export type MutationStartSiteArgs = {
   id: Scalars['ID'];
-};
-
-
-export type MutationStartSitesArgs = {
-  ids: Array<Maybe<Scalars['ID']>>;
 };
 
 

@@ -1,6 +1,6 @@
 {
 	"name": "@getflywheel/local",
-	"version": "5.9.4",
+	"version": "5.9.5",
 	"dependencies": {
 		"@types/node": "^12.7.12",
 		"awilix": "^4.2.5",
