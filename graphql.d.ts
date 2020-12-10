@@ -27,12 +27,19 @@ export type Scalars = {
 export type Query = {
   /** Placeholder field so the schema can be extended. */
   _empty?: Maybe<Scalars['String']>;
+  isUpdateAvailable?: Maybe<Scalars['JSON']>;
   job?: Maybe<Job>;
   jobs?: Maybe<Array<Maybe<Job>>>;
   site?: Maybe<Site>;
   sites?: Maybe<Array<Maybe<Site>>>;
   /** Determine whether or not the site's sidebar should be sorted by the time's sites were last started. */
   sortSitesByLastStarted?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type QueryIsUpdateAvailableArgs = {
+  service?: Maybe<Scalars['String']>;
+  serviceBinVersion?: Maybe<Scalars['String']>;
 };
 
 
@@ -72,6 +79,7 @@ export type Mutation = {
   toggleSortSitesByLastStarted?: Maybe<Scalars['Boolean']>;
   /** Unstar a site. */
   unstarSite?: Maybe<Site>;
+  upgradeLightningService?: Maybe<Job>;
 };
 
 
@@ -117,6 +125,12 @@ export type MutationToggleSortSitesByLastStartedArgs = {
 
 export type MutationUnstarSiteArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationUpgradeLightningServiceArgs = {
+  service?: Maybe<Scalars['String']>;
+  serviceBinVersion?: Maybe<Scalars['String']>;
 };
 
 export type Subscription = {

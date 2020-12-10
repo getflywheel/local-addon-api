@@ -815,6 +815,8 @@ declare module '@getflywheel/local/main' {
 
 			registerService(service: typeof LightningService, serviceName: string, version: string) : void;
 
+			deregisterService(serviceName: string, version: string) : void;
+
 			getSiteServices(site: Local.Site): LightningService[];
 
 			getSiteService(site: Local.Site, serviceName: string): LightningService | null;
@@ -827,7 +829,7 @@ declare module '@getflywheel/local/main' {
 
 			getRequiredDownloads(services: { [service: string]: string }) : Promise<DownloaderQueueItem[]>;
 
-			getDownloadableServices() : Promise<DownloadableServices>;
+			getDownloadableServices(role?: Local.SiteServiceRole) : Promise<DownloadableServices>;
 
 			getRegisteredServices() : RegisteredServices;
 
