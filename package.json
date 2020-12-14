@@ -19,7 +19,7 @@
 		"README.md"
 	],
 	"scripts": {
-		"generate-typedocs": "typedoc --includeDeclarations --excludeExternals --mode file index.d.ts main.d.ts renderer.d.ts --out ./typedocs"
+		"generate-typedocs": "typedoc --includeDeclarations --excludeExternals --mode file index.d.ts main.d.ts renderer.d.ts graphql.d.ts --out ./typedocs"
 	},
 	"types": "types.d.ts",
 	"devDependencies": {
