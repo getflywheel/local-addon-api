@@ -1,6 +1,6 @@
 {
 	"name": "@getflywheel/local",
-	"version": "5.9.5",
+	"version": "5.9.6",
 	"dependencies": {
 		"@types/node": "^12.7.12",
 		"awilix": "^4.2.5",
@@ -19,7 +19,7 @@
 		"README.md"
 	],
 	"scripts": {
-		"generate-typedocs": "typedoc --includeDeclarations --excludeExternals --mode file index.d.ts main.d.ts renderer.d.ts --out ./typedocs"
+		"generate-typedocs": "typedoc --includeDeclarations --excludeExternals --mode file index.d.ts main.d.ts renderer.d.ts graphql.d.ts --out ./typedocs"
 	},
 	"types": "types.d.ts",
 	"devDependencies": {
