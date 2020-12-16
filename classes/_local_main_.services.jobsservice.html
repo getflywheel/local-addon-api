@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ConfigTemplates | @getflywheel/local</title>
+	<title>JobsService | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -60,10 +60,10 @@
 					<a href="../modules/_local_main_.services.html">Services</a>
 				</li>
 				<li>
-					<a href="_local_main_.services.configtemplates.html">ConfigTemplates</a>
+					<a href="_local_main_.services.jobsservice.html">JobsService</a>
 				</li>
 			</ul>
-			<h1>Class ConfigTemplates</h1>
+			<h1>Class JobsService</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +74,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ConfigTemplates</span>
+						<span class="target">JobsService</span>
 					</li>
 				</ul>
 			</section>
@@ -85,8 +85,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.configtemplates.html#compileconfigtemplates" class="tsd-kind-icon">compile<wbr>Config<wbr>Templates</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.configtemplates.html#compileserviceconfigs" class="tsd-kind-icon">compile<wbr>Service<wbr>Configs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.jobsservice.html#addjob" class="tsd-kind-icon">add<wbr>Job</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,57 +94,25 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="compileconfigtemplates" class="tsd-anchor"></a>
-					<h3>compile<wbr>Config<wbr>Templates</h3>
+					<a name="addjob" class="tsd-anchor"></a>
+					<h3>add<wbr>Job</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">compile<wbr>Config<wbr>Templates<span class="tsd-signature-symbol">(</span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a>, templatesDir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, destDir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, context<span class="tsd-signature-symbol">: </span><a href="../globals.html#genericobject" class="tsd-signature-type">GenericObject</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Job<span class="tsd-signature-symbol">(</span>meta<span class="tsd-signature-symbol">: </span><a href="../globals.html#genericobject" class="tsd-signature-type">GenericObject</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_local_main_.job.html" class="tsd-signature-type">Job</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L1175">main.d.ts:1175</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L1312">main.d.ts:1312</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>site: <a href="_local_.site.html" class="tsd-signature-type">Site</a></h5>
-								</li>
-								<li>
-									<h5>templatesDir: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>destDir: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>context: <a href="../globals.html#genericobject" class="tsd-signature-type">GenericObject</a></h5>
+									<h5>meta: <a href="../globals.html#genericobject" class="tsd-signature-type">GenericObject</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="compileserviceconfigs" class="tsd-anchor"></a>
-					<h3>compile<wbr>Service<wbr>Configs</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">compile<wbr>Service<wbr>Configs<span class="tsd-signature-symbol">(</span>site<span class="tsd-signature-symbol">: </span><a href="_local_.site.html" class="tsd-signature-type">Site</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L1182">main.d.ts:1182</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>site: <a href="_local_.site.html" class="tsd-signature-type">Site</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_local_main_.job.html" class="tsd-signature-type">Job</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -164,13 +131,10 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
-						<a href="_local_main_.services.configtemplates.html" class="tsd-kind-icon">Config<wbr>Templates</a>
+						<a href="_local_main_.services.jobsservice.html" class="tsd-kind-icon">Jobs<wbr>Service</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.configtemplates.html#compileconfigtemplates" class="tsd-kind-icon">compile<wbr>Config<wbr>Templates</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.configtemplates.html#compileserviceconfigs" class="tsd-kind-icon">compile<wbr>Service<wbr>Configs</a>
+								<a href="_local_main_.services.jobsservice.html#addjob" class="tsd-kind-icon">add<wbr>Job</a>
 							</li>
 						</ul>
 					</li>

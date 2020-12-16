@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>RegisteredService | @getflywheel/local</title>
+	<title>JobStatus | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/_local_main_.html">&quot;local/main&quot;</a>
 				</li>
 				<li>
-					<a href="_local_main_.registeredservice.html">RegisteredService</a>
+					<a href="_local_main_.jobstatus.html">JobStatus</a>
 				</li>
 			</ul>
-			<h1>Interface RegisteredService</h1>
+			<h1>Enumeration JobStatus</h1>
 		</div>
 	</div>
 </header>
@@ -70,136 +70,67 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Registered Services are loaded and registered so downloading the service is not required.</p>
+						<p>Jobs</p>
 					</div>
 				</div>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<a href="_local_main_.selectablesiteservice.html" class="tsd-signature-type">SelectableSiteService</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">RegisteredService</span>
-							</li>
-						</ul>
-					</li>
-				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_local_main_.registeredservice.html#binversion" class="tsd-kind-icon">bin<wbr>Version</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_local_main_.registeredservice.html#label" class="tsd-kind-icon">label</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_local_main_.registeredservice.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_local_main_.registeredservice.html#registered" class="tsd-kind-icon">registered</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_local_main_.registeredservice.html#version" class="tsd-kind-icon">version</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_local_main_.jobstatus.html#created" class="tsd-kind-icon">CREATED</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_local_main_.jobstatus.html#failed" class="tsd-kind-icon">FAILED</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_local_main_.jobstatus.html#running" class="tsd-kind-icon">RUNNING</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_local_main_.jobstatus.html#successful" class="tsd-kind-icon">SUCCESSFUL</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="binversion" class="tsd-anchor"></a>
-					<h3>bin<wbr>Version</h3>
-					<div class="tsd-signature tsd-kind-icon">bin<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_local_main_.selectablesiteservice.html">SelectableSiteService</a>.<a href="_local_main_.selectablesiteservice.html#binversion">binVersion</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L164">main.d.ts:164</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>description</dt>
-							<dd><p>Binary version for the service.</p>
-							</dd>
-							<dt>tjs-examples</dt>
-							<dd><p>[&quot;7.3.5&quot;]</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="label" class="tsd-anchor"></a>
-					<h3>label</h3>
-					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_local_main_.selectablesiteservice.html">SelectableSiteService</a>.<a href="_local_main_.selectablesiteservice.html#label">label</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L149">main.d.ts:149</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>description</dt>
-							<dd><p>Label of Lightning Service that&#39;s suitable for use in a UI</p>
-							</dd>
-							<dt>tjs-examples</dt>
-							<dd><p>[&quot;PHP&quot;]</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_local_main_.selectablesiteservice.html">SelectableSiteService</a>.<a href="_local_main_.selectablesiteservice.html#name">name</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L143">main.d.ts:143</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>description</dt>
-							<dd><p>Name of the Lightning Service</p>
-							</dd>
-							<dt>tjs-examples</dt>
-							<dd><p>[&quot;php&quot;]</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="registered" class="tsd-anchor"></a>
-					<h3>registered</h3>
-					<div class="tsd-signature tsd-kind-icon">registered<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span></div>
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="created" class="tsd-anchor"></a>
+					<h3>CREATED</h3>
+					<div class="tsd-signature tsd-kind-icon">CREATED<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;created&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L173">main.d.ts:173</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L594">main.d.ts:594</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="version" class="tsd-anchor"></a>
-					<h3>version</h3>
-					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="failed" class="tsd-anchor"></a>
+					<h3>FAILED</h3>
+					<div class="tsd-signature tsd-kind-icon">FAILED<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;failed&quot;</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_local_main_.selectablesiteservice.html">SelectableSiteService</a>.<a href="_local_main_.selectablesiteservice.html#version">version</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L157">main.d.ts:157</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L597">main.d.ts:597</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>description</dt>
-							<dd><p>Build version of Lightning Service. This is typically the binVersion followed by build metadata.
-								This allows us to iterate on a specific binVersion by patching configs, etc.</p>
-							</dd>
-							<dt>tjs-examples</dt>
-							<dd><p>[&quot;7.3.5+2&quot;]</p>
-							</dd>
-						</dl>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="running" class="tsd-anchor"></a>
+					<h3>RUNNING</h3>
+					<div class="tsd-signature tsd-kind-icon">RUNNING<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;running&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L595">main.d.ts:595</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="successful" class="tsd-anchor"></a>
+					<h3>SUCCESSFUL</h3>
+					<div class="tsd-signature tsd-kind-icon">SUCCESSFUL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;successful&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L596">main.d.ts:596</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -225,14 +156,32 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-enum tsd-parent-kind-module">
+						<a href="_local_main_.jobstatus.html" class="tsd-kind-icon">Job<wbr>Status</a>
+						<ul>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_local_main_.jobstatus.html#created" class="tsd-kind-icon">CREATED</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_local_main_.jobstatus.html#failed" class="tsd-kind-icon">FAILED</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_local_main_.jobstatus.html#running" class="tsd-kind-icon">RUNNING</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_local_main_.jobstatus.html#successful" class="tsd-kind-icon">SUCCESSFUL</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_local_main_.jobstatus.html" class="tsd-kind-icon">Job<wbr>Status</a>
+						<a href="_local_main_.lightningserviceplatform.html" class="tsd-kind-icon">Lightning<wbr>Service<wbr>Platform</a>
 					</li>
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_local_main_.lightningserviceplatform.html" class="tsd-kind-icon">Lightning<wbr>Service<wbr>Platform</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_local_main_.profiletypes.html" class="tsd-kind-icon">Profile<wbr>Types</a>
+						<a href="_local_main_.profiletypes.html" class="tsd-kind-icon">Profile<wbr>Types</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-module">
 						<a href="../classes/_local_main_.downloaderqueue.html" class="tsd-kind-icon">Downloader<wbr>Queue</a>
@@ -259,55 +208,34 @@
 						<a href="../classes/_local_main_.userdata.html" class="tsd-kind-icon">User<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.downloadableservice.html" class="tsd-kind-icon">Downloadable<wbr>Service</a>
+						<a href="../interfaces/_local_main_.downloadableservice.html" class="tsd-kind-icon">Downloadable<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.downloaderqueueitem.html" class="tsd-kind-icon">Downloader<wbr>Queue<wbr>Item</a>
+						<a href="../interfaces/_local_main_.downloaderqueueitem.html" class="tsd-kind-icon">Downloader<wbr>Queue<wbr>Item</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.iappstate.html" class="tsd-kind-icon">IApp<wbr>State</a>
+						<a href="../interfaces/_local_main_.iappstate.html" class="tsd-kind-icon">IApp<wbr>State</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.iimportdata.html" class="tsd-kind-icon">IImport<wbr>Data</a>
+						<a href="../interfaces/_local_main_.iimportdata.html" class="tsd-kind-icon">IImport<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.iimportsitesettings.html" class="tsd-kind-icon">IImport<wbr>Site<wbr>Settings</a>
+						<a href="../interfaces/_local_main_.iimportsitesettings.html" class="tsd-kind-icon">IImport<wbr>Site<wbr>Settings</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.processstat.html" class="tsd-kind-icon">Process<wbr>Stat</a>
-					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.registeredservice.html" class="tsd-kind-icon">Registered<wbr>Service</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_local_main_.registeredservice.html#binversion" class="tsd-kind-icon">bin<wbr>Version</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_local_main_.registeredservice.html#label" class="tsd-kind-icon">label</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_local_main_.registeredservice.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_local_main_.registeredservice.html#registered" class="tsd-kind-icon">registered</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_local_main_.registeredservice.html#version" class="tsd-kind-icon">version</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.selectablesiteservice.html" class="tsd-kind-icon">Selectable<wbr>Site<wbr>Service</a>
+						<a href="../interfaces/_local_main_.processstat.html" class="tsd-kind-icon">Process<wbr>Stat</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.servicebin.html" class="tsd-kind-icon">Service<wbr>Bin</a>
+						<a href="../interfaces/_local_main_.registeredservice.html" class="tsd-kind-icon">Registered<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_local_main_.servicecontainerservices.html" class="tsd-kind-icon">Service<wbr>Container<wbr>Services</a>
+						<a href="../interfaces/_local_main_.selectablesiteservice.html" class="tsd-kind-icon">Selectable<wbr>Site<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_local_main_.servicebin.html" class="tsd-kind-icon">Service<wbr>Bin</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_local_main_.servicecontainerservices.html" class="tsd-kind-icon">Service<wbr>Container<wbr>Services</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="../modules/_local_main_.html#configvariables" class="tsd-kind-icon">Config<wbr>Variables</a>
@@ -365,11 +293,10 @@
 				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>

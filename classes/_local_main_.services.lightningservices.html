@@ -85,6 +85,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.lightningservices.html#deregisterservice" class="tsd-kind-icon">deregister<wbr>Service</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.lightningservices.html#findclosestservice" class="tsd-kind-icon">find<wbr>Closest<wbr>Service</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.lightningservices.html#getdownloadableservices" class="tsd-kind-icon">get<wbr>Downloadable<wbr>Services</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.lightningservices.html#getlatestversion" class="tsd-kind-icon">get<wbr>Latest<wbr>Version</a></li>
@@ -106,6 +107,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="deregisterservice" class="tsd-anchor"></a>
+					<h3>deregister<wbr>Service</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">deregister<wbr>Service<span class="tsd-signature-symbol">(</span>serviceName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L818">main.d.ts:818</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>serviceName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>version: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="findclosestservice" class="tsd-anchor"></a>
 					<h3>find<wbr>Closest<wbr>Service</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -115,7 +142,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L771">main.d.ts:771</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L814">main.d.ts:814</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -135,15 +162,21 @@
 					<a name="getdownloadableservices" class="tsd-anchor"></a>
 					<h3>get<wbr>Downloadable<wbr>Services</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Downloadable<wbr>Services<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_local_main_.html#downloadableservices" class="tsd-signature-type">DownloadableServices</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Downloadable<wbr>Services<span class="tsd-signature-symbol">(</span>role<span class="tsd-signature-symbol">?: </span><a href="../enums/_local_.siteservicerole.html" class="tsd-signature-type">SiteServiceRole</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_local_main_.html#downloadableservices" class="tsd-signature-type">DownloadableServices</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L787">main.d.ts:787</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L832">main.d.ts:832</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> role: <a href="../enums/_local_.siteservicerole.html" class="tsd-signature-type">SiteServiceRole</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_local_main_.html#downloadableservices" class="tsd-signature-type">DownloadableServices</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -158,7 +191,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L781">main.d.ts:781</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L826">main.d.ts:826</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -184,7 +217,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L789">main.d.ts:789</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L834">main.d.ts:834</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../modules/_local_main_.html#registeredservices" class="tsd-signature-type">RegisteredServices</a></h4>
@@ -201,7 +234,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L785">main.d.ts:785</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L830">main.d.ts:830</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -229,7 +262,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L795">main.d.ts:795</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L840">main.d.ts:840</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -246,7 +279,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L777">main.d.ts:777</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L822">main.d.ts:822</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -272,7 +305,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L779">main.d.ts:779</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L824">main.d.ts:824</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -298,7 +331,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L775">main.d.ts:775</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L820">main.d.ts:820</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -321,7 +354,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L791">main.d.ts:791</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L836">main.d.ts:836</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -344,7 +377,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L783">main.d.ts:783</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L828">main.d.ts:828</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -367,7 +400,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L773">main.d.ts:773</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L816">main.d.ts:816</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -396,7 +429,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/7ffd677/main.d.ts#L793">main.d.ts:793</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L838">main.d.ts:838</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -426,6 +459,9 @@
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
 						<a href="_local_main_.services.lightningservices.html" class="tsd-kind-icon">Lightning<wbr>Services</a>
 						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_local_main_.services.lightningservices.html#deregisterservice" class="tsd-kind-icon">deregister<wbr>Service</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_local_main_.services.lightningservices.html#findclosestservice" class="tsd-kind-icon">find<wbr>Closest<wbr>Service</a>
 							</li>
@@ -483,6 +519,7 @@
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>

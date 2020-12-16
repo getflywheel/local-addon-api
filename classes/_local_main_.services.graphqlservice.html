@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AppState | @getflywheel/local</title>
+	<title>GraphQLService | @getflywheel/local</title>
 	<meta name="description" content="Documentation for @getflywheel/local">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -60,10 +60,10 @@
 					<a href="../modules/_local_main_.services.html">Services</a>
 				</li>
 				<li>
-					<a href="_local_main_.services.appstate.html">AppState</a>
+					<a href="_local_main_.services.graphqlservice.html">GraphQLService</a>
 				</li>
 			</ul>
-			<h1>Class AppState</h1>
+			<h1>Class GraphQLService</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +74,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">AppState</span>
+						<span class="target">GraphQLService</span>
 					</li>
 				</ul>
 			</section>
@@ -85,16 +85,14 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_local_main_.services.appstate.html#_defaultworkspace" class="tsd-kind-icon">_default<wbr>Workspace</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_local_main_.services.appstate.html#_state" class="tsd-kind-icon">_state</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_local_main_.services.graphqlservice.html#pubsub" class="tsd-kind-icon">pubsub</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.appstate.html#getstate" class="tsd-kind-icon">get<wbr>State</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.appstate.html#listen" class="tsd-kind-icon">listen</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.appstate.html#setstate" class="tsd-kind-icon">set<wbr>State</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.graphqlservice.html#registergraphqlservice" class="tsd-kind-icon">register<wbr>GraphQLService</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_local_main_.services.graphqlservice.html#start" class="tsd-kind-icon">start</a></li>
 							</ul>
 						</section>
 					</div>
@@ -103,22 +101,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="_defaultworkspace" class="tsd-anchor"></a>
-					<h3>_default<wbr>Workspace</h3>
-					<div class="tsd-signature tsd-kind-icon">_default<wbr>Workspace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<a name="pubsub" class="tsd-anchor"></a>
+					<h3>pubsub</h3>
+					<div class="tsd-signature tsd-kind-icon">pubsub<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PubSub</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L802">main.d.ts:802</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="_state" class="tsd-anchor"></a>
-					<h3>_state</h3>
-					<div class="tsd-signature tsd-kind-icon">_state<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_local_main_.iappstate.html" class="tsd-signature-type">IAppState</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L804">main.d.ts:804</a></li>
+							<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L1300">main.d.ts:1300</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -126,61 +114,47 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getstate" class="tsd-anchor"></a>
-					<h3>get<wbr>State</h3>
+					<a name="registergraphqlservice" class="tsd-anchor"></a>
+					<h3>register<wbr>GraphQLService</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>State<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_local_main_.iappstate.html" class="tsd-signature-type">IAppState</a></li>
+						<li class="tsd-signature tsd-kind-icon">register<wbr>GraphQLService<span class="tsd-signature-symbol">(</span>serviceId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, schema<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">GraphQLSchema</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DocumentNode</span>, resolvers<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">IResolvers</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L810">main.d.ts:810</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_local_main_.iappstate.html" class="tsd-signature-type">IAppState</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="listen" class="tsd-anchor"></a>
-					<h3>listen</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L806">main.d.ts:806</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setstate" class="tsd-anchor"></a>
-					<h3>set<wbr>State</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>State<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_local_main_.iappstate.html" class="tsd-signature-type">IAppState</a><span class="tsd-signature-symbol">&gt;</span>, notifyRenderer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L808">main.d.ts:808</a></li>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L1304">main.d.ts:1304</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>state: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_local_main_.iappstate.html" class="tsd-signature-type">IAppState</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>serviceId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> notifyRenderer: <span class="tsd-signature-type">boolean</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> schema: <span class="tsd-signature-type">GraphQLSchema</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DocumentNode</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> resolvers: <span class="tsd-signature-type">IResolvers</span></h5>
 								</li>
 							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="start" class="tsd-anchor"></a>
+					<h3>start</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/getflywheel/local-addon-api/blob/840af1f/main.d.ts#L1302">main.d.ts:1302</a></li>
+								</ul>
+							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -200,22 +174,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
-						<a href="_local_main_.services.appstate.html" class="tsd-kind-icon">App<wbr>State</a>
+						<a href="_local_main_.services.graphqlservice.html" class="tsd-kind-icon">GraphQLService</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_local_main_.services.appstate.html#_defaultworkspace" class="tsd-kind-icon">_default<wbr>Workspace</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_local_main_.services.appstate.html#_state" class="tsd-kind-icon">_state</a>
+								<a href="_local_main_.services.graphqlservice.html#pubsub" class="tsd-kind-icon">pubsub</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.appstate.html#getstate" class="tsd-kind-icon">get<wbr>State</a>
+								<a href="_local_main_.services.graphqlservice.html#registergraphqlservice" class="tsd-kind-icon">register<wbr>GraphQLService</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.appstate.html#listen" class="tsd-kind-icon">listen</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_local_main_.services.appstate.html#setstate" class="tsd-kind-icon">set<wbr>State</a>
+								<a href="_local_main_.services.graphqlservice.html#start" class="tsd-kind-icon">start</a>
 							</li>
 						</ul>
 					</li>
