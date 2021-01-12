@@ -338,12 +338,47 @@ declare module '@getflywheel/local' {
 
 		rollout?: RolloutRules;
 	}
+
 	/**
 	 * Properties in this object relate to gradually rolling out new Local versions with different rules.
 	 */
 	export interface RolloutRules {
 		rolloutPercentage?: RolloutPercentage;
 		autoUpdate?: AutoupdateEnabled;
+	}
+
+	/**
+	 * Local reads this data from the Local Releases CMS.
+	 */
+	export interface ReleaseList {
+		/**
+		 * Name of the Local release, e.g. "Local 5.5.5".
+		 */
+		name: string;
+		/**
+		 * Local version.
+		 */
+		version: string;
+		/**
+		 * Build number from the build pipeline.
+		 */
+		build_number: number;
+		/**
+		 * "stable" or "beta"
+		 */
+		release_channel: string;
+		/**
+		 * Publish date of the release.
+		 */
+		pub_date: string;
+		/**
+		 * Text area containing the download links for each operating system.
+		 */
+		download_links: string;
+		/**
+		 * The release notes for this release.
+		 */
+		body: string;
 	}
 
 }

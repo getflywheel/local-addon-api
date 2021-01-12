@@ -873,17 +873,9 @@ declare module '@getflywheel/local/main' {
 
 			updateAddon(addonName: any, release: any): Promise<void>;
 
-			downloadAddon(addon: any, release: any): Promise<unknown>;
+			downloadAndExtractAddon(addon: any, release: any, update: boolean): Promise<unknown>;
 
 			installFromDisk(zipPath: any): Promise<void>;
-
-			cleanupTmpFiles({ addonTmpDir, archivePath, systemTmpDir }: {
-				addonTmpDir?: string;
-				archivePath: string;
-				systemTmpDir: string;
-			}): void;
-
-			extractAddon(archivePath: any, update?: boolean): Promise<void>;
 
 			relaunch(): void;
 		}
