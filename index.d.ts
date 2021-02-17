@@ -190,6 +190,8 @@ declare module '@getflywheel/local' {
 
 		readonly url: string;
 
+		readonly adminUrl: string;
+
 		readonly httpPort: number | undefined;
 	}
 

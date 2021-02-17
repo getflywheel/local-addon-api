@@ -89,6 +89,7 @@ declare module '@getflywheel/local/main' {
 	 */
 	export function workerFork(execPath, envVarDependencies: GenericObject): ChildProcess;
 
+	export type ChildProcessMessagePromiseHelper = <T>(name: string, payload?: any) => Promise<T>;
 	/**
  	 * Returns up a helper function to easily communcicate between the main thread and a child thread/process
  	 * by wrapping an event listener for the "message" event with a promise which allows you to await a "call"
@@ -102,7 +103,7 @@ declare module '@getflywheel/local/main' {
  	 */
 	export function childProcessMessagePromiseFactory(
 		childProcess: ChildProcess
-	): <T>(eventName: string, payload?: any) => Promise<T>;
+	): ChildProcessMessagePromiseHelper;
 
 	/**
 	 * @deprecated Use LocalMain.Services.SiteDataService instead
