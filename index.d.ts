@@ -22,7 +22,9 @@ declare module '@getflywheel/local' {
 	export enum SiteServiceRole {
 		HTTP = 'http',
 		DATABASE = 'db',
-		PHP = 'php'
+		PHP = 'php',
+		FRONTEND = 'frontend',
+		OTHER = 'other'
 	}
 
 	export enum AddonStatus {
@@ -46,6 +48,7 @@ declare module '@getflywheel/local' {
 		environment?: string
 		blueprint?: string
 		webServer?: string
+		customOptions?: GenericObject
 	}
 
 	export type SiteServices = { [serviceName: string]: SiteService };
@@ -70,6 +73,8 @@ declare module '@getflywheel/local' {
 		hostConnections?: LocalGraphQL.Site['hostConnections'] | null;
 
 		workspace?: LocalGraphQL.Site['workspace'] | null;
+
+		customOptions?: GenericObject;
 
 		/* Deprecated */
 		flywheelConnect?: string
@@ -150,6 +155,10 @@ declare module '@getflywheel/local' {
 
 		callToActionBannerDismissed?: boolean;
 
+		oneClickAdminID?: number;
+
+		oneClickAdminDisplayname?: string;
+
 		/* Deprecated */
 		flywheelConnect?: string;
 
@@ -193,6 +202,14 @@ declare module '@getflywheel/local' {
 		readonly adminUrl: string;
 
 		readonly httpPort: number | undefined;
+
+		readonly frontendPort: number | undefined;
+
+		readonly frontendHost: string;
+
+		readonly frontendUrl: string;
+
+		readonly backendUrl: string;
 	}
 
 	/**

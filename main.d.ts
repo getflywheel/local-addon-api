@@ -12,6 +12,8 @@ declare module '@getflywheel/local/main' {
 	import type { GraphQLSchema, DocumentNode } from 'graphql';
 	import type { IResolvers } from 'graphql-tools';
 	import type { PubSub } from 'graphql-subscriptions';
+	import type { ApolloClient } from 'apollo-boost';
+	import type fetch from 'cross-fetch';
 
 	export type ServiceContainer = Awilix.AwilixContainer<ServiceContainerServices>;
 	export const getServiceContainer: () => ServiceContainer;
@@ -57,6 +59,7 @@ declare module '@getflywheel/local/main' {
 		liveLinksPro: Services.LiveLinksPro
 		liveLinksFree: Services.LiveLinksFree
 		liveLinksMuPlugin: Services.LiveLinksMuPlugin
+		localHubClient: ApolloClient<{ uri: string; fetch: typeof fetch }>
 		analyticsV2: Services.AnalyticsV2Service
 		graphql: Services.GraphQLService
 		jobs: Services.JobsService
@@ -73,6 +76,15 @@ declare module '@getflywheel/local/main' {
 	export function addIpcAsyncListener(channel: string, callback: (...any) => any): void;
 
 	export function formatHomePath(string: any, untrailingslashit?: boolean): any;
+
+	/**
+	 * Very efficient in file string replacements using streams.
+	 *
+	 * @param file Path to the file
+	 * @param replacements Array of replacements to perform: [ [ 'before', 'after' ] ]
+	 * @param replaceStreamArgs Optional arguments for replacestream package.
+	 */
+	export function replaceInFileAsync(file: string, replacements: any, replaceStreamArgs?: any): Promise<void>;
 
 
 	/**
@@ -494,6 +506,14 @@ declare module '@getflywheel/local/main' {
 		 * @returns Promise
 		 */
 		provision?(): Promise<void>;
+
+		/**
+		 * Ran after WordPress is fully installed when a new site is created. This will not be ran during
+		 * imports or pulls.
+		 *
+		 * @returns Promise
+		 */
+		finalizeNewSite?() : Promise<void>;
 
 		/**
 		 * @returns IProcessOpts[] Necessary processes for a given service.
@@ -919,6 +939,8 @@ declare module '@getflywheel/local/main' {
 
 			provision(site: Local.Site): Promise<void>;
 
+			finalizeNewSite(site: Local.Site): Promise<void>;
+
 			swapService(
 				site: Local.Site,
 				role: Local.SiteServiceRole,
@@ -936,6 +958,8 @@ declare module '@getflywheel/local/main' {
 			}): Promise<void>;
 
 			restart(site: Local.Site): Promise<void>;
+
+			restartSiteService(site: Local.Site, serviceName: string): Promise<void>;
 
 			hasRunningProcess(site: Local.Site, name?: string): boolean;
 

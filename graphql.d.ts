@@ -83,6 +83,7 @@ export type Mutation = {
   toggleSortSitesByLastStarted?: Maybe<Scalars['Boolean']>;
   /** Unstar a site. */
   unstarSite?: Maybe<Site>;
+  updateSite?: Maybe<Site>;
   upgradeLightningService?: Maybe<Job>;
 };
 
@@ -142,6 +143,12 @@ export type MutationUnstarSiteArgs = {
 };
 
 
+export type MutationUpdateSiteArgs = {
+  id: Scalars['ID'];
+  sitePartial?: Maybe<Scalars['JSON']>;
+};
+
+
 export type MutationUpgradeLightningServiceArgs = {
   service?: Maybe<Scalars['String']>;
   serviceBinVersion?: Maybe<Scalars['String']>;
@@ -195,6 +202,8 @@ export type Site = {
   multiSiteDomains?: Maybe<Array<Maybe<Scalars['String']>>>;
   mysql?: Maybe<SiteMySqlInfo>;
   name: Scalars['String'];
+  oneClickAdminDisplayName?: Maybe<Scalars['String']>;
+  oneClickAdminID?: Maybe<Scalars['Int']>;
   path: Scalars['String'];
   paths: SitePaths;
   services?: Maybe<Array<Maybe<SiteService>>>;
