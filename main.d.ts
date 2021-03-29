@@ -852,8 +852,6 @@ declare module '@getflywheel/local/main' {
 
 			getDownloadableServices(role?: Local.SiteServiceRole) : Promise<DownloadableServices>;
 
-			getBinPathData() : string[];
-
 			getRegisteredServices() : RegisteredServices;
 
 			hasCurrentPlatformBins(bins: LightningService['bins'] | DownloadableService['bins']) : boolean;
