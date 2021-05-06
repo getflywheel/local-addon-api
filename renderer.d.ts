@@ -1,6 +1,19 @@
 declare module '@getflywheel/local/renderer' {
 
+	import {
+		DocumentNode,
+		OperationVariables,
+		QueryHookOptions,
+		TypedDocumentNode,
+		QueryResult,
+		ApolloClient,
+		NormalizedCacheObject,
+		MutationHookOptions, MutationTuple,
+	} from '@apollo/client';
+
 	import { FC, ReactNode } from 'react';
+
+	export { default as gql } from 'graphql-tag';
 
 	type ReactNodeLike = ReactNode | string | number;
 
@@ -63,4 +76,23 @@ declare module '@getflywheel/local/renderer' {
 		/* additional props to pass to MenuContentRowItem(s) or the section override component */
 		sectionsProps?: GenericObject;
 	}
+
+	/**
+	 * GraphQL
+	 */
+	export const localApolloClient: ApolloClient<NormalizedCacheObject>;
+
+	export function useLocalQuery<TData = any, TVariables = OperationVariables>(
+		query: DocumentNode | TypedDocumentNode<TData, TVariables>,
+		options?: QueryHookOptions<TData, TVariables>,
+	): QueryResult<unknown>;
+
+	export function useLocalMutation<TData = any, TVariables = OperationVariables>(
+		mutation: DocumentNode | TypedDocumentNode<TData, TVariables>,
+		options?: MutationHookOptions<TData, TVariables>,
+	): MutationTuple<any, any>;
+
+	export function useLocalSitesSubs(
+		subscribeToMore: any
+	): void;
 }

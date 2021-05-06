@@ -167,7 +167,7 @@ export type SubscriptionSiteUpdatedArgs = {
   id?: Maybe<Scalars['ID']>;
 };
 
-export type JobStatus = 
+export type JobStatus =
   | 'created'
   | 'running'
   | 'successful'
@@ -213,7 +213,7 @@ export type Site = {
   workspace?: Maybe<Scalars['String']>;
 };
 
-export type SiteEnvironment = 
+export type SiteEnvironment =
   | 'preferred'
   | 'custom';
 
@@ -278,8 +278,9 @@ export type SitePaths = {
   runData?: Maybe<Scalars['String']>;
 };
 
-export type SiteStatus = 
+export type SiteStatus =
   | 'adding'
+  | 'backing_up'
   | 'cloning'
   | 'container_missing'
   | 'copying'
@@ -300,6 +301,7 @@ export type SiteStatus =
   | 'pushing_processing'
   | 'pushing_v2'
   | 'restarting'
+  | 'restoring_backup'
   | 'running'
   | 'saving'
   | 'starting'

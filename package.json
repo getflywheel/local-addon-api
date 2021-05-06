@@ -1,12 +1,13 @@
 {
 	"name": "@getflywheel/local",
-	"version": "5.10.3",
+	"version": "5.10.4",
 	"dependencies": {
 		"@types/node": "^12.7.12",
 		"awilix": "^4.2.5",
-		"electron": "9.3.1",
+		"electron": "^12.0.2",
 		"graphql": "^15.4.0",
 		"graphql-subscriptions": "^1.1.0",
+		"graphql-tag": "^2.11.0",
 		"graphql-tools": "^4.0.1",
 		"react": "^16.13.1",
 		"winston": "^3.2.1"

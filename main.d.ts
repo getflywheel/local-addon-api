@@ -15,6 +15,8 @@ declare module '@getflywheel/local/main' {
 	import type { ApolloClient } from 'apollo-boost';
 	import type fetch from 'cross-fetch';
 
+	export { default as gql } from 'graphql-tag';
+
 	export type ServiceContainer = Awilix.AwilixContainer<ServiceContainerServices>;
 	export const getServiceContainer: () => ServiceContainer;
 
@@ -38,6 +40,7 @@ declare module '@getflywheel/local/main' {
 		sequelPro: Services.SequelPro
 		changeSiteDomain: Services.ChangeSiteDomain
 		importSite: Services.ImportSite
+		importSQLFile: (site: Local.Site, sqlFile: string) => Promise<string>
 		addSite: Services.AddSite
 		cloneSite: Services.CloneSite
 		exportSite: Services.ExportSite
@@ -63,6 +66,7 @@ declare module '@getflywheel/local/main' {
 		analyticsV2: Services.AnalyticsV2Service
 		graphql: Services.GraphQLService
 		jobs: Services.JobsService
+		runSiteSQLCmd: (args: { site: Local.Site; query: string; additionalArgs?: string[]; }) => Promise<string>
 	}
 
 	export function sendIPCEvent(channel: string, ...args: any[]): void;
@@ -76,6 +80,8 @@ declare module '@getflywheel/local/main' {
 	export function addIpcAsyncListener(channel: string, callback: (...any) => any): void;
 
 	export function formatHomePath(string: any, untrailingslashit?: boolean): any;
+
+	export function formatSiteNicename(siteName: string): string;
 
 	/**
 	 * Very efficient in file string replacements using streams.
@@ -604,7 +610,6 @@ declare module '@getflywheel/local/main' {
 		selectedSites: Local.SiteJSON['id'][]
 		flywheelUser: any
 		flywheelTeams: any
-		flyAPI: any
 		currentWorkspace: string | null
 	}
 
