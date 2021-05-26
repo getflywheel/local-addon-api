@@ -44,6 +44,11 @@ declare module '@getflywheel/local/renderer' {
 	 */
 	export function ipcAsync(channel: string, ...additionalArgs: any[]): Promise<any>;
 
+	/**
+	 * Utility function to send an IPC event to the renderer.
+	 */
+	export function sendIPCEvent(channel: string, ...args: any[]): void;
+
 	export function confirm(args: ConfirmArgs): Promise<any>;
 
 	interface MenuContentRowItem {

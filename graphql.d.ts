@@ -24,9 +24,11 @@ export type Scalars = {
   EpochTimestamp: any;
 };
 
+
 export type Query = {
   /** Placeholder field so the schema can be extended. */
   _empty?: Maybe<Scalars['String']>;
+  isFeatureEnabled?: Maybe<Scalars['Boolean']>;
   isUpdateAvailable?: Maybe<Scalars['JSON']>;
   job?: Maybe<Job>;
   jobs?: Maybe<Array<Maybe<Job>>>;
@@ -34,6 +36,11 @@ export type Query = {
   sites?: Maybe<Array<Maybe<Site>>>;
   /** Determine whether or not the site's sidebar should be sorted by the time's sites were last started. */
   sortSitesByLastStarted?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type QueryIsFeatureEnabledArgs = {
+  featureName: Scalars['String'];
 };
 
 
@@ -167,7 +174,7 @@ export type SubscriptionSiteUpdatedArgs = {
   id?: Maybe<Scalars['ID']>;
 };
 
-export type JobStatus =
+export type JobStatus = 
   | 'created'
   | 'running'
   | 'successful'
@@ -213,7 +220,7 @@ export type Site = {
   workspace?: Maybe<Scalars['String']>;
 };
 
-export type SiteEnvironment =
+export type SiteEnvironment = 
   | 'preferred'
   | 'custom';
 
@@ -233,7 +240,6 @@ export type AddSiteInput = {
   skipWPInstall?: Maybe<Scalars['Boolean']>;
   goToSite?: Maybe<Scalars['Boolean']>;
 };
-
 
 export type SiteFilters = {
   workspace?: Maybe<Scalars['String']>;
@@ -278,7 +284,7 @@ export type SitePaths = {
   runData?: Maybe<Scalars['String']>;
 };
 
-export type SiteStatus =
+export type SiteStatus = 
   | 'adding'
   | 'backing_up'
   | 'cloning'

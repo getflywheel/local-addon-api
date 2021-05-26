@@ -26,6 +26,7 @@ declare module '@getflywheel/local/main' {
 		electron: typeof Electron
 		os: typeof os
 		siteData: Services.SiteDataService
+		featureFlags: Services.FeatureFlagService
 		userData: typeof UserData
 		sendIPCEvent: typeof sendIPCEvent
 		addIpcAsyncListener: typeof addIpcAsyncListener
@@ -834,6 +835,10 @@ declare module '@getflywheel/local/main' {
 			setState(state: Partial<IAppState>, notifyRenderer?: boolean): void;
 
 			getState(): IAppState;
+		}
+
+		export class FeatureFlagService {
+			isFeatureEnabled(feature: string): boolean;
 		}
 
 		export class LightningServices {
