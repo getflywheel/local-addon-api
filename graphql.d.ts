@@ -28,6 +28,7 @@ export type Scalars = {
 export type Query = {
   /** Placeholder field so the schema can be extended. */
   _empty?: Maybe<Scalars['String']>;
+  getFeaturesArray?: Maybe<Scalars['JSON']>;
   isFeatureEnabled?: Maybe<Scalars['Boolean']>;
   isUpdateAvailable?: Maybe<Scalars['JSON']>;
   job?: Maybe<Job>;
@@ -59,11 +60,6 @@ export type QuerySiteArgs = {
   id: Scalars['ID'];
 };
 
-
-export type QuerySitesArgs = {
-  filters?: Maybe<SiteFilters>;
-};
-
 export type Mutation = {
   /** Placeholder field so the schema can be extended. */
   _empty?: Maybe<Scalars['String']>;
@@ -75,7 +71,7 @@ export type Mutation = {
   /** Star a site. */
   starSite?: Maybe<Site>;
   /** Start Live Link Pro for the specified site. */
-  startLiveLinkPro?: Maybe<SiteLiveLinkProSettings>;
+  startLiveLink?: Maybe<SiteLiveLinkSettings>;
   /** Start services for the specified site. */
   startSite?: Maybe<Site>;
   /** Start services for the specified sites. */
@@ -83,7 +79,7 @@ export type Mutation = {
   /** Stops all running sites. */
   stopAllSites?: Maybe<Scalars['Boolean']>;
   /** Stop Live Link Pro for the specified site. */
-  stopLiveLinkPro?: Maybe<SiteLiveLinkProSettings>;
+  stopLiveLink?: Maybe<SiteLiveLinkSettings>;
   /** Stop services for the specified site. Note, this will also handle dumping the site database. */
   stopSite?: Maybe<Site>;
   /** Toggle whether or not to sort sites by last started in the sidebar. */
@@ -115,7 +111,7 @@ export type MutationStarSiteArgs = {
 };
 
 
-export type MutationStartLiveLinkProArgs = {
+export type MutationStartLiveLinkArgs = {
   id: Scalars['ID'];
 };
 
@@ -130,7 +126,7 @@ export type MutationStartSitesArgs = {
 };
 
 
-export type MutationStopLiveLinkProArgs = {
+export type MutationStopLiveLinkArgs = {
   id: Scalars['ID'];
 };
 
@@ -187,7 +183,7 @@ export type Job = {
   error?: Maybe<Scalars['JSON']>;
 };
 
-export type SiteLiveLinkProSettings = {
+export type SiteLiveLinkSettings = {
   subdomain?: Maybe<Scalars['String']>;
   basicAuthUsername?: Maybe<Scalars['String']>;
   basicAuthPassword?: Maybe<Scalars['String']>;
@@ -195,14 +191,13 @@ export type SiteLiveLinkProSettings = {
 
 export type Site = {
   autoEnableInstantReload?: Maybe<Scalars['Boolean']>;
-  callToActionBannerDismissed?: Maybe<Scalars['Boolean']>;
   domain: Scalars['String'];
   host: Scalars['String'];
   hostConnections?: Maybe<Array<Maybe<HostConnection>>>;
   httpPort?: Maybe<Scalars['Int']>;
   id: Scalars['ID'];
   isStarred?: Maybe<Scalars['Boolean']>;
-  liveLinkProSettings?: Maybe<SiteLiveLinkProSettings>;
+  liveLinkSettings?: Maybe<SiteLiveLinkSettings>;
   localVersion?: Maybe<Scalars['String']>;
   longPath: Scalars['String'];
   multiSite?: Maybe<MultiSite>;
@@ -239,10 +234,6 @@ export type AddSiteInput = {
   wpAdminEmail?: Maybe<Scalars['String']>;
   skipWPInstall?: Maybe<Scalars['Boolean']>;
   goToSite?: Maybe<Scalars['Boolean']>;
-};
-
-export type SiteFilters = {
-  workspace?: Maybe<Scalars['String']>;
 };
 
 export { MultiSite };

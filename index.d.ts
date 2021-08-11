@@ -133,7 +133,7 @@ declare module '@getflywheel/local' {
 
 		hostConnections?: SiteJSON['hostConnections'];
 
-		liveLinkProSettings?: SiteJSON['liveLinkProSettings'];
+		liveLinkSettings?: SiteJSON['liveLinkSettings'];
 
 		autoEnableInstantReload?: boolean;
 
@@ -152,8 +152,6 @@ declare module '@getflywheel/local' {
 
 			readonly runData: string;
 		};
-
-		callToActionBannerDismissed?: boolean;
 
 		oneClickAdminID?: number;
 

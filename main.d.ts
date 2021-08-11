@@ -38,7 +38,6 @@ declare module '@getflywheel/local/main' {
 		siteProcessManager: Services.SiteProcessManager
 		siteDatabase: Services.SiteDatabase
 		sitesOrganization: Services.SitesOrganizationService
-		sequelPro: Services.SequelPro
 		changeSiteDomain: Services.ChangeSiteDomain
 		importSite: Services.ImportSite
 		importSQLFile: (site: Local.Site, sqlFile: string) => Promise<string>
@@ -60,8 +59,7 @@ declare module '@getflywheel/local/main' {
 		formatHomePath: typeof formatHomePath
 		blueprints: Services.Blueprints
 		lightningServices: Services.LightningServices
-		liveLinksPro: Services.LiveLinksPro
-		liveLinksFree: Services.LiveLinksFree
+		liveLinks: Services.LiveLinks
 		liveLinksMuPlugin: Services.LiveLinksMuPlugin
 		localHubClient: ApolloClient<{ uri: string; fetch: typeof fetch }>
 		analyticsV2: Services.AnalyticsV2Service
@@ -129,8 +127,6 @@ declare module '@getflywheel/local/main' {
 	 */
 	export class SiteData {
 		static getSites(): Local.Sites;
-
-		static getWorkspaceSites (workspace?: string) : Local.Sites;
 
 		static getSite (siteID: Local.Site['id']) : Local.Site | null;
 
@@ -611,7 +607,6 @@ declare module '@getflywheel/local/main' {
 		selectedSites: Local.SiteJSON['id'][]
 		flywheelUser: any
 		flywheelTeams: any
-		currentWorkspace: string | null
 	}
 
 	/**
@@ -826,8 +821,6 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class AppState {
-			_defaultWorkspace: any;
-
 			_state: IAppState;
 
 			listen(): void;
@@ -839,6 +832,8 @@ declare module '@getflywheel/local/main' {
 
 		export class FeatureFlagService {
 			isFeatureEnabled(feature: string): boolean;
+
+			getFeaturesArray(): { [key: string]: boolean };
 		}
 
 		export class LightningServices {
@@ -1001,10 +996,6 @@ declare module '@getflywheel/local/main' {
 				siteId: string,
 				sortData: { siteLastStartedTimestamp: number }
 			}): void;
-		}
-
-		export class SequelPro {
-			open(site: Local.Site): void;
 		}
 
 		interface IDomains {
@@ -1304,7 +1295,7 @@ declare module '@getflywheel/local/main' {
 			remove(site: Local.Site) : void;
 		}
 
-		export class LiveLinks {
+		export class LiveLinksBase {
 			start(site: Local.Site) : Promise<GenericObject>;
 
 			stop(site: Local.Site) : Promise<void>;
@@ -1317,9 +1308,7 @@ declare module '@getflywheel/local/main' {
 			onDestroy(): void;
 		}
 
-		export class LiveLinksPro extends LiveLinks {}
-
-		export class LiveLinksFree extends LiveLinks {}
+		export class LiveLinks extends LiveLinksBase {}
 
 		export class AnalyticsV2Service {}
 
@@ -1345,8 +1334,6 @@ declare module '@getflywheel/local/main' {
 			PUBSUB_TOPIC_SITE_UPDATED: string;
 
 			getSites(): Local.Sites;
-
-			getWorkspaceSites (workspace?: string) : Local.Sites;
 
 			upgradeServices(site: Local.SiteJSON) : Local.SiteServices;
 
