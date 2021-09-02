@@ -1,5 +1,4 @@
 declare module '@getflywheel/local/renderer' {
-
 	import {
 		DocumentNode,
 		OperationVariables,
@@ -16,6 +15,23 @@ declare module '@getflywheel/local/renderer' {
 	export { default as gql } from 'graphql-tag';
 
 	type ReactNodeLike = ReactNode | string | number;
+
+	/** Mobx data stores */
+	export const $offline: {
+		/** offline observable toggled based on user internet connection */
+		offline: boolean,
+	};
+
+	export const $hub: {
+		/** Current logged in user */
+		user: HubUser;
+		/** Set new user in mobx store */
+		setUser: (user: HubUser | null) => void;
+		/** login user */
+		login: () => void;
+		/** logout of Local Account */
+		logout: () => void;
+	};
 
 	export interface ConfirmArgs {
 		title: ReactNodeLike
