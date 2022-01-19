@@ -843,6 +843,8 @@ declare module '@getflywheel/local/main' {
 
 			deregisterService(serviceName: string, version: string) : void;
 
+			getMissingServices(site: Local.Site): Array<LightningService['serviceName']>;
+
 			getSiteServices(site: Local.Site): LightningService[];
 
 			getSiteService(site: Local.Site, serviceName: string): LightningService | null;
