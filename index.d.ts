@@ -1,9 +1,8 @@
-// eslint-disable-next-line max-classes-per-file
-declare type GenericObject = { [key: string]: any };
-
 declare module '@getflywheel/local' {
 
 	import * as LocalGraphQL from '@getflywheel/local/graphql';
+
+	export type GenericObject = { [key: string]: any };
 
 	/**
 	 * NOTE: all enum declarations must be copied over to `index.d.ts` as well.
@@ -35,6 +34,12 @@ declare module '@getflywheel/local' {
 
 	export type SiteService = LocalGraphQL.SiteService;
 
+	export type NewSiteDefaults = {
+		environment: string;
+		adminEmail: string;
+		sitesPath: string;
+		tld: string;
+	};
 	/**
 	 * Commonly used arguments for site creation (new site, pulling, importing, etc).
 	 */
@@ -117,6 +122,8 @@ declare module '@getflywheel/local' {
 
 		multiSiteDomains: SiteJSON['multiSiteDomains'];
 
+		customOptions?: GenericObject | undefined;
+
 		mysql?: {
 			database: string;
 			user: string;
@@ -134,8 +141,6 @@ declare module '@getflywheel/local' {
 		hostConnections?: SiteJSON['hostConnections'];
 
 		liveLinkSettings?: SiteJSON['liveLinkSettings'];
-
-		autoEnableInstantReload?: boolean;
 
 		paths: {
 			readonly app: string;

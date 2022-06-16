@@ -10,9 +10,13 @@ declare module '@getflywheel/local/renderer' {
 		MutationHookOptions, MutationTuple,
 	} from '@apollo/client';
 
+	import { GenericObject } from '@getflywheel/local';
+
 	import { FC, ReactNode } from 'react';
 
 	export { default as gql } from 'graphql-tag';
+
+	export { RouteComponentProps } from 'react-router-dom';
 
 	type ReactNodeLike = ReactNode | string | number;
 

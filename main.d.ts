@@ -3,7 +3,6 @@
 declare module '@getflywheel/local/main' {
 
 	import * as Local from '@getflywheel/local';
-	import * as LocalGraphQL from '@getflywheel/local/graphql';
 	import { ExecFileOptions, ChildProcess } from 'child_process';
 	import * as Awilix from 'awilix';
 	import * as Electron from 'electron';
@@ -91,7 +90,6 @@ declare module '@getflywheel/local/main' {
 	 */
 	export function replaceInFileAsync(file: string, replacements: any, replaceStreamArgs?: any): Promise<void>;
 
-
 	/**
 	 * Helper function to create a forked child process.
 	 *
@@ -104,7 +102,7 @@ declare module '@getflywheel/local/main' {
 	 * @param execPath path to file that should be executed
 	 * @param envVarDependencies environment variables that need to be copied over to forked process
 	 */
-	export function workerFork(execPath, envVarDependencies: GenericObject): ChildProcess;
+	export function workerFork(execPath, envVarDependencies: Local.GenericObject): ChildProcess;
 
 	export type ChildProcessMessagePromiseHelper = <T>(name: string, payload?: any) => Promise<T>;
 	/**
@@ -628,9 +626,9 @@ declare module '@getflywheel/local/main' {
 
 		public error: Error;
 
-		public readonly meta: GenericObject;
+		public readonly meta: Local.GenericObject;
 
-		constructor(meta: GenericObject);
+		constructor(meta: Local.GenericObject);
 
 		await(promise: Promise<any>) : Promise<Job>;
 
@@ -957,7 +955,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class SiteProcessManager {
-			start(site: Local.Site, updateStatus?: boolean, compileConfigs?: boolean): Promise<void>;
+			start(site: Local.Site, updateStatus?: boolean,
+				compileConfigs?: boolean, restartRouter?: boolean, useCheckPorts?: boolean): Promise<void>;
 
 			stop(site: Local.Site, { dumpDatabase, updateStatus }?: {
 				dumpDatabase: boolean;
@@ -1147,11 +1146,22 @@ declare module '@getflywheel/local/main' {
 			openInBrowser(siteUrl: string): void;
 		}
 
-		interface WpCliRunOpts {
+		export interface WpCliRunOpts {
 			ignoreErrors?: boolean;
 			skipThemes?: boolean;
 			skipPlugins?: boolean;
 			env?: NodeJS.ProcessEnv;
+		}
+
+		export interface WpTheme {
+			name: string;
+			title: string;
+			status: string;
+			version: string;
+		}
+
+		export interface WpPlugin extends WpTheme{
+			file: string;
 		}
 
 		export class WpCli {
@@ -1170,6 +1180,10 @@ declare module '@getflywheel/local/main' {
 			getWpVersion(site: Local.Site): Promise<string | null>;
 
 			getWpLatestVersion(site: Local.Site): Promise<string | null>;
+
+			getPlugins(site: Local.Site): Promise<WpPlugin[] | null>
+
+			getThemes(site: Local.Site): Promise<WpTheme[] | null>
 		}
 
 		type PortServiceAllocationRequest = {
@@ -1183,12 +1197,19 @@ declare module '@getflywheel/local/main' {
 		type PortAllocation = { ports: { [portName: string]: Local.SitePort[] }, blacklistedPorts: number[] };
 
 		export class Ports {
+			public siteData: SiteDataService;
+
 			allocatePorts(
 				site: Local.Site,
 				portServiceAllocationRequests: PortServiceAllocationRequest,
 			): Promise<Local.Site>;
 
 			getAvailablePort(blacklistedPorts?: Local.SitePort[]): Promise<Local.SitePort>;
+
+			checkAndReplaceUnavailablePorts(site: Local.Site): Promise<{
+				site: Local.Site,
+				domains: { old: string, new: string },
+			}>;
 		}
 
 		export class ConfigTemplates {
@@ -1196,7 +1217,7 @@ declare module '@getflywheel/local/main' {
 				site: Local.Site,
 				templatesDir: string,
 				destDir: string,
-				context: GenericObject,
+				context: Local.GenericObject,
 			) : Promise<void>;
 
 			compileServiceConfigs(site: Local.Site): Promise<void>;
@@ -1285,6 +1306,19 @@ declare module '@getflywheel/local/main' {
 			filter: string;
 		}
 
+		export interface IBlueprint {
+			name: string;
+			lastModified: string;
+			created?: string;
+			phpVersion?: string;
+			webServer?: Local.SiteService;
+			database?: Local.SiteService;
+			plugins?: WpPlugin[];
+			themes?: WpTheme[];
+			multisite?: boolean;
+			headless?: boolean;
+		}
+
 		export class Blueprints {
 			saveBlueprint({ name, siteId, filter }: IBlueprintsOptions): void;
 		}
@@ -1298,7 +1332,7 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class LiveLinksBase {
-			start(site: Local.Site) : Promise<GenericObject>;
+			start(site: Local.Site) : Promise<Local.GenericObject>;
 
 			stop(site: Local.Site) : Promise<void>;
 
@@ -1327,7 +1361,7 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class JobsService {
-			addJob(meta: GenericObject): Job;
+			addJob(meta: Local.GenericObject): Job;
 		}
 
 		export class SiteDataService {

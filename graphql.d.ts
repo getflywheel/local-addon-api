@@ -20,45 +20,52 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  JSON: any;
   EpochTimestamp: any;
+  JSON: any;
+};
+
+export type AddSiteInput = {
+  blueprint?: Maybe<Scalars['String']>;
+  database?: Maybe<Scalars['String']>;
+  domain: Scalars['String'];
+  environment?: Maybe<SiteEnvironment>;
+  goToSite?: Maybe<Scalars['Boolean']>;
+  multiSite?: Maybe<MultiSite>;
+  name: Scalars['String'];
+  path: Scalars['String'];
+  phpVersion?: Maybe<Scalars['String']>;
+  skipWPInstall?: Maybe<Scalars['Boolean']>;
+  webServer?: Maybe<Scalars['String']>;
+  wpAdminEmail?: Maybe<Scalars['String']>;
+  wpAdminPassword?: Maybe<Scalars['String']>;
+  wpAdminUsername?: Maybe<Scalars['String']>;
 };
 
 
-export type Query = {
-  /** Placeholder field so the schema can be extended. */
-  _empty?: Maybe<Scalars['String']>;
-  getFeaturesArray?: Maybe<Scalars['JSON']>;
-  isFeatureEnabled?: Maybe<Scalars['Boolean']>;
-  isUpdateAvailable?: Maybe<Scalars['JSON']>;
-  job?: Maybe<Job>;
-  jobs?: Maybe<Array<Maybe<Job>>>;
-  site?: Maybe<Site>;
-  sites?: Maybe<Array<Maybe<Site>>>;
-  /** Determine whether or not the site's sidebar should be sorted by the time's sites were last started. */
-  sortSitesByLastStarted?: Maybe<Scalars['Boolean']>;
+export type HostConnection = {
+  accountId?: Maybe<Scalars['String']>;
+  hostId?: Maybe<HostId>;
+  remoteSiteEnv?: Maybe<Scalars['JSON']>;
+  remoteSiteId?: Maybe<Scalars['String']>;
 };
 
+export { HostId };
 
-export type QueryIsFeatureEnabledArgs = {
-  featureName: Scalars['String'];
-};
-
-
-export type QueryIsUpdateAvailableArgs = {
-  service?: Maybe<Scalars['String']>;
-  serviceBinVersion?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryJobArgs = {
+export type Job = {
+  error?: Maybe<Scalars['JSON']>;
   id: Scalars['ID'];
+  logs?: Maybe<Scalars['String']>;
+  status: JobStatus;
 };
 
+export type JobStatus = 
+  | 'created'
+  | 'failed'
+  | 'running'
+  | 'successful';
 
-export type QuerySiteArgs = {
-  id: Scalars['ID'];
-};
+
+export { MultiSite };
 
 export type Mutation = {
   /** Placeholder field so the schema can be extended. */
@@ -157,40 +164,42 @@ export type MutationUpgradeLightningServiceArgs = {
   serviceBinVersion?: Maybe<Scalars['String']>;
 };
 
-export type Subscription = {
+export type Query = {
   /** Placeholder field so the schema can be extended. */
   _empty?: Maybe<Scalars['String']>;
-  siteStatusChanged?: Maybe<Site>;
-  siteUpdated?: Maybe<Site>;
-  sitesUpdated?: Maybe<Array<Maybe<Site>>>;
+  getFeaturesArray?: Maybe<Scalars['JSON']>;
+  isFeatureEnabled?: Maybe<Scalars['Boolean']>;
+  isUpdateAvailable?: Maybe<Scalars['JSON']>;
+  job?: Maybe<Job>;
+  jobs?: Maybe<Array<Maybe<Job>>>;
+  site?: Maybe<Site>;
+  sites?: Maybe<Array<Maybe<Site>>>;
+  /** Determine whether or not the site's sidebar should be sorted by the time's sites were last started. */
+  sortSitesByLastStarted?: Maybe<Scalars['Boolean']>;
 };
 
 
-export type SubscriptionSiteUpdatedArgs = {
-  id?: Maybe<Scalars['ID']>;
+export type QueryIsFeatureEnabledArgs = {
+  featureName: Scalars['String'];
 };
 
-export type JobStatus = 
-  | 'created'
-  | 'running'
-  | 'successful'
-  | 'failed';
 
-export type Job = {
+export type QueryIsUpdateAvailableArgs = {
+  service?: Maybe<Scalars['String']>;
+  serviceBinVersion?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryJobArgs = {
   id: Scalars['ID'];
-  status: JobStatus;
-  logs?: Maybe<Scalars['String']>;
-  error?: Maybe<Scalars['JSON']>;
 };
 
-export type SiteLiveLinkSettings = {
-  subdomain?: Maybe<Scalars['String']>;
-  basicAuthUsername?: Maybe<Scalars['String']>;
-  basicAuthPassword?: Maybe<Scalars['String']>;
+
+export type QuerySiteArgs = {
+  id: Scalars['ID'];
 };
 
 export type Site = {
-  autoEnableInstantReload?: Maybe<Scalars['Boolean']>;
   domain: Scalars['String'];
   host: Scalars['String'];
   hostConnections?: Maybe<Array<Maybe<HostConnection>>>;
@@ -216,64 +225,42 @@ export type Site = {
 };
 
 export type SiteEnvironment = 
-  | 'preferred'
-  | 'custom';
+  | 'custom'
+  | 'preferred';
 
-export type AddSiteInput = {
-  name: Scalars['String'];
-  path: Scalars['String'];
-  domain: Scalars['String'];
-  multiSite?: Maybe<MultiSite>;
-  phpVersion?: Maybe<Scalars['String']>;
-  database?: Maybe<Scalars['String']>;
-  environment?: Maybe<SiteEnvironment>;
-  blueprint?: Maybe<Scalars['String']>;
-  webServer?: Maybe<Scalars['String']>;
-  wpAdminUsername?: Maybe<Scalars['String']>;
-  wpAdminPassword?: Maybe<Scalars['String']>;
-  wpAdminEmail?: Maybe<Scalars['String']>;
-  skipWPInstall?: Maybe<Scalars['Boolean']>;
-  goToSite?: Maybe<Scalars['Boolean']>;
+export type SiteLiveLinkSettings = {
+  basicAuthPassword?: Maybe<Scalars['String']>;
+  basicAuthUsername?: Maybe<Scalars['String']>;
+  subdomain?: Maybe<Scalars['String']>;
 };
-
-export { MultiSite };
 
 export type SiteMySqlInfo = {
   database?: Maybe<Scalars['String']>;
-  user?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
-};
-
-export { SiteServiceType };
-
-export { SiteServiceRole };
-
-export type SiteService = {
-  name: Scalars['String'];
-  version: Scalars['String'];
-  type?: Maybe<SiteServiceType>;
-  ports?: Maybe<Scalars['JSON']>;
-  role?: Maybe<SiteServiceRole>;
-};
-
-export { HostId };
-
-export type HostConnection = {
-  accountId?: Maybe<Scalars['String']>;
-  hostId?: Maybe<HostId>;
-  remoteSiteId?: Maybe<Scalars['String']>;
-  remoteSiteEnv?: Maybe<Scalars['JSON']>;
+  user?: Maybe<Scalars['String']>;
 };
 
 export type SitePaths = {
   app?: Maybe<Scalars['String']>;
-  sql?: Maybe<Scalars['String']>;
-  webRoot?: Maybe<Scalars['String']>;
   conf?: Maybe<Scalars['String']>;
   confTemplates?: Maybe<Scalars['String']>;
   logs?: Maybe<Scalars['String']>;
   runData?: Maybe<Scalars['String']>;
+  sql?: Maybe<Scalars['String']>;
+  webRoot?: Maybe<Scalars['String']>;
 };
+
+export type SiteService = {
+  name: Scalars['String'];
+  ports?: Maybe<Scalars['JSON']>;
+  role?: Maybe<SiteServiceRole>;
+  type?: Maybe<SiteServiceType>;
+  version: Scalars['String'];
+};
+
+export { SiteServiceRole };
+
+export { SiteServiceType };
 
 export type SiteStatus = 
   | 'adding'
@@ -306,5 +293,17 @@ export type SiteStatus =
   | 'updating_wp'
   | 'wordpress_install_error';
 
+export type Subscription = {
+  /** Placeholder field so the schema can be extended. */
+  _empty?: Maybe<Scalars['String']>;
+  siteStatusChanged?: Maybe<Site>;
+  sitesUpdated?: Maybe<Array<Maybe<Site>>>;
+  siteUpdated?: Maybe<Site>;
+};
+
+
+export type SubscriptionSiteUpdatedArgs = {
+  id?: Maybe<Scalars['ID']>;
+};
 
 }
