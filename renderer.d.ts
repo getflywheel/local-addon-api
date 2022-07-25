@@ -11,7 +11,6 @@ declare module '@getflywheel/local/renderer' {
 	} from '@apollo/client';
 
 	import { GenericObject } from '@getflywheel/local';
-
 	import { FC, ReactNode } from 'react';
 
 	export { default as gql } from 'graphql-tag';
@@ -19,6 +18,8 @@ declare module '@getflywheel/local/renderer' {
 	export { RouteComponentProps } from 'react-router-dom';
 
 	type ReactNodeLike = ReactNode | string | number;
+
+	export type AddonContext = AddonRendererContext;
 
 	/** Mobx data stores */
 	export const $offline: {
