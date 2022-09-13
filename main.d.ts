@@ -233,6 +233,7 @@ declare module '@getflywheel/local/main' {
 		 * @description Object containing the bin info for each platform. Platforms are optional.
 		 */
 		bins: {
+			['darwin-arm64']?: ServiceBin
 			darwin?: ServiceBin
 			linux?: ServiceBin
 			win32?: ServiceBin
@@ -257,6 +258,7 @@ declare module '@getflywheel/local/main' {
 	}
 
 	export enum LightningServicePlatform {
+		DarwinArm64 = 'darwin-arm64',
 		Darwin = 'darwin',
 		Win32 = 'win32',
 		Win32x64 = 'win64',
