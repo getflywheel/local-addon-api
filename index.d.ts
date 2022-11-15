@@ -4,6 +4,8 @@ declare module '@getflywheel/local' {
 
 	export type GenericObject = { [key: string]: any };
 
+	export type FunctionGeneric = (...params: any[]) => any;
+
 	/**
 	 * NOTE: all enum declarations must be copied over to `index.d.ts` as well.
 	 */
@@ -260,11 +262,12 @@ declare module '@getflywheel/local' {
 		icon?: 'warning';
 		variant?: 'warning' | 'neutral' | 'success' | 'error';
 		buttonText?: string;
+		buttonOnClick?: FunctionGeneric;
 		buttonOnClickIPCEvent?: string;
 		dismissible?: boolean;
 		persistDismiss?: boolean;
 		linkText?: string;
-		linkOnClickIPCEvent?: string;
+		linkOnClick?: FunctionGeneric;
 		linkHref?: string;
 	}
 

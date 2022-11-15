@@ -169,7 +169,7 @@ export type Query = {
   _empty?: Maybe<Scalars['String']>;
   getFeaturesArray?: Maybe<Scalars['JSON']>;
   isFeatureEnabled?: Maybe<Scalars['Boolean']>;
-  isUpdateAvailable?: Maybe<Scalars['JSON']>;
+  isUpdateAvailable: ServiceUpdateData;
   job?: Maybe<Job>;
   jobs?: Maybe<Array<Maybe<Job>>>;
   site?: Maybe<Site>;
@@ -197,6 +197,12 @@ export type QueryJobArgs = {
 
 export type QuerySiteArgs = {
   id: Scalars['ID'];
+};
+
+export type ServiceUpdateData = {
+  currentBuildVersion?: Maybe<Scalars['String']>;
+  existingLightningServiceDir?: Maybe<Scalars['String']>;
+  latestDownloadableBuildVersion?: Maybe<Scalars['JSON']>;
 };
 
 export type Site = {

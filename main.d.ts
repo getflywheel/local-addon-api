@@ -185,6 +185,8 @@ declare module '@getflywheel/local/main' {
 	 */
 	export interface RegisteredService extends SelectableSiteService {
 		registered: true
+
+		platform: LightningServicePlatform
 	}
 
 	/**
@@ -239,6 +241,16 @@ declare module '@getflywheel/local/main' {
 			win32?: ServiceBin
 			win64?: ServiceBin
 		}
+
+		/**
+		 * @description Date for deprecation of service. If this field exists, the service won't be downloadable
+		 *   after the specified date.
+		 *
+		 * @format UTC Date string
+		 *
+		 * @TJS-examples ["2022-10-19T00:00:00z"]
+		 */
+		endOfLife?: string
 	}
 
 	interface ServiceBin {
@@ -270,7 +282,9 @@ declare module '@getflywheel/local/main' {
 		USER = 'user',
 		HUB = 'hub',
 	}
+
 	type Scalar = string | number | boolean;
+
 	type ConfigVariables = { [key: string]: Scalar | Scalar[] | ConfigVariables };
 
 	export class LightningService {
@@ -590,7 +604,7 @@ declare module '@getflywheel/local/main' {
 
 		static addAction(hook: any, callback: any, priority?: number): void;
 
-		static doActions(hook: any, ...args: any[]): Promise<any[]>;
+		static doActions(hook: any, ...args: any[]): Promise<any[] | undefined>;
 
 		static addFilter(hook: any, callback: any, priority?: number): void;
 
@@ -760,6 +774,35 @@ declare module '@getflywheel/local/main' {
 		type?: string
 	}
 
+	export interface AddonMainContext {
+		environment: {
+			appPath: any;
+			userHome: any;
+			version: any;
+			userDataPath: any;
+		};
+		process: NodeJS.Process;
+		electron: typeof Electron;
+		request: any;
+		fileSystem: any;
+		fileSystemJetpack: any;
+		notifier: {
+			notify: ({ title, message, open }: {
+				title: any;
+				message: any;
+				open: any;
+			}) => void;
+		};
+		events: {
+			send: any;
+		};
+		storage: {
+			get: (defaultValue?: any) => void;
+			set: (value: any) => void;
+		};
+		hooks: typeof HooksMain;
+	}
+
 	/**
 	 * Modules for Service Container
 	 *
@@ -782,34 +825,7 @@ declare module '@getflywheel/local/main' {
 
 			loadAddonsInRepos(): any[];
 
-			get addonContext(): {
-				environment: {
-					appPath: any;
-					userHome: any;
-					version: any;
-					userDataPath: any;
-				};
-				process: NodeJS.Process;
-				electron: any;
-				request: any;
-				fileSystem: any;
-				fileSystemJetpack: any;
-				notifier: {
-					notify: ({ title, message, open }: {
-						title: any;
-						message: any;
-						open: any;
-					}) => void;
-				};
-				events: {
-					send: any;
-				};
-				storage: {
-					get: (defaultValue?: any) => void;
-					set: (value: any) => void;
-				};
-				hooks: typeof HooksMain;
-			};
+			get addonContext(): AddonMainContext;
 
 			isAddonLoaded(name: any, version: any): any;
 		}
@@ -843,7 +859,7 @@ declare module '@getflywheel/local/main' {
 
 			deregisterService(serviceName: string, version: string) : void;
 
-			getMissingServices(site: Local.Site): Array<LightningService['serviceName']>;
+			getMissingServices(site: Local.Site): Array<Local.SiteService>;
 
 			getSiteServices(site: Local.Site): LightningService[];
 
@@ -853,7 +869,7 @@ declare module '@getflywheel/local/main' {
 
 			getLatestVersion(serviceName: string, site: Local.Site): LightningService | null;
 
-			maybeDownload(site: Local.Site) : Promise<void>;
+			maybeDownload(site: Local.Site) : Promise<DownloaderQueueItem[]>;
 
 			getRequiredDownloads(services: { [service: string]: string }) : Promise<DownloaderQueueItem[]>;
 
@@ -953,6 +969,7 @@ declare module '@getflywheel/local/main' {
 				role: Local.SiteServiceRole,
 				serviceName: LightningService['serviceName'],
 				serviceBinVersion: LightningService['binVersion'],
+				restartRouter: boolean,
 			): Promise<void>;
 		}
 
