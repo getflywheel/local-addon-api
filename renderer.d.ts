@@ -16,7 +16,6 @@ declare module '@getflywheel/local/renderer' {
 	import { FC, ReactNode } from 'react';
 	import ReactRouter from 'react-router-dom';
 	import { HooksMain } from '@getflywheel/local/main';
-	import { Banner } from '@getflywheel/local-components';
 
 	export { default as gql } from 'graphql-tag';
 
@@ -223,7 +222,7 @@ declare module '@getflywheel/local/renderer' {
 	}
 	export interface IBanner {
 		id: string,
-		component: typeof Banner,
+		component: React.ReactNode | (() => JSX.Element),
 		domain?: BannerStoreDomain,
 	}
 

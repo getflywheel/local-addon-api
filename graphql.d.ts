@@ -39,6 +39,7 @@ export type AddSiteInput = {
   wpAdminEmail?: Maybe<Scalars['String']>;
   wpAdminPassword?: Maybe<Scalars['String']>;
   wpAdminUsername?: Maybe<Scalars['String']>;
+  xdebugEnabled?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -228,6 +229,7 @@ export type Site = {
   status: SiteStatus;
   url: Scalars['String'];
   workspace?: Maybe<Scalars['String']>;
+  xdebugEnabled?: Maybe<Scalars['Boolean']>;
 };
 
 export type SiteEnvironment = 
@@ -294,6 +296,7 @@ export type SiteStatus =
   | 'restoring_backup'
   | 'running'
   | 'saving'
+  | 'stalled'
   | 'starting'
   | 'stopping'
   | 'updating_wp'

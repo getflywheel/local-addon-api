@@ -56,6 +56,7 @@ declare module '@getflywheel/local' {
 		blueprint?: string
 		webServer?: string
 		customOptions?: GenericObject
+		xdebugEnabled?: boolean
 	}
 
 	export type SiteServices = { [serviceName: string]: SiteService };
@@ -162,7 +163,9 @@ declare module '@getflywheel/local' {
 
 		oneClickAdminID?: number;
 
-		oneClickAdminDisplayname?: string;
+		oneClickAdminDisplayName?: string;
+
+		xdebugEnabled?: boolean;
 
 		/* Deprecated */
 		flywheelConnect?: string;
