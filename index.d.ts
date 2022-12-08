@@ -31,6 +31,8 @@ declare module '@getflywheel/local' {
 	export enum AddonStatus {
 		INSTALLED = 'installed',
 		INSTALLING = 'installing',
+		UNINSTALLED = 'uninstalled',
+		UNINSTALLING = 'uninstalling',
 		UPDATING = 'updating',
 	}
 
