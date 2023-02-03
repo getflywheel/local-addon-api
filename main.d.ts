@@ -1000,7 +1000,7 @@ declare module '@getflywheel/local/main' {
 		export class SiteDatabase {
 			listen(): void;
 
-			dump(site: Local.Site, destinationFile?: string): Promise<string>;
+			dump(site: Local.Site, destination?: string): Promise<string>;
 
 			waitForDB(site: Local.Site, noPassword?: boolean): Promise<boolean>;
 
