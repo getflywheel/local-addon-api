@@ -13,6 +13,7 @@ declare module '@getflywheel/local/main' {
 	import type { PubSub } from 'graphql-subscriptions';
 	import type { ApolloClient } from 'apollo-boost';
 	import type fetch from 'cross-fetch';
+	import type { SiteGroup } from '@getflywheel/local/graphql';
 
 	export { default as gql } from 'graphql-tag';
 
@@ -142,7 +143,7 @@ declare module '@getflywheel/local/main' {
 	export class UserData {
 		static getPath(optionGroup: any): any;
 
-		static get(optionGroup: any, defaults?: {} | undefined): any;
+		static get(optionGroup: any, defaults?: {}, includeCreatedTime?: boolean, persistDefaults?: boolean): any;
 
 		static set(optionGroup: any, data: any): any;
 
@@ -252,6 +253,10 @@ declare module '@getflywheel/local/main' {
 		 */
 		endOfLife?: string
 	}
+
+	export type AvailableServices = {
+		[serviceName: string]: { [version: string]: DownloadableService | RegisteredService };
+	};
 
 	interface ServiceBin {
 		/**
@@ -774,6 +779,54 @@ declare module '@getflywheel/local/main' {
 		type?: string
 	}
 
+	/**
+	 * The data that a `wpmigrate-export.json` file contains.
+	 */
+	export interface WpMigrateJSON {
+		name: string;
+		domain: string;
+		path: string;
+		wpVersion: string;
+		services: {
+			php?: {
+				name: string;
+				version: string;
+			};
+			mysql?: {
+				name: string;
+				version: string;
+			};
+			mariadb?: {
+				name: string;
+				version: string;
+			};
+			nginx?: {
+				name: string,
+				version: string,
+			},
+			apache?: {
+				name: string;
+				version?: string;
+			};
+			flywheel?: {
+				name: string;
+				version: string;
+			};
+		};
+		wpMigrate: {
+			version: string;
+		};
+	}
+
+	/**
+	 * The data needed to import a WP Migrate archive.
+	 *
+	 * @property zip The path to the archive is on disk.
+	 */
+	export interface WpMigrateImport extends WpMigrateJSON {
+		zip: string;
+	}
+
 	export interface AddonMainContext {
 		environment: {
 			appPath: any;
@@ -801,6 +854,27 @@ declare module '@getflywheel/local/main' {
 			set: (value: any) => void;
 		};
 		hooks: typeof HooksMain;
+	}
+
+	export { SiteGroup } from '@getflywheel/local/graphql';
+
+	/** Data structure stored in site-groups.json */
+	export interface SiteGroupsData {
+		/**
+		 * Maps sites to their groups, like a join table.
+		 * Useful for speeding up operations.
+		 * */
+		siteMap: {
+			[siteId: string]: SiteGroup['id'];
+		}
+		/** Site groups in object format */
+		groups: {
+			[siteGroupId: SiteGroup['id']]: SiteGroup;
+		}
+		/** Whether to sort sites in a group by last started timestamp. */
+		sortSitesByLastStarted: boolean;
+		/** Open state for the sidebar, as it's collapsable */
+		sidebarCollapsed?: boolean;
 	}
 
 	/**
@@ -853,7 +927,16 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class LightningServices {
-			findClosestService(serviceName: string, version: string) : typeof LightningService | undefined;
+			/**
+			 * Get the closest registered service that matches the MAJOR.MINOR version provided in the
+			 * version paramter.
+			 *
+			 * @param serviceName  The name of the service. For example `php` or `mysql`
+			 * @param version      The version of th eservice. For example `8.1.1`
+			 *
+			 * @returns  The closest LightningService class for the passed version.
+			 */
+			getClosestRegisteredService(serviceName: string, version: string) : typeof LightningService | undefined;
 
 			registerService(service: typeof LightningService, serviceName: string, version: string) : void;
 
@@ -884,6 +967,17 @@ declare module '@getflywheel/local/main' {
 			getServices() : Promise<{
 				[serviceName: string]: { [version: string]: DownloadableService | RegisteredService }
 			}>
+
+			/**
+			 * Returns the closest Lightning Service string from the provided `AvailableServices`.
+			 *
+			 * @returns Matched service strings are of the form `<service>-<version>`, for example `php-8.1.9`.
+			 */
+			getClosestServiceString(
+				service: string,
+				version: string,
+				services: AvailableServices
+			): string | undefined;
 		}
 
 		export interface LightningDBService extends LightningService {
@@ -969,7 +1063,7 @@ declare module '@getflywheel/local/main' {
 				role: Local.SiteServiceRole,
 				serviceName: LightningService['serviceName'],
 				serviceBinVersion: LightningService['binVersion'],
-				restartRouter: boolean,
+				restartRouter?: boolean,
 			): Promise<void>;
 		}
 
@@ -981,6 +1075,8 @@ declare module '@getflywheel/local/main' {
 				dumpDatabase: boolean;
 				updateStatus?: boolean;
 			}): Promise<void>;
+
+			stopSites(siteIds: Local.Site['id'][]): Promise<void>;
 
 			restart(site: Local.Site): Promise<void>;
 
@@ -1016,6 +1112,151 @@ declare module '@getflywheel/local/main' {
 				siteId: string,
 				sortData: { siteLastStartedTimestamp: number }
 			}): void;
+
+			/**
+			 * sites-organization.json stores an array of siteID's with last-started timestamps and starred status.
+			 * Keeping for backwads compatibility.
+			 */
+			static ORGANIZATION_DATA_SLUG: string;
+
+			/** site-groups.json stores group data and a site-to-group map */
+			static GROUPS_DATA_SLUG: string;
+
+			/**
+			 * Get an array of site groups.
+			 * If no site-groups.json file exists, default "Sites" and "Starred" groups will be returned.
+			 *
+			 * @returns Array of SiteGroup objects
+			 */
+			getSiteGroups(): SiteGroup[]
+
+			/**
+			 * Get a site group by id.
+			 * If no site-group exists, an error is thrown.
+			 *
+			 * @param id Group ID
+			 *
+			 * @returns SiteGroup object of specified ID
+			 */
+			getSiteGroupById(id: SiteGroup['id']): SiteGroup
+
+			/**
+			 * Create a new site group. If array of siteIds is passed, those sites are moved from their current groups.
+			 *
+			 * @param name String with new group name
+			 * @param siteIds (optional) Array of siteIDs to create group with
+			 * @param index (optional) Index to move new group to, defaults to next available
+			 * @param open (optional) Open state for group, defaults to "true"
+			 *
+			 * @returns Newly created group. Note - other groups may be affected by group creation, but the front end
+			 * will need to refetch the groups query to update the cache anyway.
+			 */
+			createSiteGroup(
+				name: SiteGroup['name'], siteIds?: SiteGroup['siteIds'], index?: number, open?: boolean
+			): SiteGroup
+
+			/**
+			 * Delete a site group. All sites in the group will be moved to the default "Sites" group
+			 *
+			 * @param groupId ID of group to delete
+			 *
+			 * @returns Deleted group. Note - other groups may be affected by group deletion, but the front end
+			 * will need to refetch the groups query to update the cache anyway.
+			 */
+			deleteSiteGroup(groupId: SiteGroup['id']): SiteGroup
+
+			/**
+			 * Rename a site group.
+			 *
+			 * @param id ID of group to rename
+			 * @param name New name of group
+			 *
+			 * @returns renamed group
+			 */
+			renameSiteGroup(id: SiteGroup['id'], name: SiteGroup['name']): SiteGroup
+
+			/**
+			 * Move sites from their current group to a new group.
+			 * To move a single site, pass it in an array.
+			 *
+			 * This function will also add a site that does not yet exist in site-groups.json.
+			 *
+			 * @param siteIds required array of Site ID's to move - can be nonexistent site ID's
+			 * @param id ID of the group to which sites are moved
+			 * @param refetchGroups Send an IPC event to refetch groups - defaults to "false"
+			 *
+			 * @returns Array of all groups affected by the move, updated to reflect the change.
+			 */
+			moveSitesToGroup(siteIds: string[], id: SiteGroup['id'], refetchGroups?: boolean): SiteGroup[]
+
+			/**
+			 * Remove site ids from their respective groups, and from site-groups.json altogether.
+			 * To remove a single site, pass it in an array.
+			 *
+			 * @param siteIds required array of Site ID's to remove
+			 * @param refetchGroups Send an IPC event to refetch groups - defaults to "false"
+			 *
+			 * @returns Array of all groups affected, with sites removed.
+			 */
+			deleteSitesFromGroups(siteIds: string[], refetchGroups?: boolean): SiteGroup[]
+
+			/**
+			 * Set the open state for a site group.
+			 *
+			 * Note: Making this an explicit set as oppsed to a simple toggle allows for features such
+			 * as "Close all groups", for example
+			 *
+			 * @param id ID of group to open or close
+			 * @param open (optional) New open state, true for open, false for closed. Defaults to "false".
+			 *
+			 * @returns Affected group
+			 */
+			setGroupOpen(id: SiteGroup['id'], open?: boolean): SiteGroup
+
+			/**
+			 * Moves a site group to a certain index. We are calling those "move" instead of "set" because
+			 * other site groups will have their indices affected (i.e. increased or decreased by 1).
+			 *
+			 * @param id ID of group to move
+			 * @param index New index, as integer. Negative numbers will default to index 0, numbers higher than
+			 * the number of groups will move the group to the end.
+			 *
+			 * @returns Array of affected groups
+			 */
+			moveGroupToIndex(id: SiteGroup['id'], newIndex: number): SiteGroup[]
+
+			/**
+			 * Public function to retrieve the current value of SiteGroupsData.sortSitesByLastStarted
+			 *
+			 * @returns Value of Localmain.SiteGroupsData.sortSitesByLastStarted
+			 */
+			getSortSitesByLastStarted(): boolean;
+
+			/**
+			 * Sets the sort status for sites in all groups. Note this is stored as a single
+			 * persisted variable for now, not on a group-by-group basis.
+			 *
+			 * @param sortSitesByLastStarted Value to set, a boolean.
+			 *
+			 * @returns The new persisted value.
+			 */
+			setSortSitesByLastStarted(sortSitesByLastStarted: boolean): boolean;
+
+			/**
+			 * The sites sidebar is collapsable. This method persists the open state to site-groups.json
+			 *
+			 * @param sidebarCollapsed Collapsed state, boolean
+			 *
+			 * @returns Value of Localmain.SiteGroupsData.sidebarCollapsed
+			 */
+			setSidebarCollapsed(sidebarCollapsed: boolean): boolean
+
+			/**
+			 * Retrieve the current collapsed state for the sites sidebar
+			 *
+			 * @returns new collapsed state
+			 */
+			getSidebarCollapsed(): boolean
 		}
 
 		interface IDomains {

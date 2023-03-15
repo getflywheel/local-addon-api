@@ -70,7 +70,6 @@ declare module '@getflywheel/local' {
 	LocalGraphQL.Site,
 	'services'
 	| 'hostConnections'
-	| 'isStarred'
 	| 'status'
 	| 'workspace'
 	| 'paths'
@@ -111,7 +110,6 @@ declare module '@getflywheel/local' {
 	'services' |
 	'hostConnections' |
 	'workspace' |
-	'isStarred' |
 	'status'> & SiteJSON;
 
 	export class Site implements SiteBase {

@@ -2,14 +2,8 @@
 
 declare module '@getflywheel/local/renderer' {
 	import {
-		DocumentNode,
-		OperationVariables,
-		QueryHookOptions,
-		TypedDocumentNode,
-		QueryResult,
 		ApolloClient,
 		NormalizedCacheObject,
-		MutationHookOptions, MutationTuple,
 	} from '@apollo/client';
 
 	import Local, { GenericObject } from '@getflywheel/local';
@@ -390,16 +384,6 @@ declare module '@getflywheel/local/renderer' {
 	 * GraphQL
 	 */
 	export const localApolloClient: ApolloClient<NormalizedCacheObject>;
-
-	export function useLocalQuery<TData = any, TVariables = OperationVariables>(
-		query: DocumentNode | TypedDocumentNode<TData, TVariables>,
-		options?: QueryHookOptions<TData, TVariables>,
-	): QueryResult<unknown>;
-
-	export function useLocalMutation<TData = any, TVariables = OperationVariables>(
-		mutation: DocumentNode | TypedDocumentNode<TData, TVariables>,
-		options?: MutationHookOptions<TData, TVariables>,
-	): MutationTuple<any, any>;
 
 	export function useLocalSitesSubs(
 		subscribeToMore: any
