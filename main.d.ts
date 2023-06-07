@@ -3,7 +3,7 @@
 declare module '@getflywheel/local/main' {
 
 	import * as Local from '@getflywheel/local';
-	import { ExecFileOptions, ChildProcess } from 'child_process';
+	import { ExecFileOptions, ChildProcess, ExecOptions } from 'child_process';
 	import * as Awilix from 'awilix';
 	import * as Electron from 'electron';
 	import * as Winston from 'winston';
@@ -46,6 +46,8 @@ declare module '@getflywheel/local/main' {
 		exportSite: Services.ExportSite
 		deleteSite: Services.DeleteSite
 		devkit: Services.DevKit
+		rsync: Services.Rsync
+		ssh: Services.Ssh
 		capi: Services.CAPI
 		siteShellEntry: Services.SiteShellEntry
 		browserManager: Services.BrowserManager
@@ -877,6 +879,44 @@ declare module '@getflywheel/local/main' {
 		sidebarCollapsed?: boolean;
 	}
 
+	export interface WPEConnectArgs {
+		includeSql?: boolean
+		requiresProvisioning?: boolean
+		wpengineInstallName: string
+		wpengineInstallId: string
+		wpengineSiteId: string
+		wpenginePrimaryDomain: string
+		wpenginePhpVersion: string
+		localSiteId: string
+		environment?: import('../main/capi/client/api').SiteInstalls.EnvironmentEnum
+		files?: string[],
+		isMagicSync?: boolean,
+	}
+
+	export interface RsyncRunArgs {
+		/** Array of flags to send to the rsync command */
+		args: string[];
+		/** Working directory for the spawned rsync process. For Connect, it should be app/public folder */
+		cwd?: string;
+		/** Progress handler function, will receive output from rsync */
+		progress?: (string: string) => void;
+	}
+
+	export interface SshRunArgs {
+		/** Remote username */
+		username: string;
+		/** Remote host */
+		host: string;
+		/** Path to private SSH key (used for -i flag) */
+		sshKey?: string;
+		/** Array of flags/args to send to the ssh command */
+		sshArgs?: string[];
+		/** Command to execute remotely as a single string, like 'wp plugin list' */
+		command: string;
+		/** ExecOptions are options passed to the exec command. Common would include CWD */
+		execOptions?: ExecOptions;
+	}
+
 	/**
 	 * Modules for Service Container
 	 *
@@ -1364,6 +1404,16 @@ declare module '@getflywheel/local/main' {
 			deleteSites({ siteIds, trashFiles, updateHosts }: IDeleteSites): Promise<void>;
 		}
 
+		/**
+		 * Service for running SSH commands via child_process.exec()
+		 *
+		 * Differs from SSHKeyService, which handles all things SSH key/pair related.
+		 * */
+		export class Ssh {
+			/** Run an ssh command */
+			run(args: SshRunArgs): Promise<string | undefined>;
+		}
+
 		export class CAPI {
 			createBackup(installId: string, description: string): Promise<void>;
 
@@ -1382,6 +1432,17 @@ declare module '@getflywheel/local/main' {
 			environment?: any
 			files?: string[],
 			isMagicSync?: boolean,
+		}
+
+		export class Rsync {
+			/**
+			 * Given an RsyncRunArgs object, spawns the rsync process with the provided args inside of CWD.
+			 * Logs any data to stdout or stderror via the Local Logger.
+			 *
+			 * On "exit" with code 0, resolves with a string containing all emitted data.
+			 * On "error" or exit code !== 0, rejects with the error.
+			 * */
+			run(args: RsyncRunArgs): Promise<string>;
 		}
 
 		export class DevKit {

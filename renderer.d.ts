@@ -6,6 +6,8 @@ declare module '@getflywheel/local/renderer' {
 		NormalizedCacheObject,
 	} from '@apollo/client';
 
+	import { DownloaderItemProps } from '@getflywheel/local-components';
+
 	import Local, { GenericObject } from '@getflywheel/local';
 	import { FC, ReactNode } from 'react';
 	import ReactRouter from 'react-router-dom';
@@ -26,6 +28,8 @@ declare module '@getflywheel/local/renderer' {
 
 		static doContent(hook: any, ...args: any[]): any[];
 	}
+
+	export type SiteMessage = Omit<DownloaderItemProps, 'onCancel'> | undefined;
 
 	export type RouterMode = 'standard' | 'localhost';
 
