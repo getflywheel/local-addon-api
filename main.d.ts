@@ -1,5 +1,4 @@
 /* eslint-disable max-classes-per-file, @typescript-eslint/no-use-before-define */
-
 declare module '@getflywheel/local/main' {
 
 	import * as Local from '@getflywheel/local';
@@ -45,7 +44,6 @@ declare module '@getflywheel/local/main' {
 		cloneSite: Services.CloneSite
 		exportSite: Services.ExportSite
 		deleteSite: Services.DeleteSite
-		devkit: Services.DevKit
 		rsync: Services.Rsync
 		ssh: Services.Ssh
 		capi: Services.CAPI
@@ -886,7 +884,6 @@ declare module '@getflywheel/local/main' {
 		wpengineInstallId: string
 		wpengineSiteId: string
 		wpenginePrimaryDomain: string
-		wpenginePhpVersion: string
 		localSiteId: string
 		environment?: import('../main/capi/client/api').SiteInstalls.EnvironmentEnum
 		files?: string[],
@@ -1412,26 +1409,15 @@ declare module '@getflywheel/local/main' {
 		export class Ssh {
 			/** Run an ssh command */
 			run(args: SshRunArgs): Promise<string | undefined>;
+
+			/** Get a path to the default known_hosts file */
+			getDefaultKnownHostsPath(): string;
 		}
 
 		export class CAPI {
 			createBackup(installId: string, description: string): Promise<void>;
 
 			purgeCache(installId: string, type: any): Promise<void>;
-		}
-
-		interface IDevKitServiceArgs {
-			includeSql?: boolean
-			requiresProvisioning?: boolean
-			wpengineInstallName: string
-			wpengineInstallId: string
-			wpengineSiteId: string
-			wpenginePrimaryDomain: string
-			wpenginePhpVersion: string
-			localSiteId?: string
-			environment?: any
-			files?: string[],
-			isMagicSync?: boolean,
 		}
 
 		export class Rsync {
@@ -1443,14 +1429,6 @@ declare module '@getflywheel/local/main' {
 			 * On "error" or exit code !== 0, rejects with the error.
 			 * */
 			run(args: RsyncRunArgs): Promise<string>;
-		}
-
-		export class DevKit {
-			listModifications(direction: 'push' | 'pull', args: IDevKitServiceArgs): Promise<any[]>;
-
-			push(args: IDevKitServiceArgs): Promise<void>;
-
-			pull(args: IDevKitServiceArgs): Promise<void>;
 		}
 
 		export class SiteShellEntry {
