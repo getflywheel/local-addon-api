@@ -422,7 +422,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly $PATH: string;
+		readonly $PATH?: string;
 
 		/**
 		 * @returns Object containing variables to be replaced in config templates using Handlebars.

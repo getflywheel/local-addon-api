@@ -10,6 +10,21 @@ declare module '@getflywheel/local' {
 	 * NOTE: all enum declarations must be copied over to `index.d.ts` as well.
 	 */
 
+	/**
+	 * Re-exporting this here, it's also in main. Needed in a shared helper, but accessing main enums from the renderer
+	 * errors out, since enums import from the typescript file, not the declaration file, and webpack gets confused.
+	 *
+	 * Possible TODO: remove this enum from main.d.ts - however, that would require a bump to any add-ons that access
+	 * this type. For now that looks like it's just the Atlas add-on.
+	 */
+	export enum LightningServicePlatform {
+		DarwinArm64 = 'darwin-arm64',
+		Darwin = 'darwin',
+		Win32 = 'win32',
+		Win32x64 = 'win64',
+		Linux = 'linux',
+	}
+
 	export enum MultiSite {
 		No = '',
 		Subdir = 'ms-subdir',
