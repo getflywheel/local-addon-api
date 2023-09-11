@@ -179,7 +179,7 @@ declare module '@getflywheel/local/main' {
 		binVersion: string
 	}
 
-	export type RegisteredServices = { [serviceName: string]: { [version: string]: RegisteredService } };
+	export type RegisteredServices = { [serviceName: string]: { [binVersion: string]: RegisteredService } };
 
 	/**
 	 * Registered Services are loaded and registered so downloading the service is not required.
@@ -200,7 +200,7 @@ declare module '@getflywheel/local/main' {
 	 *
 	 * @description Downloadable/Available Services for Local
 	 */
-	export type DownloadableServices = { [serviceName: string]: { [version: string]: DownloadableService } };
+	export type DownloadableServices = { [serviceName: string]: { [binVersion: string]: DownloadableService } };
 
 	export interface DownloadableService extends SelectableSiteService {
 		/**
@@ -255,7 +255,7 @@ declare module '@getflywheel/local/main' {
 	}
 
 	export type AvailableServices = {
-		[serviceName: string]: { [version: string]: DownloadableService | RegisteredService };
+		[serviceName: string]: { [binVersion: string]: DownloadableService | RegisteredService };
 	};
 
 	interface ServiceBin {
@@ -553,7 +553,8 @@ declare module '@getflywheel/local/main' {
 
 	export const registerLightningService: (
 		service: typeof LightningService,
-		serviceName:string, version:string,
+		serviceName:string,
+		binVersion:string,
 	) => void;
 
 	export function execFilePromise(
@@ -928,7 +929,7 @@ declare module '@getflywheel/local/main' {
 	 */
 	export module Services {
 		export class AddonLoader {
-			loadedAddons: any[];
+			loadedAddons: Local.AddonPackage[];
 
 			get addonRepos(): any[];
 
@@ -964,20 +965,9 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class LightningServices {
-			/**
-			 * Get the closest registered service that matches the MAJOR.MINOR version provided in the
-			 * version paramter.
-			 *
-			 * @param serviceName  The name of the service. For example `php` or `mysql`
-			 * @param version      The version of th eservice. For example `8.1.1`
-			 *
-			 * @returns  The closest LightningService class for the passed version.
-			 */
-			getClosestRegisteredService(serviceName: string, version: string) : typeof LightningService | undefined;
+			registerService(service: typeof LightningService, serviceName: string, binVersion: string) : void;
 
-			registerService(service: typeof LightningService, serviceName: string, version: string) : void;
-
-			deregisterService(serviceName: string, version: string) : void;
+			deregisterService(serviceName: string, binVersion: string) : void;
 
 			getMissingServices(site: Local.Site): Array<Local.SiteService>;
 
@@ -991,17 +981,28 @@ declare module '@getflywheel/local/main' {
 
 			maybeDownload(site: Local.Site) : Promise<DownloaderQueueItem[]>;
 
+			/**
+			 * Retrieves a service from "services" based on a given bin version.
+			 * - First checks if binVersion is available and returns it.
+			 * - If not, tries to find the highest available patch version and return it.
+			 * - Returns undefined if none found.
+			 */
+			getSameOrHighestPatchService<ServiceType>(
+				binVersion: string,
+				services?: { [binVersion: string]: ServiceType },
+			): ServiceType | undefined;
+
 			getRequiredDownloads(services: { [service: string]: string }) : Promise<DownloaderQueueItem[]>;
 
 			getDownloadableServices(role?: Local.SiteServiceRole) : Promise<DownloadableServices>;
 
-			getRegisteredServices() : RegisteredServices;
+			getRegisteredServices(role?: Local.SiteServiceRole) : RegisteredServices;
 
 			hasCurrentPlatformBins(bins: LightningService['bins'] | DownloadableService['bins']) : boolean;
 
 			satisfiesEngineRequirement(service: DownloadableService) : boolean;
 
-			getServices() : Promise<{
+			getServices(role?: Local.SiteServiceRole) : Promise<{
 				[serviceName: string]: { [version: string]: DownloadableService | RegisteredService }
 			}>
 
@@ -1012,7 +1013,7 @@ declare module '@getflywheel/local/main' {
 			 */
 			getClosestServiceString(
 				service: string,
-				version: string,
+				binVersion: string,
 				services: AvailableServices
 			): string | undefined;
 		}
@@ -1104,14 +1105,16 @@ declare module '@getflywheel/local/main' {
 			): Promise<void>;
 		}
 
+		export interface StopSiteOptions {
+			dumpDatabase?: boolean;
+			updateStatus?: boolean;
+		}
+
 		export class SiteProcessManager {
 			start(site: Local.Site, updateStatus?: boolean,
 				compileConfigs?: boolean, restartRouter?: boolean, useCheckPorts?: boolean): Promise<void>;
 
-			stop(site: Local.Site, { dumpDatabase, updateStatus }?: {
-				dumpDatabase: boolean;
-				updateStatus?: boolean;
-			}): Promise<void>;
+			stop(site: Local.Site, opts?: StopSiteOptions): Promise<void>;
 
 			stopSites(siteIds: Local.Site['id'][]): Promise<void>;
 
@@ -1127,7 +1130,7 @@ declare module '@getflywheel/local/main' {
 
 			getSiteStatuses() : { [siteId: string]: Local.SiteStatus };
 
-			stopAllSites(): Promise<void>;
+			stopAllSites(opts?: StopSiteOptions): Promise<void>;
 		}
 
 		export class SiteDatabase {

@@ -222,8 +222,9 @@ export type MutationUpdateSiteArgs = {
 
 
 export type MutationUpgradeLightningServiceArgs = {
+  newBinVersion: Scalars['String'];
+  oldBinVersion: Scalars['String'];
   service: Scalars['String'];
-  serviceBinVersion: Scalars['String'];
 };
 
 export type Query = {
@@ -254,8 +255,8 @@ export type QueryIsFeatureEnabledArgs = {
 
 
 export type QueryIsUpdateAvailableArgs = {
+  binVersion: Scalars['String'];
   service: SiteServiceRole;
-  serviceBinVersion: Scalars['String'];
 };
 
 
@@ -279,9 +280,8 @@ export type QuerySitesByIdsArgs = {
 };
 
 export type ServiceUpdateData = {
-  currentBuildVersion?: Maybe<Scalars['String']>;
-  existingLightningServiceDir?: Maybe<Scalars['String']>;
-  latestDownloadableBuildVersion?: Maybe<Scalars['JSON']>;
+  currentVersion?: Maybe<Scalars['String']>;
+  latestAvailableService?: Maybe<Scalars['JSON']>;
 };
 
 export type Site = {
@@ -584,14 +584,14 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   stopLiveLink?: Resolver<Maybe<ResolversTypes['SiteLiveLinkSettings']>, ParentType, ContextType, RequireFields<MutationStopLiveLinkArgs, 'id'>>;
   stopSite?: Resolver<Maybe<ResolversTypes['Site']>, ParentType, ContextType, RequireFields<MutationStopSiteArgs, 'id'>>;
   updateSite?: Resolver<Maybe<ResolversTypes['Site']>, ParentType, ContextType, RequireFields<MutationUpdateSiteArgs, 'id'>>;
-  upgradeLightningService?: Resolver<Maybe<ResolversTypes['Job']>, ParentType, ContextType, RequireFields<MutationUpgradeLightningServiceArgs, 'service' | 'serviceBinVersion'>>;
+  upgradeLightningService?: Resolver<Maybe<ResolversTypes['Job']>, ParentType, ContextType, RequireFields<MutationUpgradeLightningServiceArgs, 'newBinVersion' | 'oldBinVersion' | 'service'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   _empty?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   getFeaturesArray?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>;
   isFeatureEnabled?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType, RequireFields<QueryIsFeatureEnabledArgs, 'featureName'>>;
-  isUpdateAvailable?: Resolver<ResolversTypes['ServiceUpdateData'], ParentType, ContextType, RequireFields<QueryIsUpdateAvailableArgs, 'service' | 'serviceBinVersion'>>;
+  isUpdateAvailable?: Resolver<ResolversTypes['ServiceUpdateData'], ParentType, ContextType, RequireFields<QueryIsUpdateAvailableArgs, 'binVersion' | 'service'>>;
   job?: Resolver<Maybe<ResolversTypes['Job']>, ParentType, ContextType, RequireFields<QueryJobArgs, 'id'>>;
   jobs?: Resolver<Maybe<Array<Maybe<ResolversTypes['Job']>>>, ParentType, ContextType>;
   sidebarCollapsed?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -604,9 +604,8 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type ServiceUpdateDataResolvers<ContextType = any, ParentType extends ResolversParentTypes['ServiceUpdateData'] = ResolversParentTypes['ServiceUpdateData']> = {
-  currentBuildVersion?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  existingLightningServiceDir?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  latestDownloadableBuildVersion?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>;
+  currentVersion?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  latestAvailableService?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
