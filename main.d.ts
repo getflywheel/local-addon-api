@@ -1539,7 +1539,7 @@ declare module '@getflywheel/local/main' {
 
 			certificateTrustStatus(site: Local.Site): Promise<any>;
 
-			static generateCert(domain: any, certsPath: any): Promise<SiteCerts>;
+			static generateCert(domains: Array<string> | string, certsPath: any): Promise<SiteCerts | void>;
 
 			static generateSiteCert(site: Local.Site, force?: boolean): Promise<void>;
 		}
