@@ -2,7 +2,9 @@
 declare module '@getflywheel/local/main' {
 
 	import * as Local from '@getflywheel/local';
-	import { ExecFileOptions, ChildProcess, ExecOptions } from 'child_process';
+	import {
+		ExecFileOptions, ChildProcess, ExecOptions, Serializable, SendHandle, MessageOptions,
+	} from 'child_process';
 	import * as Awilix from 'awilix';
 	import * as Electron from 'electron';
 	import * as Winston from 'winston';
@@ -91,6 +93,28 @@ declare module '@getflywheel/local/main' {
 	 */
 	export function replaceInFileAsync(file: string, replacements: any, replaceStreamArgs?: any): Promise<void>;
 
+	export type CustomSend<T extends Serializable> = {
+		(message: T, callback?: ((error: Error | null) => void)): boolean;
+		(message: T, sendHandle?: SendHandle, callback?: ((error: Error | null) => void)): boolean;
+		(message: T, sendHandle?: SendHandle, options?: MessageOptions, callback?:
+		((error: Error | null) => void)): boolean;
+	};
+
+	export interface WorkerForkMessage {
+		siteMessage?: string;
+		siteID?: string;
+		notify?: {
+			title?: string;
+			body?: string;
+			click?: string;
+		};
+		result?: any;
+	}
+
+	export interface WorkerFork<T extends Serializable> extends Omit<ChildProcess, 'send'> {
+		send: CustomSend<T>;
+	}
+
 	/**
 	 * Helper function to create a forked child process.
 	 *
@@ -103,7 +127,9 @@ declare module '@getflywheel/local/main' {
 	 * @param execPath path to file that should be executed
 	 * @param envVarDependencies environment variables that need to be copied over to forked process
 	 */
-	export function workerFork(execPath, envVarDependencies: Local.GenericObject): ChildProcess;
+	export function workerFork<T extends Serializable>(
+		execPath: string, envVarDependencies: Local.GenericObject
+	): WorkerFork<T> | undefined;
 
 	export type ChildProcessMessagePromiseHelper = <T>(name: string, payload?: any) => Promise<T>;
 	/**
