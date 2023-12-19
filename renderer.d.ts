@@ -132,17 +132,6 @@ declare module '@getflywheel/local/renderer' {
 	}
 	export class WPEStore {
 		/**
-		 * SSH Fingerprint used to determine if a new SSH Key needs to be generated
-		 * @see app/renderer/connect/wpengine/hooks/handleSSHKeyGeneration.ts:82
-		 */
-		sshFingerprint: string | null;
-
-		/**
-		 * SSH Public Key used to connect to WPE SSH Gateway
-		 */
-		sshPublicKey: string | null;
-
-		/**
 		 * Observable WPE Authentication status
 		 */
 		authed: boolean;
@@ -161,10 +150,6 @@ declare module '@getflywheel/local/renderer' {
 		 * @note the presence of an accountId means that a user/pass has authenticated with CAPI
 		 */
 		constructor();
-
-		loadSSHFingerprint(): Promise<void>;
-
-		loadSSHPublicKey(): Promise<void>;
 
 		/**
 		 * Is there an Account ID set or available from the main thread?
@@ -279,14 +264,14 @@ declare module '@getflywheel/local/renderer' {
 		};
 		process: NodeJS.Process;
 		electron: typeof Electron;
-		request: any;
 		fileSystem: any;
 		fileSystemJetpack: any;
 		notifier: {
 			notify: ({ title, message, open }: {
-				title: any;
-				message: any;
-				open: any;
+				title?: string;
+				message?: string;
+				/** url to open via shell.openExternal */
+				open?: string;
 			}) => void;
 		};
 		React: typeof React;

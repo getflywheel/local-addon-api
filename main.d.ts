@@ -9,8 +9,9 @@ declare module '@getflywheel/local/main' {
 	import * as Electron from 'electron';
 	import * as Winston from 'winston';
 	import * as os from 'os';
-	import type { GraphQLSchema, DocumentNode } from 'graphql';
-	import type { IResolvers } from 'graphql-tools';
+	import type { DocumentNode } from 'graphql';
+	import type { RequestInit as NodeFetchRequestInit } from 'node-fetch';
+	import type { IResolvers } from '@graphql-tools/utils';
 	import type { PubSub } from 'graphql-subscriptions';
 	import type { ApolloClient } from 'apollo-boost';
 	import type fetch from 'cross-fetch';
@@ -28,6 +29,8 @@ declare module '@getflywheel/local/main' {
 		os: typeof os
 		siteData: Services.SiteDataService
 		featureFlags: Services.FeatureFlagService
+		cache: Services.Cache
+		httpGateway: Services.HttpGateway
 		userData: typeof UserData
 		sendIPCEvent: typeof sendIPCEvent
 		addIpcAsyncListener: typeof addIpcAsyncListener
@@ -166,14 +169,44 @@ declare module '@getflywheel/local/main' {
 		static reformatSites () : void;
 	}
 
+	export interface GetOpts {
+		name: string;
+		defaults?: Local.GenericObject;
+		includeCreatedTime?: boolean;
+		persistDefaults?: boolean;
+		persistDefaultsEncrypted?: boolean;
+	}
+
+	export interface SetOpts {
+		name: string;
+		data: Local.GenericObject;
+		encrypted?: boolean;
+	}
+
 	export class UserData {
-		static getPath(optionGroup: any): any;
+		static getPath(name: string): string;
 
-		static get(optionGroup: any, defaults?: {}, includeCreatedTime?: boolean, persistDefaults?: boolean): any;
+		static get(
+			name: string,
+			defaults?: Local.GenericObject,
+			includeCreatedTime?: boolean,
+			persistDefaults?: boolean,
+			persistDefaultsEncrypted?: boolean,
+		): any;
 
-		static set(optionGroup: any, data: any): any;
+		// eslint-disable-next-line no-dupe-class-members
+		static get(opts: GetOpts): any;
 
-		static remove(optionGroup: any): any;
+		static set(
+			name: string,
+			data?: Local.GenericObject,
+			encrypted?: boolean,
+		): void;
+
+		// eslint-disable-next-line no-dupe-class-members
+		static set(opts: SetOpts): void;
+
+		static remove(name: string): any;
 	}
 
 	export interface SelectableSiteService {
@@ -863,14 +896,14 @@ declare module '@getflywheel/local/main' {
 		};
 		process: NodeJS.Process;
 		electron: typeof Electron;
-		request: any;
 		fileSystem: any;
 		fileSystemJetpack: any;
 		notifier: {
 			notify: ({ title, message, open }: {
-				title: any;
-				message: any;
-				open: any;
+				title?: string;
+				message?: string;
+				/** url to open via shell.openExternal */
+				open?: string;
 			}) => void;
 		};
 		events: {
@@ -904,6 +937,13 @@ declare module '@getflywheel/local/main' {
 		sidebarCollapsed?: boolean;
 	}
 
+	export const WpeEnvironmentEnum = {
+		Production: 'production',
+		Staging: 'staging',
+		Development: 'development',
+	} as const;
+	export type WpeEnvironmentEnum = typeof WpeEnvironmentEnum[keyof typeof WpeEnvironmentEnum];
+
 	export interface WPEConnectArgs {
 		includeSql?: boolean
 		requiresProvisioning?: boolean
@@ -912,7 +952,7 @@ declare module '@getflywheel/local/main' {
 		wpengineSiteId: string
 		wpenginePrimaryDomain: string
 		localSiteId: string
-		environment?: import('../main/capi/client/api').SiteInstalls.EnvironmentEnum
+		environment?: WpeEnvironmentEnum
 		files?: string[],
 		isMagicSync?: boolean,
 	}
@@ -984,10 +1024,26 @@ declare module '@getflywheel/local/main' {
 			getState(): IAppState;
 		}
 
+		export class Cache {
+			get(key: string): unknown;
+
+			has(key: string): boolean;
+
+			set(key: string, val: unknown, expires?: number, now?: number): Cache;
+		}
+
 		export class FeatureFlagService {
 			isFeatureEnabled(feature: string): boolean;
 
 			getFeaturesArray(): { [key: string]: boolean };
+		}
+
+		export class HttpGateway {
+			bodyRequest(url: string): Promise<NodeJS.ReadableStream>;
+
+			lengthRequest(url: string): Promise<number>;
+
+			jsonRequest(url: string, init?: NodeFetchRequestInit, expires?: number): Promise<any>;
 		}
 
 		export class LightningServices {
@@ -1090,7 +1146,7 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export interface IHandledError {
-			error: typeof Error
+			error: Error
 			message: string
 			dialogTitle: string
 			dialogMessage: string
@@ -1129,6 +1185,26 @@ declare module '@getflywheel/local/main' {
 				serviceBinVersion: LightningService['binVersion'],
 				restartRouter?: boolean,
 			): Promise<void>;
+
+			siteProcessManager: ServiceContainerServices['siteProcessManager'];
+
+			siteDatabase: ServiceContainerServices['siteDatabase'];
+
+			sendIPCEvent: ServiceContainerServices['sendIPCEvent'];
+
+			ipcMain: ServiceContainerServices['electron']['ipcMain'];
+
+			logger: ServiceContainerServices['localLogger'];
+
+			dialog: LocalMain.ServiceContainerServices['electron']['dialog'];
+
+			ports: LocalMain.ServiceContainerServices['ports'];
+
+			configTemplates: LocalMain.ServiceContainerServices['configTemplates'];
+
+			lightningServices: LocalMain.ServiceContainerServices['lightningServices'];
+
+			errorHandler: LocalMain.ServiceContainerServices['errorHandler'];
 		}
 
 		export interface StopSiteOptions {
@@ -1142,7 +1218,7 @@ declare module '@getflywheel/local/main' {
 
 			stop(site: Local.Site, opts?: StopSiteOptions): Promise<void>;
 
-			stopSites(siteIds: Local.Site['id'][]): Promise<void>;
+			stopSites(siteIds: Local.Site['id'][], opts?: StopSiteOptions): Promise<void>;
 
 			restart(site: Local.Site): Promise<void>;
 
@@ -1683,7 +1759,7 @@ declare module '@getflywheel/local/main' {
 
 			registerGraphQLService(
 				serviceId: string,
-				schema?: GraphQLSchema | DocumentNode,
+				typeDefs?: DocumentNode,
 				resolvers?: IResolvers
 			) : void;
 		}

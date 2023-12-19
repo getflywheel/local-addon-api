@@ -1,6 +1,6 @@
 {
 	"name": "@getflywheel/local",
-	"version": "8.0.0",
+	"version": "8.2.0",
 	"dependencies": {
 		"@types/node": "^18.15.0",
 		"apollo-boost": "^0.1.21",

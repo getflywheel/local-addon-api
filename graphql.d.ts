@@ -15,67 +15,70 @@ import { SiteServiceRole } from '@getflywheel/local';
 import { HostId } from '@getflywheel/local';
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 export type Maybe<T> = T;
+export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 export type EnumResolverSignature<T, AllowedValues = any> = { [key in keyof T]?: AllowedValues };
-export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  EpochTimestamp: any;
-  JSON: any;
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  EpochTimestamp: { input: any; output: any; }
+  JSON: { input: any; output: any; }
 };
 
 export type AddSiteInput = {
-  blueprint?: Maybe<Scalars['String']>;
-  database?: Maybe<Scalars['String']>;
-  domain: Scalars['String'];
-  environment?: Maybe<SiteEnvironment>;
-  goToSite?: Scalars['Boolean'];
-  multiSite?: Maybe<MultiSite>;
-  name: Scalars['String'];
-  path: Scalars['String'];
-  phpVersion?: Maybe<Scalars['String']>;
-  skipWPInstall?: Maybe<Scalars['Boolean']>;
-  webServer?: Maybe<Scalars['String']>;
-  wpAdminEmail: Scalars['String'];
-  wpAdminPassword: Scalars['String'];
-  wpAdminUsername: Scalars['String'];
-  xdebugEnabled?: Maybe<Scalars['Boolean']>;
+  blueprint?: InputMaybe<Scalars['String']['input']>;
+  database?: InputMaybe<Scalars['String']['input']>;
+  domain: Scalars['String']['input'];
+  environment?: InputMaybe<SiteEnvironment>;
+  goToSite?: Scalars['Boolean']['input'];
+  multiSite?: InputMaybe<MultiSite>;
+  name: Scalars['String']['input'];
+  path: Scalars['String']['input'];
+  phpVersion?: InputMaybe<Scalars['String']['input']>;
+  skipWPInstall?: InputMaybe<Scalars['Boolean']['input']>;
+  webServer?: InputMaybe<Scalars['String']['input']>;
+  wpAdminEmail: Scalars['String']['input'];
+  wpAdminPassword: Scalars['String']['input'];
+  wpAdminUsername: Scalars['String']['input'];
+  xdebugEnabled?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-
 export type HostConnection = {
-  accountId?: Maybe<Scalars['String']>;
+  accountId?: Maybe<Scalars['String']['output']>;
   hostId?: Maybe<HostId>;
-  remoteSiteEnv?: Maybe<Scalars['JSON']>;
-  remoteSiteId?: Maybe<Scalars['String']>;
+  remoteSiteEnv?: Maybe<Scalars['JSON']['output']>;
+  remoteSiteId?: Maybe<Scalars['String']['output']>;
 };
 
 export { HostId };
 
 export type Job = {
-  error?: Maybe<Scalars['JSON']>;
-  id: Scalars['ID'];
-  logs?: Maybe<Scalars['String']>;
+  error?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  logs?: Maybe<Scalars['String']['output']>;
   status: JobStatus;
 };
 
-export type JobStatus = 
+export type JobStatus =
   | 'created'
   | 'failed'
   | 'running'
   | 'successful';
 
-
 export { MultiSite };
 
 export type Mutation = {
   /** Placeholder field so the schema can be extended. */
-  _empty?: Maybe<Scalars['String']>;
+  _empty?: Maybe<Scalars['String']['output']>;
   addSite?: Maybe<Job>;
   /** Create a site group. */
   createSiteGroup: SiteGroup;
@@ -97,9 +100,9 @@ export type Mutation = {
   /** Set explicit open state for a group. Defaults to false, or closed. */
   setGroupOpen: SiteGroup;
   /** Set explicit open state for the sites sidebar */
-  setSidebarCollapsed: Scalars['Boolean'];
+  setSidebarCollapsed: Scalars['Boolean']['output'];
   /** Set the value for sorting sites by last started timestamp. */
-  setSortSitesByLastStarted: Scalars['Boolean'];
+  setSortSitesByLastStarted: Scalars['Boolean']['output'];
   /** Start Live Link Pro for the specified site. */
   startLiveLink?: Maybe<SiteLiveLinkSettings>;
   /** Start services for the specified site. */
@@ -107,7 +110,7 @@ export type Mutation = {
   /** Start services for the specified sites. */
   startSites?: Maybe<Array<Maybe<Site>>>;
   /** Stops all running sites. */
-  stopAllSites?: Maybe<Scalars['Boolean']>;
+  stopAllSites?: Maybe<Scalars['Boolean']['output']>;
   /** Stop Live Link Pro for the specified site. */
   stopLiveLink?: Maybe<SiteLiveLinkSettings>;
   /** Stop services for the specified site. Note, this will also handle dumping the site database. */
@@ -123,120 +126,120 @@ export type MutationAddSiteArgs = {
 
 
 export type MutationCreateSiteGroupArgs = {
-  index?: Maybe<Scalars['Int']>;
-  name: Scalars['String'];
-  open?: Maybe<Scalars['Boolean']>;
-  siteIds?: Maybe<Array<Scalars['String']>>;
+  index?: InputMaybe<Scalars['Int']['input']>;
+  name: Scalars['String']['input'];
+  open?: InputMaybe<Scalars['Boolean']['input']>;
+  siteIds?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 
 export type MutationDeleteSiteGroupArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type MutationDeleteSitesFromGroupsArgs = {
-  siteIds: Array<Scalars['String']>;
+  siteIds: Array<Scalars['String']['input']>;
 };
 
 
 export type MutationMoveGroupToIndexArgs = {
-  id: Scalars['ID'];
-  index: Scalars['Int'];
+  id: Scalars['ID']['input'];
+  index: Scalars['Int']['input'];
 };
 
 
 export type MutationMoveSitesToGroupArgs = {
-  id: Scalars['ID'];
-  siteIds: Array<Scalars['String']>;
+  id: Scalars['ID']['input'];
+  siteIds: Array<Scalars['String']['input']>;
 };
 
 
 export type MutationRenameSiteArgs = {
-  id: Scalars['ID'];
-  name: Scalars['String'];
+  id: Scalars['ID']['input'];
+  name: Scalars['String']['input'];
 };
 
 
 export type MutationRenameSiteGroupArgs = {
-  id: Scalars['ID'];
-  name: Scalars['String'];
+  id: Scalars['ID']['input'];
+  name: Scalars['String']['input'];
 };
 
 
 export type MutationRestartSiteArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type MutationRestartSitesArgs = {
-  ids: Array<Maybe<Scalars['ID']>>;
+  ids: Array<InputMaybe<Scalars['ID']['input']>>;
 };
 
 
 export type MutationSetGroupOpenArgs = {
-  id: Scalars['ID'];
-  open?: Maybe<Scalars['Boolean']>;
+  id: Scalars['ID']['input'];
+  open?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 export type MutationSetSidebarCollapsedArgs = {
-  sidebarCollapsed: Scalars['Boolean'];
+  sidebarCollapsed: Scalars['Boolean']['input'];
 };
 
 
 export type MutationSetSortSitesByLastStartedArgs = {
-  sortSitesByLastStarted: Scalars['Boolean'];
+  sortSitesByLastStarted: Scalars['Boolean']['input'];
 };
 
 
 export type MutationStartLiveLinkArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type MutationStartSiteArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type MutationStartSitesArgs = {
-  ids: Array<Maybe<Scalars['ID']>>;
+  ids: Array<InputMaybe<Scalars['ID']['input']>>;
 };
 
 
 export type MutationStopLiveLinkArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type MutationStopSiteArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type MutationUpdateSiteArgs = {
-  id: Scalars['ID'];
-  sitePartial?: Maybe<Scalars['JSON']>;
+  id: Scalars['ID']['input'];
+  sitePartial?: InputMaybe<Scalars['JSON']['input']>;
 };
 
 
 export type MutationUpgradeLightningServiceArgs = {
-  newBinVersion: Scalars['String'];
-  oldBinVersion: Scalars['String'];
-  service: Scalars['String'];
+  newBinVersion: Scalars['String']['input'];
+  oldBinVersion: Scalars['String']['input'];
+  service: Scalars['String']['input'];
 };
 
 export type Query = {
   /** Placeholder field so the schema can be extended. */
-  _empty?: Maybe<Scalars['String']>;
-  getFeaturesArray?: Maybe<Scalars['JSON']>;
-  isFeatureEnabled?: Maybe<Scalars['Boolean']>;
+  _empty?: Maybe<Scalars['String']['output']>;
+  getFeaturesArray?: Maybe<Scalars['JSON']['output']>;
+  isFeatureEnabled?: Maybe<Scalars['Boolean']['output']>;
   isUpdateAvailable: ServiceUpdateData;
   job?: Maybe<Job>;
   jobs?: Maybe<Array<Maybe<Job>>>;
   /** Whether the sites sidebar should be opened or collapsed. */
-  sidebarCollapsed: Scalars['Boolean'];
+  sidebarCollapsed: Scalars['Boolean']['output'];
   site?: Maybe<Site>;
   /** Get a site group by ID. */
   siteGroup: SiteGroup;
@@ -245,122 +248,122 @@ export type Query = {
   sites: Array<Site>;
   sitesByIds: Array<Site>;
   /** Determine whether or not the site's sidebar should be sorted by the time's sites were last started. */
-  sortSitesByLastStarted: Scalars['Boolean'];
+  sortSitesByLastStarted: Scalars['Boolean']['output'];
 };
 
 
 export type QueryIsFeatureEnabledArgs = {
-  featureName: Scalars['String'];
+  featureName: Scalars['String']['input'];
 };
 
 
 export type QueryIsUpdateAvailableArgs = {
-  binVersion: Scalars['String'];
+  binVersion: Scalars['String']['input'];
   service: SiteServiceRole;
 };
 
 
 export type QueryJobArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type QuerySiteArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type QuerySiteGroupArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ID']['input'];
 };
 
 
 export type QuerySitesByIdsArgs = {
-  ids: Array<Scalars['ID']>;
+  ids: Array<Scalars['ID']['input']>;
 };
 
 export type ServiceUpdateData = {
-  currentVersion?: Maybe<Scalars['String']>;
-  latestAvailableService?: Maybe<Scalars['JSON']>;
+  currentVersion?: Maybe<Scalars['String']['output']>;
+  latestAvailableService?: Maybe<Scalars['JSON']['output']>;
 };
 
 export type Site = {
-  domain: Scalars['String'];
-  host: Scalars['String'];
+  domain: Scalars['String']['output'];
+  host: Scalars['String']['output'];
   hostConnections?: Maybe<Array<Maybe<HostConnection>>>;
-  httpPort?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
+  httpPort?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
   liveLinkSettings?: Maybe<SiteLiveLinkSettings>;
-  localVersion?: Maybe<Scalars['String']>;
-  longPath: Scalars['String'];
+  localVersion?: Maybe<Scalars['String']['output']>;
+  longPath: Scalars['String']['output'];
   multiSite?: Maybe<MultiSite>;
-  multiSiteDomains?: Maybe<Array<Maybe<Scalars['String']>>>;
+  multiSiteDomains?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   mysql?: Maybe<SiteMySqlInfo>;
-  name: Scalars['String'];
-  oneClickAdminDisplayName?: Maybe<Scalars['String']>;
-  oneClickAdminID?: Maybe<Scalars['Int']>;
-  path: Scalars['String'];
+  name: Scalars['String']['output'];
+  oneClickAdminDisplayName?: Maybe<Scalars['String']['output']>;
+  oneClickAdminID?: Maybe<Scalars['Int']['output']>;
+  path: Scalars['String']['output'];
   paths: SitePaths;
   services?: Maybe<Array<Maybe<SiteService>>>;
-  siteLastStartedTimestamp?: Maybe<Scalars['EpochTimestamp']>;
+  siteLastStartedTimestamp?: Maybe<Scalars['EpochTimestamp']['output']>;
   status: SiteStatus;
-  url: Scalars['String'];
-  workspace?: Maybe<Scalars['String']>;
-  xdebugEnabled?: Maybe<Scalars['Boolean']>;
+  url: Scalars['String']['output'];
+  workspace?: Maybe<Scalars['String']['output']>;
+  xdebugEnabled?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type SiteEnvironment = 
+export type SiteEnvironment =
   | 'custom'
   | 'preferred';
 
 export type SiteGroup = {
   /** Random ShortId. Default 'Sites' group will have an id of 'default' */
-  id: Scalars['ID'];
+  id: Scalars['ID']['output'];
   /** Position of the group in a list of all other groups. Index starting at 0. */
-  index: Scalars['Int'];
+  index: Scalars['Int']['output'];
   /** Group name */
-  name: Scalars['String'];
+  name: Scalars['String']['output'];
   /** Whether a site group is collapsed, used in the front end */
-  open?: Maybe<Scalars['Boolean']>;
+  open?: Maybe<Scalars['Boolean']['output']>;
   /** Array of site ids belonging to a group */
-  siteIds: Array<Scalars['String']>;
+  siteIds: Array<Scalars['String']['output']>;
 };
 
 export type SiteLiveLinkSettings = {
-  basicAuthPassword?: Maybe<Scalars['String']>;
-  basicAuthUsername?: Maybe<Scalars['String']>;
-  subdomain?: Maybe<Scalars['String']>;
+  basicAuthPassword?: Maybe<Scalars['String']['output']>;
+  basicAuthUsername?: Maybe<Scalars['String']['output']>;
+  subdomain?: Maybe<Scalars['String']['output']>;
 };
 
 export type SiteMySqlInfo = {
-  database?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
-  user?: Maybe<Scalars['String']>;
+  database?: Maybe<Scalars['String']['output']>;
+  password?: Maybe<Scalars['String']['output']>;
+  user?: Maybe<Scalars['String']['output']>;
 };
 
 export type SitePaths = {
-  app?: Maybe<Scalars['String']>;
-  conf?: Maybe<Scalars['String']>;
-  confTemplates?: Maybe<Scalars['String']>;
-  logs?: Maybe<Scalars['String']>;
-  runData?: Maybe<Scalars['String']>;
-  sql?: Maybe<Scalars['String']>;
-  webRoot?: Maybe<Scalars['String']>;
+  app?: Maybe<Scalars['String']['output']>;
+  conf?: Maybe<Scalars['String']['output']>;
+  confTemplates?: Maybe<Scalars['String']['output']>;
+  logs?: Maybe<Scalars['String']['output']>;
+  runData?: Maybe<Scalars['String']['output']>;
+  sql?: Maybe<Scalars['String']['output']>;
+  webRoot?: Maybe<Scalars['String']['output']>;
 };
 
 export type SiteService = {
-  name: Scalars['String'];
-  ports?: Maybe<Scalars['JSON']>;
+  name: Scalars['String']['output'];
+  ports?: Maybe<Scalars['JSON']['output']>;
   role?: Maybe<SiteServiceRole>;
   type?: Maybe<SiteServiceType>;
-  version: Scalars['String'];
+  version: Scalars['String']['output'];
 };
 
 export { SiteServiceRole };
 
 export { SiteServiceType };
 
-export type SiteStatus = 
+export type SiteStatus =
   | 'adding'
   | 'backing_up'
   | 'cloning'
@@ -394,15 +397,15 @@ export type SiteStatus =
 
 export type Subscription = {
   /** Placeholder field so the schema can be extended. */
-  _empty?: Maybe<Scalars['String']>;
+  _empty?: Maybe<Scalars['String']['output']>;
   siteStatusChanged?: Maybe<Site>;
-  sitesUpdated?: Maybe<Array<Site>>;
   siteUpdated?: Maybe<Site>;
+  sitesUpdated?: Maybe<Array<Site>>;
 };
 
 
 export type SubscriptionSiteUpdatedArgs = {
-  id?: Maybe<Scalars['ID']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
@@ -410,19 +413,10 @@ export type SubscriptionSiteUpdatedArgs = {
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
 
-export type LegacyStitchingResolver<TResult, TParent, TContext, TArgs> = {
-  fragment: string;
+export type ResolverWithResolve<TResult, TParent, TContext, TArgs> = {
   resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
 };
-
-export type NewStitchingResolver<TResult, TParent, TContext, TArgs> = {
-  selectionSet: string;
-  resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
-};
-export type StitchingResolver<TResult, TParent, TContext, TArgs> = LegacyStitchingResolver<TResult, TParent, TContext, TArgs> | NewStitchingResolver<TResult, TParent, TContext, TArgs>;
-export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
-  | ResolverFn<TResult, TParent, TContext, TArgs>
-  | StitchingResolver<TResult, TParent, TContext, TArgs>;
+export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> = ResolverFn<TResult, TParent, TContext, TArgs> | ResolverWithResolve<TResult, TParent, TContext, TArgs>;
 
 export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -436,7 +430,7 @@ export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
-) => AsyncIterator<TResult> | Promise<AsyncIterator<TResult>>;
+) => AsyncIterable<TResult> | Promise<AsyncIterable<TResult>>;
 
 export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -481,18 +475,20 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>;
 
+
+
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   AddSiteInput: AddSiteInput;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  EpochTimestamp: ResolverTypeWrapper<Scalars['EpochTimestamp']>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  EpochTimestamp: ResolverTypeWrapper<Scalars['EpochTimestamp']['output']>;
   HostConnection: ResolverTypeWrapper<HostConnection>;
   HostId: HostId;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
+  ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  Int: ResolverTypeWrapper<Scalars['Int']['output']>;
+  JSON: ResolverTypeWrapper<Scalars['JSON']['output']>;
   Job: ResolverTypeWrapper<Job>;
   JobStatus: JobStatus;
-  JSON: ResolverTypeWrapper<Scalars['JSON']>;
   MultiSite: MultiSite;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
@@ -507,20 +503,20 @@ export type ResolversTypes = {
   SiteServiceRole: SiteServiceRole;
   SiteServiceType: SiteServiceType;
   SiteStatus: SiteStatus;
-  String: ResolverTypeWrapper<Scalars['String']>;
+  String: ResolverTypeWrapper<Scalars['String']['output']>;
   Subscription: ResolverTypeWrapper<{}>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   AddSiteInput: AddSiteInput;
-  Boolean: Scalars['Boolean'];
-  EpochTimestamp: Scalars['EpochTimestamp'];
+  Boolean: Scalars['Boolean']['output'];
+  EpochTimestamp: Scalars['EpochTimestamp']['output'];
   HostConnection: HostConnection;
-  ID: Scalars['ID'];
-  Int: Scalars['Int'];
+  ID: Scalars['ID']['output'];
+  Int: Scalars['Int']['output'];
+  JSON: Scalars['JSON']['output'];
   Job: Job;
-  JSON: Scalars['JSON'];
   Mutation: {};
   Query: {};
   ServiceUpdateData: ServiceUpdateData;
@@ -530,7 +526,7 @@ export type ResolversParentTypes = {
   SiteMySQLInfo: SiteMySqlInfo;
   SitePaths: SitePaths;
   SiteService: SiteService;
-  String: Scalars['String'];
+  String: Scalars['String']['output'];
   Subscription: {};
 };
 
@@ -548,6 +544,10 @@ export type HostConnectionResolvers<ContextType = any, ParentType extends Resolv
 
 export type HostIdResolvers = EnumResolverSignature<{ flywheel?: any, wpe?: any }, ResolversTypes['HostId']>;
 
+export interface JsonScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['JSON'], any> {
+  name: 'JSON';
+}
+
 export type JobResolvers<ContextType = any, ParentType extends ResolversParentTypes['Job'] = ResolversParentTypes['Job']> = {
   error?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
@@ -555,10 +555,6 @@ export type JobResolvers<ContextType = any, ParentType extends ResolversParentTy
   status?: Resolver<ResolversTypes['JobStatus'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
-
-export interface JsonScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['JSON'], any> {
-  name: 'JSON';
-}
 
 export type MultiSiteResolvers = EnumResolverSignature<{ No?: any, Subdir?: any, Subdomain?: any }, ResolversTypes['MultiSite']>;
 
@@ -685,16 +681,16 @@ export type SiteServiceTypeResolvers = EnumResolverSignature<{ lightning?: any }
 export type SubscriptionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = {
   _empty?: SubscriptionResolver<Maybe<ResolversTypes['String']>, "_empty", ParentType, ContextType>;
   siteStatusChanged?: SubscriptionResolver<Maybe<ResolversTypes['Site']>, "siteStatusChanged", ParentType, ContextType>;
+  siteUpdated?: SubscriptionResolver<Maybe<ResolversTypes['Site']>, "siteUpdated", ParentType, ContextType, Partial<SubscriptionSiteUpdatedArgs>>;
   sitesUpdated?: SubscriptionResolver<Maybe<Array<ResolversTypes['Site']>>, "sitesUpdated", ParentType, ContextType>;
-  siteUpdated?: SubscriptionResolver<Maybe<ResolversTypes['Site']>, "siteUpdated", ParentType, ContextType, RequireFields<SubscriptionSiteUpdatedArgs, never>>;
 };
 
 export type Resolvers<ContextType = any> = {
   EpochTimestamp?: GraphQLScalarType;
   HostConnection?: HostConnectionResolvers<ContextType>;
   HostId?: HostIdResolvers;
-  Job?: JobResolvers<ContextType>;
   JSON?: GraphQLScalarType;
+  Job?: JobResolvers<ContextType>;
   MultiSite?: MultiSiteResolvers;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
@@ -710,11 +706,5 @@ export type Resolvers<ContextType = any> = {
   Subscription?: SubscriptionResolvers<ContextType>;
 };
 
-
-/**
- * @deprecated
- * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
- */
-export type IResolvers<ContextType = any> = Resolvers<ContextType>;
 
 }
