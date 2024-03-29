@@ -3,7 +3,7 @@ declare module '@getflywheel/local/main' {
 
 	import * as Local from '@getflywheel/local';
 	import {
-		ExecFileOptions, ChildProcess, ExecOptions, Serializable, SendHandle, MessageOptions,
+		ExecFileOptions, ChildProcess, Serializable, SendHandle, MessageOptions, SpawnOptions,
 	} from 'child_process';
 	import * as Awilix from 'awilix';
 	import * as Electron from 'electron';
@@ -24,6 +24,7 @@ declare module '@getflywheel/local/main' {
 
 	export interface ServiceContainerServices {
 		addonLoader: Services.AddonLoader
+		appEvent: Services.AppEvent
 		adminer: Services.Adminer
 		electron: typeof Electron
 		os: typeof os
@@ -68,6 +69,7 @@ declare module '@getflywheel/local/main' {
 		liveLinksMuPlugin: Services.LiveLinksMuPlugin
 		localHubClient: ApolloClient<{ uri: string; fetch: typeof fetch }>
 		analyticsV2: Services.AnalyticsV2Service
+		userEvent: Services.UserEvent
 		graphql: Services.GraphQLService
 		jobs: Services.JobsService
 		runSiteSQLCmd: (args: { site: Local.Site; query: string; additionalArgs?: string[]; }) => Promise<string>
@@ -976,9 +978,9 @@ declare module '@getflywheel/local/main' {
 		/** Array of flags/args to send to the ssh command */
 		sshArgs?: string[];
 		/** Command to execute remotely as a single string, like 'wp plugin list' */
-		command: string;
-		/** ExecOptions are options passed to the exec command. Common would include CWD */
-		execOptions?: ExecOptions;
+		command?: string;
+		/** SpawnOptions are options passed to the exec command. Common would include CWD */
+		spawnOptions?: SpawnOptions;
 	}
 
 	/**
@@ -1008,6 +1010,10 @@ declare module '@getflywheel/local/main' {
 			isAddonLoaded(name: any, version: any): any;
 		}
 
+		export class AppEvent {
+			listen(): void;
+		}
+
 		export class Adminer {
 			listen(): void;
 
@@ -1024,15 +1030,19 @@ declare module '@getflywheel/local/main' {
 			getState(): IAppState;
 		}
 
-		export class Cache {
-			get(key: string): unknown;
+		export class Cache<ValueType = unknown> {
+			get(key: string): ValueType;
 
 			has(key: string): boolean;
 
-			set(key: string, val: unknown, expires?: number, now?: number): Cache;
+			set(key: string, val: ValueType, expires?: number, now?: number): Cache<ValueType>;
+
+			delete(key: string): Cache<ValueType>;
 		}
 
 		export class FeatureFlagService {
+			listen(): void;
+
 			isFeatureEnabled(feature: string): boolean;
 
 			getFeaturesArray(): { [key: string]: boolean };
@@ -1047,6 +1057,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class LightningServices {
+			listen(): void;
+
 			registerService(service: typeof LightningService, serviceName: string, binVersion: string) : void;
 
 			deregisterService(serviceName: string, binVersion: string) : void;
@@ -1164,6 +1176,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class SiteProvisioner {
+			listen(): void;
+
 			/**
 			 * Check that the necessary VC Redists are installed if the user is running Windows.
 			 *
@@ -1213,6 +1227,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class SiteProcessManager {
+			listen(): void;
+
 			start(site: Local.Site, updateStatus?: boolean,
 				compileConfigs?: boolean, restartRouter?: boolean, useCheckPorts?: boolean): Promise<void>;
 
@@ -1250,6 +1266,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class SitesOrganizationService {
+			listen(): void;
+
 			saveSortData({ siteId, sortData }: {
 				siteId: string,
 				sortData: { siteLastStartedTimestamp: number }
@@ -1407,6 +1425,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class ChangeSiteDomain {
+			listen(): void;
+
 			getSelectedSite(): Local.Site | null;
 
 			changeSiteDomainToHost(site?: Local.Site | null): Promise<void>;
@@ -1428,6 +1448,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class ImportSite {
+			listen(): void;
+
 			run(importSiteSettings: IImportSiteSettings): Promise<any>;
 
 			connectV2 (importSiteSettings: any) : any;
@@ -1523,9 +1545,26 @@ declare module '@getflywheel/local/main' {
 			createBackup(installId: string, description: string): Promise<void>;
 
 			purgeCache(installId: string, type: any): Promise<void>;
+
+			// Explicitly typed as shape of CAPI `Installation` is not being inferred correctly.
+			getInstall(installId: string): Promise<{
+				id: string;
+				name: string;
+				account: { id?: string; };
+				phpVersion: string | null;
+				status?: 'active' | 'pending';
+				site?: { id?: string; } | null;
+				cname?: string;
+				stableIps?: Array<string> | null;
+				environment?: 'production' | 'staging' |'development';
+				primaryDomain?: string | null;
+				isMultisite?: boolean | null;
+			}>;
 		}
 
 		export class Rsync {
+			listen(): void;
+
 			/**
 			 * Given an RsyncRunArgs object, spawns the rsync process with the provided args inside of CWD.
 			 * Logs any data to stdout or stderror via the Local Logger.
@@ -1537,6 +1576,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class SiteShellEntry {
+			listen(): void;
+
 			launch(site: Local.Site): Promise<void>;
 
 			createShellEntry(site: Local.Site): Promise<void>;
@@ -1545,6 +1586,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class BrowserManager {
+			listen(): void;
+
 			getAvailableBrowsers() : Promise<string[]>;
 
 			openInBrowser(siteUrl: string): void;
@@ -1724,6 +1767,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class Blueprints {
+			listen(): void;
+
 			saveBlueprint({ name, siteId, filter }: IBlueprintsOptions): void;
 		}
 
@@ -1748,7 +1793,9 @@ declare module '@getflywheel/local/main' {
 			onDestroy(): void;
 		}
 
-		export class LiveLinks extends LiveLinksBase {}
+		export class LiveLinks extends LiveLinksBase {
+			listen(): void;
+		}
 
 		export class AnalyticsV2Service {}
 
@@ -1765,6 +1812,8 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class JobsService {
+			listen(): void;
+
 			addJob(meta: Local.GenericObject): Job;
 		}
 
@@ -1772,6 +1821,8 @@ declare module '@getflywheel/local/main' {
 			PUBSUB_TOPIC_SITES_UPDATED:string;
 
 			PUBSUB_TOPIC_SITE_UPDATED: string;
+
+			listen(): void;
 
 			getSites(): Local.Sites;
 
@@ -1794,6 +1845,10 @@ declare module '@getflywheel/local/main' {
 			reformatSites () : void;
 
 			removeHostConnections (host: string) : void;
+		}
+
+		export class UserEvent {
+			listen(): void;
 		}
 	}
 

@@ -125,7 +125,7 @@ declare module '@getflywheel/local/renderer' {
 		updateSelectedCreateSiteFlow(flow: string): void;
 	}
 
-	export interface WPEAccountInfo {
+	export interface WPEUserInfo {
 		userId?: string
 		wpeEmail?: string
 		error?: string
@@ -140,7 +140,7 @@ declare module '@getflywheel/local/renderer' {
 		 * Observable WPE Account ID
 		 * Obtained from WPE CAPI client with valid username and password
 		 */
-		accountId: string | undefined;
+		userId: string | undefined;
 
 		/**
 		 * Class constructor
@@ -163,7 +163,7 @@ declare module '@getflywheel/local/renderer' {
 		 *
 		 * @param {string} accountId
 		 */
-		setAuthenticationStatus(accountInfo?: WPEAccountInfo): Promise<void>;
+		setAuthenticationStatus(accountInfo?: WPEUserInfo): Promise<void>;
 
 		removeUser(): Promise<void>;
 	}

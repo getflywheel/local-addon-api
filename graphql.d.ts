@@ -54,9 +54,13 @@ export type AddSiteInput = {
 
 export type HostConnection = {
   accountId?: Maybe<Scalars['String']['output']>;
+  database?: Maybe<Scalars['Boolean']['output']>;
+  databaseOnly?: Maybe<Scalars['Boolean']['output']>;
   hostId?: Maybe<HostId>;
+  magicSync?: Maybe<Scalars['Boolean']['output']>;
   remoteSiteEnv?: Maybe<Scalars['JSON']['output']>;
   remoteSiteId?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 export { HostId };
@@ -382,6 +386,7 @@ export type SiteStatus =
   | 'pulling_provisioning'
   | 'pulling_request_backup'
   | 'pushing'
+  | 'pushing_creating'
   | 'pushing_preparing'
   | 'pushing_processing'
   | 'pushing_v2'
@@ -536,9 +541,13 @@ export interface EpochTimestampScalarConfig extends GraphQLScalarTypeConfig<Reso
 
 export type HostConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['HostConnection'] = ResolversParentTypes['HostConnection']> = {
   accountId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  database?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  databaseOnly?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   hostId?: Resolver<Maybe<ResolversTypes['HostId']>, ParentType, ContextType>;
+  magicSync?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   remoteSiteEnv?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>;
   remoteSiteId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  userId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
