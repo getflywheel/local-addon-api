@@ -1036,8 +1036,6 @@ declare module '@getflywheel/local/main' {
 			has(key: string): boolean;
 
 			set(key: string, val: ValueType, expires?: number, now?: number): Cache<ValueType>;
-
-			delete(key: string): Cache<ValueType>;
 		}
 
 		export class FeatureFlagService {
