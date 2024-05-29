@@ -425,7 +425,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly configTemplatePath: string | null;
+		get configTemplatePath() : string | null;
 
 		/**
 		 * @returns Path to config templates after they've been copied to the site directory.
@@ -442,7 +442,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly bins: { [K in LightningServicePlatform]?: { [bin: string]: string } };
+		get bins() : { [K in LightningServicePlatform]?: { [bin: string]: string } };
 
 		/**
 		 * @returns Paths to binaries for service on current platform.
@@ -456,7 +456,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly socket: string | null;
+		get socket() : string | null;
 
 		/**
 		 * @remarks
@@ -466,7 +466,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly env : NodeJS.ProcessEnv;
+		get env() : NodeJS.ProcessEnv;
 
 		/**
 		 * @remarks
@@ -476,7 +476,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly $PATHs: { [K in LightningServicePlatform]?: string };
+		get $PATHs() : { [K in LightningServicePlatform]?: string };
 
 		/**
 		 * @returns Path to be used in $PATH for current platform.
@@ -490,7 +490,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly configVariables: ConfigVariables;
+		get configVariables() : ConfigVariables;
 
 		/**
 		 * @see LocalSiteJSON.ports
@@ -499,7 +499,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly requiredPorts: { [portKey: string]: Local.SitePort };
+		get requiredPorts() : { [portKey: string]: Local.SitePort };
 
 		/**
 		 * @see LocalSiteJSON.ports
@@ -557,7 +557,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly siteShellStartupPOSIX: string;
+		get siteShellStartupPOSIX() : string;
 
 		/**
 		 * @remarks
@@ -567,7 +567,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		readonly siteShellStartupBat: string;
+		get siteShellStartupBat() : string;
 
 		/**
 		 * Ran before a service is started for the first time.
