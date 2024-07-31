@@ -56,6 +56,7 @@ declare module '@getflywheel/local/main' {
 		siteShellEntry: Services.SiteShellEntry
 		browserManager: Services.BrowserManager
 		wpCli: Services.WpCli
+		vsCode: Services.VSCode
 		ports: Services.Ports
 		configTemplates: Services.ConfigTemplates
 		localLogger: Winston.Logger
@@ -1607,6 +1608,12 @@ declare module '@getflywheel/local/main' {
 
 		export interface WpPlugin extends WpTheme{
 			file: string;
+		}
+
+		export class VSCode {
+			listen(): void;
+
+			isInstalled(site: Local.SiteJSON): Promise<boolean>;
 		}
 
 		export class WpCli {
