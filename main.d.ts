@@ -23,6 +23,7 @@ declare module '@getflywheel/local/main' {
 	export const getServiceContainer: () => ServiceContainer;
 
 	export interface ServiceContainerServices {
+		wordpressAPIService: Services.WordpressAPIService
 		addonLoader: Services.AddonLoader
 		appEvent: Services.AppEvent
 		adminer: Services.Adminer
@@ -1220,6 +1221,17 @@ declare module '@getflywheel/local/main' {
 			errorHandler: LocalMain.ServiceContainerServices['errorHandler'];
 		}
 
+		export interface WordpressLanguageTranslation {
+			label: string;
+			value: string;
+		}
+
+		export class WordpressAPIService {
+			listen(): void;
+
+			getWordpressTranslations() : Promise<WordpressLanguageTranslation[]>;
+		}
+
 		export interface StopSiteOptions {
 			dumpDatabase?: boolean;
 			updateStatus?: boolean;
@@ -1467,6 +1479,7 @@ declare module '@getflywheel/local/main' {
 			wpCredentials: IWPCredentials;
 			goToSite: boolean;
 			installWP?: boolean;
+			siteLanguage?: string;
 		}
 
 		export class AddSite {
@@ -1477,6 +1490,7 @@ declare module '@getflywheel/local/main' {
 				wpCredentials,
 				goToSite,
 				installWP,
+				siteLanguage
 			}: IAddSite): Promise<Local.Site>;
 
 			finishAddingSite(site: Local.Site): void;

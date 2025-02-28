@@ -424,4 +424,74 @@ declare module '@getflywheel/local' {
 		body: string;
 	}
 
+	/**
+	 * An individual WordPress translation pack
+	 */
+	export interface WPTranslation {
+		/**
+		 * The language slug for this translation
+		 */
+		language: string;
+
+		/**
+		 * The WordPress version this translation is for.
+		 */
+		version: string;
+
+		/**
+		 * Date the translation was last updated, in MySQL datetime format.
+		 * For example: '2016-06-29 08:59:03'
+		 */
+		updated: string;
+
+		/**
+		 * English name of the language.
+		 */
+		english_name: string;
+
+		/**
+		 * Native name of the language.
+		 */
+		native_name: string;
+
+		/**
+		 * URL to download the translation package.
+		 * For example: 'https://downloads.wordpress.org/translation/core/6.7/el.zip'
+		 */
+		package: string;
+
+		/**
+		 * Array of ISO 639 language codes.
+		 *
+		 * The shape will look something like:
+		 *
+         *     "iso": {
+         *       "1": "dz",
+         *       "2": "dzo"
+         *     },
+		 *
+		 * - https://en.wikipedia.org/wiki/ISO_639
+		 */
+		iso: {
+			[key: string]: string;
+		};
+
+		// Array of translated strings used in the installation process.
+		strings: {
+			[key: string]: string;
+		};
+	}
+
+	/**
+	 * A response from the WordPress.org Translation installation API.
+	 *
+	 * There's not much canonical info about this API endpoint, but
+     * these resources should help:
+	 *
+	 * - https://codex.wordpress.org/WordPress.org_API#Translations
+	 * - https://developer.wordpress.org/reference/functions/translations_api/#return
+	 */
+	export interface WPTranslationsResponse {
+		translations: WPTranslation[];
+	}
 }
