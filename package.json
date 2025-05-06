@@ -1,8 +1,8 @@
 {
 	"name": "@getflywheel/local",
-	"version": "9.2.2",
+	"version": "9.2.4",
 	"dependencies": {
-		"@types/node": "^18.18.0",
+		"@types/node": "^22.14.0",
 		"apollo-boost": "^0.1.21",
 		"awilix": "^4.2.5",
 		"cross-fetch": "^3.1.5",
@@ -22,11 +22,11 @@
 		"README.md"
 	],
 	"scripts": {
-		"generate-typedocs": "typedoc --includeDeclarations --excludeExternals --mode file index.d.ts main.d.ts renderer.d.ts graphql.d.ts --out ./typedocs"
+		"generate-typedocs": "typedoc"
 	},
 	"types": "types.d.ts",
 	"devDependencies": {
-		"typedoc": "0.22.15",
-		"typescript": "^3.8.3"
+		"typedoc": "^0.22.18",
+		"typescript": "^4.7.4"
 	}
 }

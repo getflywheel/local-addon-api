@@ -13,7 +13,7 @@ declare module '@getflywheel/local/main' {
 	import type { RequestInit as NodeFetchRequestInit } from 'node-fetch';
 	import type { IResolvers } from '@graphql-tools/utils';
 	import type { PubSub } from 'graphql-subscriptions';
-	import type { ApolloClient } from 'apollo-boost';
+	import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 	import type fetch from 'cross-fetch';
 	import type { SiteGroup } from '@getflywheel/local/graphql';
 
@@ -69,7 +69,7 @@ declare module '@getflywheel/local/main' {
 		lightningServices: Services.LightningServices
 		liveLinks: Services.LiveLinks
 		liveLinksMuPlugin: Services.LiveLinksMuPlugin
-		localHubClient: ApolloClient<{ uri: string; fetch: typeof fetch }>
+		localHubClient: ApolloClient<NormalizedCacheObject>
 		analyticsV2: Services.AnalyticsV2Service
 		userEvent: Services.UserEvent
 		graphql: Services.GraphQLService
@@ -836,11 +836,15 @@ declare module '@getflywheel/local/main' {
 	export interface IImportData {
 		wpVersion?: string,
 		multiSiteInfo?: any,
-		oldSite?: any
-		fileDir?: string
-		sql?: any
-		metadata?: any
-		type?: string
+		oldSite?: any,
+		fileDir?: string,
+
+		/**
+		 * An array of paths to SQL files to be imported.
+		 */
+		sql?: string[],
+		metadata?: any,
+		type?: string,
 	}
 
 	/**
@@ -1490,7 +1494,7 @@ declare module '@getflywheel/local/main' {
 				wpCredentials,
 				goToSite,
 				installWP,
-				siteLanguage
+				siteLanguage,
 			}: IAddSite): Promise<Local.Site>;
 
 			finishAddingSite(site: Local.Site): void;
