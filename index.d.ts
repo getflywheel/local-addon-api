@@ -325,6 +325,52 @@ declare module '@getflywheel/local' {
 	}
 
 	/**
+	* A url pointing to a ReleaseManifest. Will be either the "latest" ReleaseManifest or a specific one.
+	*
+	* @example
+	* https://cdn.localwp.com/stable/updates.json
+	*
+	* @example
+	* https://cdn.localwp.com/releases-stable/9.2.3+6776/updates.json
+	*/
+	export type ReleaseManifestUrl = string;
+
+	/**
+	* A url to a single PlatformReleaseManifest
+	*
+	* @example
+	* https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac-arm64.json
+	*/
+	export type PlatformReleaseManifestUrl = string;
+
+	/**
+	* A collection of PlatformReleaseManifestUrls for various platforms of a specific release.
+	*
+	* This data represents a successful response from a ReleaseManifestUrl.
+	*
+	* @example
+	*     {
+	*       "darwin-x64-production": {
+	*         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac.json"
+	*       },
+	*       "darwin-arm64-production": {
+	*         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac-arm64.json"
+	*       },
+	*       "win32-x64-production": {
+	*         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-windows.json"
+	*       },
+	*       "win32-ia32-production": {
+	*         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-windows.json"
+	*       }
+	*     }
+	*/
+	export interface ReleaseManifest {
+		[key: string]: {
+			update: PlatformReleaseManifestUrl;
+		}
+	}
+
+	/**
  	 * This is the percentage of users that should update to this Local version.
  	 */
 	export type RolloutPercentage = number;
@@ -336,9 +382,23 @@ declare module '@getflywheel/local' {
 	export type AutoupdateEnabled = boolean;
 
 	/**
-	 * Local reads from this file to learn about a new Local release.
+	 * Release details for a specific platform and version of Local.
+     *
+	 * @example
+     *     {
+     *       "url": "https://cdn.localwp.com/releases-stable/9.2.4+6788/local-9.2.4-mac-arm64.zip",
+     *       "name": "9.2.4",
+     *       "notes": "",
+     *       "changelogUrl": "https://localwp.com/releases/9.2.4/",
+     *       "pub_date": "2025-04-17T15:07:31Z",
+     *       "size": "",
+     *       "rollout": {
+     *         "rolloutPercentage": 25,
+     *         "autoUpdate": true
+     *       }
+     *     }
      */
-	export interface ReleaseManifest {
+	export interface PlatformReleaseManifest {
 		/**
 		 * URL for the Local release zip.
 	 	 */
