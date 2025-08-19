@@ -23,6 +23,7 @@ declare module '@getflywheel/local/main' {
 	export const getServiceContainer: () => ServiceContainer;
 
 	export interface ServiceContainerServices {
+		deepLink: DeepLinkService
 		wordpressAPIService: Services.WordpressAPIService
 		addonLoader: Services.AddonLoader
 		appEvent: Services.AppEvent
@@ -990,6 +991,60 @@ declare module '@getflywheel/local/main' {
 	}
 
 	/**
+	 * A deep link url within the Local App.
+	 *
+	 * Local registers the `flywheel-local://` protocol with the OS.
+	 */
+	export type DeepLinkUrl = string;
+
+	/**
+	 * Unique identifier for a deep link route
+	 */
+	export type DeepLinkName = string;
+
+	/**
+	 * RegExp or string pattern to match URLs
+	 *
+	 * @example
+	 * // pattern with wildcard support:
+	 * flywheel-local://sites/*\/action\/*
+	 * @example
+	 * // regex
+	 * /^flywheel-local:\/\/sites\/([^\/]+)\/open$/
+	 */
+	export type DeepLinkPattern = string | RegExp;
+
+	/**
+	 * Optional priority for route matching. Lower numbers = higher priority.
+	 * 0 is highest priority, defaults to 10.
+	 */
+	export type DeepLinkPriority = number;
+
+	/**
+	 * Handler function for a matched deep link url.
+	 */
+	export type DeepLinkHandler = (
+		url: DeepLinkUrl,
+		parsedUrl: URL,
+		params: URLSearchParams,
+	) => void | Promise<void>;
+
+	export interface DeepLinkRoute {
+		name: DeepLinkName;
+
+		pattern: DeepLinkPattern;
+
+		handler: DeepLinkHandler;
+
+		/**
+		 * Optional description of the route. Logged during registration and useful for debugging.
+		 */
+		description?: string;
+
+		priority?: DeepLinkPriority;
+	}
+
+	/**
 	 * Modules for Service Container
 	 *
 	 * The typings here exclude the constructor and any properties in services that are used to reference other
@@ -1042,6 +1097,20 @@ declare module '@getflywheel/local/main' {
 			has(key: string): boolean;
 
 			set(key: string, val: ValueType, expires?: number, now?: number): Cache<ValueType>;
+		}
+
+		export class DeepLinkService {
+			registerRoute(
+				name: DeepLinkName,
+				pattern: DeepLinkPattern,
+				handler: DeepLinkHandler,
+				description?: string,
+				priority?: DeepLinkPriority,
+			): void
+
+			unregisterRoute(name: DeepLinkName): boolean;
+
+			async handleUrl(url: DeepLinkUrl): Promise<boolean>;
 		}
 
 		export class FeatureFlagService {
@@ -1269,7 +1338,7 @@ declare module '@getflywheel/local/main' {
 		export class SiteDatabase {
 			listen(): void;
 
-			dump(site: Local.Site, destination?: string): Promise<string>;
+			dump(site: Local.Site, destination?: string, options?: any): Promise<string>;
 
 			waitForDB(site: Local.Site, noPassword?: boolean): Promise<boolean>;
 
