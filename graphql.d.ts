@@ -375,6 +375,7 @@ export type SiteStatus =
   | 'copying'
   | 'creating'
   | 'deleting'
+  | 'downloading_backup'
   | 'exporting'
   | 'exporting_db'
   | 'halted'

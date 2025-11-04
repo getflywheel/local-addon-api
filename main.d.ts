@@ -23,6 +23,7 @@ declare module '@getflywheel/local/main' {
 	export const getServiceContainer: () => ServiceContainer;
 
 	export interface ServiceContainerServices {
+		backupService: Services.BackupService
 		deepLink: DeepLinkService
 		wordpressAPIService: Services.WordpressAPIService
 		addonLoader: Services.AddonLoader
