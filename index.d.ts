@@ -59,6 +59,17 @@ declare module '@getflywheel/local' {
 		sitesPath: string;
 		tld: string;
 	};
+
+	/**
+	 * The human readable name of a Local site. Can include spaces.
+	 *
+	 * A site name used within the Local UI and as a source for deriving things like a site path or site domain.
+	 *
+	 * @example "Vinyl Destination"
+	 * @example "Larry's Web Shoppe"
+	 */
+	type SiteName = string;
+
 	/**
 	 * Commonly used arguments for site creation (new site, pulling, importing, etc).
 	 */
@@ -76,11 +87,44 @@ declare module '@getflywheel/local' {
 		xdebugEnabled?: boolean
 	}
 
+	/**
+	 * The Lightning Services of the site
+	 *
+	 * @example
+	 *   {
+	 *     "php": {
+	 *       "name": "php",
+	 *       "version": "8.2.27",
+	 *       ...
+	 *      },
+	 *      "nginx": {
+	 *        "name": "nginx",
+	 *        "version": "1.26.1",
+	 *        ...
+	 *      },
+	 *      "mysql": {
+	 *        "name": "mysql",
+	 *        "version": "8.0.35",
+	 *        ...
+	 *      },
+	 *      ...
+	 *   }
+	 */
 	export type SiteServices = { [serviceName: string]: SiteService };
 
 	export type SitePort = number;
 	export type SiteStatus = LocalGraphQL.SiteStatus;
 
+	/**
+	 * A JSON representation of a site.
+	 *
+	 * SiteJSON has a fairly wide interface because it represents many
+     * of the properties that used to exist on a site and which are
+     * saved to the disk in the userData folder. Many of these
+     * properties made sense when Local used docker and exist as
+     * deprecated properites to document some of the things you might
+     * encounter when working with old site data.
+	 */
 	export interface SiteJSON extends Omit<
 	LocalGraphQL.Site,
 	'services'
@@ -92,7 +136,7 @@ declare module '@getflywheel/local' {
 	| 'url'
 	| 'host'
 	> {
-		services: { [serviceName: string]: LocalGraphQL.SiteService };
+		services: SiteServices;
 
 		hostConnections?: LocalGraphQL.Site['hostConnections'] | null;
 
@@ -100,19 +144,87 @@ declare module '@getflywheel/local' {
 
 		customOptions?: GenericObject;
 
-		/* Deprecated */
-		flywheelConnect?: string
-		sslSHA1?: string
-		clonedImage?: string
-		devMode?: boolean
-		container?: string
-		phpVersion?: string
-		mysqlVersion?: string
-		webServer?: string
-		database?: string
+		/**
+		 * @deprecated
+		 */
+		flywheelConnect?: string;
+
+		/**
+		 * @deprecated
+		 */
+		sslSHA1?: string;
+
+		/**
+		 * @deprecated
+		 */
+		clonedImage?: string;
+
+		/**
+		 * @deprecated
+		 */
+		devMode?: boolean;
+
+		/**
+		 * @deprecated
+		 */
+		container?: string;
+
+		/**
+		 * @deprecated
+		 */
+		phpVersion?: string;
+
+		/**
+		 * @deprecated
+		 */
+		mysqlVersion?: string;
+
+		/**
+		 * @deprecated
+		 */
+		webServer?: string;
+
+		/**
+		 * @deprecated
+		 */
+		database?: string;
+
+		/**
+		 * @deprecated
+		 *
+		 * The original shape looked something like:
+		 * @example
+		 *     ports?: {
+		 *       HTTP?: SitePort,
+		 *       MYSQL?: SitePort,
+		 *       PHP?: SitePort | SitePort[],
+		 *       MAILHOG_WEB?: SitePort,
+		 *       MAILHOG_SMTP?: SitePort,
+		 *       [portName: string]: SitePort | SitePort[]
+		 *     }
+		 */
 		ports?: { [portName: string]: SitePort | SitePort[] }
-		environment?: string
-		environmentVersion?: string
+
+		/**
+		 * The environment for the site to use.
+		 *
+		 * Local still has a concept of "preferred" vs "custom"
+		 * environments, but this value relates to when Local used
+		 * Docker and there were two different images in use:
+		 * `flywheel` (preferred) and `custom`, which was a sort of
+		 * dynamically provisioned collection of containers.
+		 *
+		 * @deprecated
+		 */
+		environment?: string;
+
+		/**
+		 * The environment version for the SiteJSON.environment
+         * setting.
+		 *
+		 * @deprecated
+		 */
+		environmentVersion?: string;
 	}
 
 	export type SitesJSON = { [siteID: string]: SiteJSON };
@@ -120,6 +232,8 @@ declare module '@getflywheel/local' {
 	/**
 	 * This was done because we need the deprecated properties in SiteJSON along with some of the properties in SiteJSON
 	 * such as services, hostConnections, and workspace that differ from the LocalGraphQL.Site type.
+	 *
+	 *
 	 */
 	type SiteBase = Omit<LocalGraphQL.Site,
 	'services' |

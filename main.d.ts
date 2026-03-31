@@ -31,6 +31,7 @@ declare module '@getflywheel/local/main' {
 		adminer: Services.Adminer
 		electron: typeof Electron
 		os: typeof os
+		tempDir: string
 		siteData: Services.SiteDataService
 		featureFlags: Services.FeatureFlagService
 		cache: Services.Cache
@@ -211,6 +212,12 @@ declare module '@getflywheel/local/main' {
 
 		// eslint-disable-next-line no-dupe-class-members
 		static set(opts: SetOpts): void;
+
+		static updateSiteProperty(
+			siteId: string,
+			propertyPath: string,
+			value: string | number | boolean | Record<string, unknown> | null,
+		): Promise<void>;
 
 		static remove(name: string): any;
 	}
@@ -846,6 +853,14 @@ declare module '@getflywheel/local/main' {
 		 */
 		sql?: string[],
 		metadata?: any,
+
+		/**
+		 * A unique, kebab-style string that identifies what kind of an import should be performed
+		 *
+		 * @example "local-export"
+		 * @example "local-blueprint"
+		 * @example "generic-archive"
+		 */
 		type?: string,
 	}
 
