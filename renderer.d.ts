@@ -1,10 +1,7 @@
 /* eslint-disable max-classes-per-file, @typescript-eslint/no-use-before-define */
 
 declare module '@getflywheel/local/renderer' {
-	import {
-		ApolloClient,
-		NormalizedCacheObject,
-	} from '@apollo/client';
+	import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
 	import { DownloaderItemProps } from '@getflywheel/local-components';
 
@@ -21,7 +18,11 @@ declare module '@getflywheel/local/renderer' {
 
 	export class HooksRenderer extends HooksMain {
 		static deprecatedHooks: {
-			content: {match: string | RegExp, replacement: string, version: string}[],
+			content: {
+				match: string | RegExp;
+				replacement: string;
+				version: string;
+			}[];
 		};
 
 		static addContent(hook: any, callback: any, priority?: number): void;
@@ -58,21 +59,23 @@ declare module '@getflywheel/local/renderer' {
 		refreshFlyAPIThrottle(): any;
 	}
 
-	export interface SiteSettings extends Local.NewSiteInfo, Omit<Local.NewSiteDefaults, 'environment'> {}
+	export interface SiteSettings
+		extends Local.NewSiteInfo,
+			Omit<Local.NewSiteDefaults, 'environment'> {}
 
 	export interface CreateSiteStep {
 		disabled?: boolean;
-		key: string,
-		path: string,
-		name?: string,
-		component?: React.ReactNode,
+		key: string;
+		path: string;
+		name?: string;
+		component?: React.ReactNode;
 	}
 
 	export interface CreateSiteRadioOption {
 		[path: string]: {
 			label: string;
 			content: JSX.Element;
-		}
+		};
 	}
 
 	export interface CreateSiteDefinition {
@@ -81,15 +84,15 @@ declare module '@getflywheel/local/renderer' {
 			label: string;
 			description: JSX.Element;
 		};
-		steps: CreateSiteStep[]
+		steps: CreateSiteStep[];
 	}
 	export class CreateSiteStore {
 		siteSettings: SiteSettings;
 
 		/**
-		* Defines the options and steps associated with creating sites.
-		* Initialized with site definitions that live in flywheel-local nested in the 'CreateSite' dir
-		*/
+		 * Defines the options and steps associated with creating sites.
+		 * Initialized with site definitions that live in flywheel-local nested in the 'CreateSite' dir
+		 */
 		createSiteDefinitions: CreateSiteDefinition[];
 
 		/**
@@ -105,30 +108,32 @@ declare module '@getflywheel/local/renderer' {
 		selectedCreateSiteDefinition: CreateSiteDefinition | undefined;
 
 		/**
-		* Build and filter the options for the CreateSite Radio Block
-		*/
+		 * Build and filter the options for the CreateSite Radio Block
+		 */
 		createSiteRadioOptions: CreateSiteRadioOption;
 
 		/**
-		* Gives an array of steps with route fields associated with creating a site.
-		*
-		* Allows defaultSteps to be filtered via CreateSite:Steps filter
-		*/
+		 * Gives an array of steps with route fields associated with creating a site.
+		 *
+		 * Allows defaultSteps to be filtered via CreateSite:Steps filter
+		 */
 		createSiteSteps: CreateSiteStep[];
 
 		resetDefaults(): void;
 
 		updateSiteSettings(newSiteSettings: Partial<SiteSettings>): void;
 
-		updateCreateSiteDefinitions(updatedSiteDefinitions: CreateSiteDefinition[]): void;
+		updateCreateSiteDefinitions(
+			updatedSiteDefinitions: CreateSiteDefinition[],
+		): void;
 
 		updateSelectedCreateSiteFlow(flow: string): void;
 	}
 
 	export interface WPEUserInfo {
-		userId?: string
-		wpeEmail?: string
-		error?: string
+		userId?: string;
+		wpeEmail?: string;
+		error?: string;
 	}
 	export class WPEStore {
 		/**
@@ -204,9 +209,9 @@ declare module '@getflywheel/local/renderer' {
 		SELECTSITE = 'selectsite',
 	}
 	export interface IBanner {
-		id: string,
-		component: React.ReactNode | (() => JSX.Element),
-		domain?: BannerStoreDomain,
+		id: string;
+		component: React.ReactNode | (() => JSX.Element);
+		domain?: BannerStoreDomain;
 	}
 
 	export class BannerStore {
@@ -267,7 +272,11 @@ declare module '@getflywheel/local/renderer' {
 		fileSystem: any;
 		fileSystemJetpack: any;
 		notifier: {
-			notify: ({ title, message, open }: {
+			notify: ({
+				title,
+				message,
+				open,
+			}: {
 				title?: string;
 				message?: string;
 				/** url to open via shell.openExternal */
@@ -283,14 +292,14 @@ declare module '@getflywheel/local/renderer' {
 			get?: (defaultValue?: any) => void;
 			set?: (value: any) => void;
 		};
-		store: RootStore
+		store: RootStore;
 		hooks: typeof HooksRenderer;
 	}
 
 	/** Mobx data stores */
 	export const $offline: {
 		/** offline observable toggled based on user internet connection */
-		offline: boolean,
+		offline: boolean;
 	};
 
 	export const $hub: {
@@ -305,20 +314,20 @@ declare module '@getflywheel/local/renderer' {
 	};
 
 	export interface ConfirmArgs {
-		title: ReactNodeLike
-		message?: ReactNodeLike
-		messageBottom?: ReactNodeLike
-		messageCheckbox?: ReactNodeLike
-		checkboxLabel?: string
-		buttonText?: string
-		buttonDisabled?: boolean
-		onSubmit?: (...any) => any
-		cancelButtonText: string
-		buttonClass: string
-		topIcon: any
-		topIconColor: any
-		largeConfirmButtonText: string
-		showBottomHr: boolean
+		title: ReactNodeLike;
+		message?: ReactNodeLike;
+		messageBottom?: ReactNodeLike;
+		messageCheckbox?: ReactNodeLike;
+		checkboxLabel?: string;
+		buttonText?: string;
+		buttonDisabled?: boolean;
+		onSubmit?: (...any) => any;
+		cancelButtonText: string;
+		buttonClass: string;
+		topIcon: any;
+		topIconColor: any;
+		largeConfirmButtonText: string;
+		showBottomHr: boolean;
 	}
 
 	/**
@@ -329,7 +338,10 @@ declare module '@getflywheel/local/renderer' {
 	 *
 	 * @see LocalMain.addIpcAsyncListener()
 	 */
-	export function ipcAsync(channel: string, ...additionalArgs: any[]): Promise<any>;
+	export function ipcAsync(
+		channel: string,
+		...additionalArgs: any[]
+	): Promise<any>;
 
 	/**
 	 * Utility function to send an IPC event to the renderer.
@@ -374,7 +386,5 @@ declare module '@getflywheel/local/renderer' {
 	 */
 	export const localApolloClient: ApolloClient<NormalizedCacheObject>;
 
-	export function useLocalSitesSubs(
-		subscribeToMore: any
-	): void;
+	export function useLocalSitesSubs(subscribeToMore: any): void;
 }

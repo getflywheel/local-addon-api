@@ -1,6 +1,6 @@
 {
 	"name": "@getflywheel/local",
-	"version": "10.0.0",
+	"version": "10.1.0",
 	"dependencies": {
 		"apollo-boost": "^0.1.21",
 		"awilix": "^4.2.5",

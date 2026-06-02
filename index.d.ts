@@ -1,5 +1,4 @@
 declare module '@getflywheel/local' {
-
 	import * as LocalGraphQL from '@getflywheel/local/graphql';
 
 	export type GenericObject = { [key: string]: any };
@@ -28,7 +27,7 @@ declare module '@getflywheel/local' {
 	export enum MultiSite {
 		No = '',
 		Subdir = 'ms-subdir',
-		Subdomain = 'ms-subdomain'
+		Subdomain = 'ms-subdomain',
 	}
 
 	export enum SiteServiceType {
@@ -40,7 +39,7 @@ declare module '@getflywheel/local' {
 		DATABASE = 'db',
 		PHP = 'php',
 		FRONTEND = 'frontend',
-		OTHER = 'other'
+		OTHER = 'other',
 	}
 
 	export enum AddonStatus {
@@ -74,17 +73,17 @@ declare module '@getflywheel/local' {
 	 * Commonly used arguments for site creation (new site, pulling, importing, etc).
 	 */
 	export interface NewSiteInfo {
-		siteName: string
-		sitePath: string
-		siteDomain: string
-		multiSite: LocalGraphQL.MultiSite
-		phpVersion?: string
-		database?: string
-		environment?: string
-		blueprint?: string
-		webServer?: string
-		customOptions?: GenericObject
-		xdebugEnabled?: boolean
+		siteName: string;
+		sitePath: string;
+		siteDomain: string;
+		multiSite: LocalGraphQL.MultiSite;
+		phpVersion?: string;
+		database?: string;
+		environment?: string;
+		blueprint?: string;
+		webServer?: string;
+		customOptions?: GenericObject;
+		xdebugEnabled?: boolean;
 	}
 
 	/**
@@ -119,23 +118,24 @@ declare module '@getflywheel/local' {
 	 * A JSON representation of a site.
 	 *
 	 * SiteJSON has a fairly wide interface because it represents many
-     * of the properties that used to exist on a site and which are
-     * saved to the disk in the userData folder. Many of these
-     * properties made sense when Local used docker and exist as
-     * deprecated properites to document some of the things you might
-     * encounter when working with old site data.
+	 * of the properties that used to exist on a site and which are
+	 * saved to the disk in the userData folder. Many of these
+	 * properties made sense when Local used docker and exist as
+	 * deprecated properites to document some of the things you might
+	 * encounter when working with old site data.
 	 */
-	export interface SiteJSON extends Omit<
-	LocalGraphQL.Site,
-	'services'
-	| 'hostConnections'
-	| 'status'
-	| 'workspace'
-	| 'paths'
-	| 'longPath'
-	| 'url'
-	| 'host'
-	> {
+	export interface SiteJSON
+		extends Omit<
+			LocalGraphQL.Site,
+			| 'services'
+			| 'hostConnections'
+			| 'status'
+			| 'workspace'
+			| 'paths'
+			| 'longPath'
+			| 'url'
+			| 'host'
+		> {
 		services: SiteServices;
 
 		hostConnections?: LocalGraphQL.Site['hostConnections'] | null;
@@ -203,7 +203,7 @@ declare module '@getflywheel/local' {
 		 *       [portName: string]: SitePort | SitePort[]
 		 *     }
 		 */
-		ports?: { [portName: string]: SitePort | SitePort[] }
+		ports?: { [portName: string]: SitePort | SitePort[] };
 
 		/**
 		 * The environment for the site to use.
@@ -220,7 +220,7 @@ declare module '@getflywheel/local' {
 
 		/**
 		 * The environment version for the SiteJSON.environment
-         * setting.
+		 * setting.
 		 *
 		 * @deprecated
 		 */
@@ -235,11 +235,11 @@ declare module '@getflywheel/local' {
 	 *
 	 *
 	 */
-	type SiteBase = Omit<LocalGraphQL.Site,
-	'services' |
-	'hostConnections' |
-	'workspace' |
-	'status'> & SiteJSON;
+	type SiteBase = Omit<
+		LocalGraphQL.Site,
+		'services' | 'hostConnections' | 'workspace' | 'status'
+	> &
+		SiteJSON;
 
 	export class Site implements SiteBase {
 		id: string;
@@ -326,9 +326,9 @@ declare module '@getflywheel/local' {
 
 		getServices(): SiteService[];
 
-		getService(serviceName: string) : SiteService;
+		getService(serviceName: string): SiteService;
 
-		getSiteServiceByRole(role: SiteServiceRole) : SiteService | undefined;
+		getSiteServiceByRole(role: SiteServiceRole): SiteService | undefined;
 
 		readonly longPath: string;
 
@@ -381,7 +381,7 @@ declare module '@getflywheel/local' {
 		autoRestartMaxTries?: number;
 	}
 
-	export function isWindows32Bit () : boolean;
+	export function isWindows32Bit(): boolean;
 
 	/**
 	 * Site banner interface that can be displayed using the 'showSiteBanner' IPC event
@@ -410,7 +410,7 @@ declare module '@getflywheel/local' {
 		};
 	}
 
-	export type SitesOrganization = {[siteId: string]: SiteOrganization};
+	export type SitesOrganization = { [siteId: string]: SiteOrganization };
 
 	export interface AddonPackage {
 		addonDir: string;
@@ -418,10 +418,10 @@ declare module '@getflywheel/local' {
 		bgColor: string;
 		bugs?: { url: string };
 		bundledDependencies: string[];
-		dependencies: {[key: string]: string};
+		dependencies: { [key: string]: string };
 		description: string;
-		devDependencies?: {[key: string]: string};
-		engines: {[key: string]: string};
+		devDependencies?: { [key: string]: string };
+		engines: { [key: string]: string };
 		icon: string;
 		keywords: string[];
 		license: string;
@@ -429,98 +429,98 @@ declare module '@getflywheel/local' {
 		main?: string;
 		name: string;
 		npmPackageName?: string;
-		peerDependencies?: {[key: string]: string};
+		peerDependencies?: { [key: string]: string };
 		productName: string;
 		renderer?: string;
-		repository: {[key: string]: string};
-		scripts?: {[key: string]: string};
+		repository: { [key: string]: string };
+		scripts?: { [key: string]: string };
 		slug: string;
 		version: string;
 	}
 
 	/**
-	* A url pointing to a ReleaseManifest. Will be either the "latest" ReleaseManifest or a specific one.
-	*
-	* @example
-	* https://cdn.localwp.com/stable/updates.json
-	*
-	* @example
-	* https://cdn.localwp.com/releases-stable/9.2.3+6776/updates.json
-	*/
+	 * A url pointing to a ReleaseManifest. Will be either the "latest" ReleaseManifest or a specific one.
+	 *
+	 * @example
+	 * https://cdn.localwp.com/stable/updates.json
+	 *
+	 * @example
+	 * https://cdn.localwp.com/releases-stable/9.2.3+6776/updates.json
+	 */
 	export type ReleaseManifestUrl = string;
 
 	/**
-	* A url to a single PlatformReleaseManifest
-	*
-	* @example
-	* https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac-arm64.json
-	*/
+	 * A url to a single PlatformReleaseManifest
+	 *
+	 * @example
+	 * https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac-arm64.json
+	 */
 	export type PlatformReleaseManifestUrl = string;
 
 	/**
-	* A collection of PlatformReleaseManifestUrls for various platforms of a specific release.
-	*
-	* This data represents a successful response from a ReleaseManifestUrl.
-	*
-	* @example
-	*     {
-	*       "darwin-x64-production": {
-	*         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac.json"
-	*       },
-	*       "darwin-arm64-production": {
-	*         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac-arm64.json"
-	*       },
-	*       "win32-x64-production": {
-	*         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-windows.json"
-	*       },
-	*       "win32-ia32-production": {
-	*         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-windows.json"
-	*       }
-	*     }
-	*/
+	 * A collection of PlatformReleaseManifestUrls for various platforms of a specific release.
+	 *
+	 * This data represents a successful response from a ReleaseManifestUrl.
+	 *
+	 * @example
+	 *     {
+	 *       "darwin-x64-production": {
+	 *         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac.json"
+	 *       },
+	 *       "darwin-arm64-production": {
+	 *         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-mac-arm64.json"
+	 *       },
+	 *       "win32-x64-production": {
+	 *         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-windows.json"
+	 *       },
+	 *       "win32-ia32-production": {
+	 *         "update": "https://cdn.localwp.com/releases-stable/9.2.4+6788/release-windows.json"
+	 *       }
+	 *     }
+	 */
 	export interface ReleaseManifest {
 		[key: string]: {
 			update: PlatformReleaseManifestUrl;
-		}
+		};
 	}
 
 	/**
- 	 * This is the percentage of users that should update to this Local version.
- 	 */
+	 * This is the percentage of users that should update to this Local version.
+	 */
 	export type RolloutPercentage = number;
 
 	/**
 	 * Set to true to have Local detect this version and prompt users to update automatically.
 	 * Set to false to allow users to update manually.
- 	 */
+	 */
 	export type AutoupdateEnabled = boolean;
 
 	/**
 	 * Release details for a specific platform and version of Local.
-     *
+	 *
 	 * @example
-     *     {
-     *       "url": "https://cdn.localwp.com/releases-stable/9.2.4+6788/local-9.2.4-mac-arm64.zip",
-     *       "name": "9.2.4",
-     *       "notes": "",
-     *       "changelogUrl": "https://localwp.com/releases/9.2.4/",
-     *       "pub_date": "2025-04-17T15:07:31Z",
-     *       "size": "",
-     *       "rollout": {
-     *         "rolloutPercentage": 25,
-     *         "autoUpdate": true
-     *       }
-     *     }
-     */
+	 *     {
+	 *       "url": "https://cdn.localwp.com/releases-stable/9.2.4+6788/local-9.2.4-mac-arm64.zip",
+	 *       "name": "9.2.4",
+	 *       "notes": "",
+	 *       "changelogUrl": "https://localwp.com/releases/9.2.4/",
+	 *       "pub_date": "2025-04-17T15:07:31Z",
+	 *       "size": "",
+	 *       "rollout": {
+	 *         "rolloutPercentage": 25,
+	 *         "autoUpdate": true
+	 *       }
+	 *     }
+	 */
 	export interface PlatformReleaseManifest {
 		/**
 		 * URL for the Local release zip.
-	 	 */
+		 */
 		url: string;
 
 		/**
 		 * SemVer compatible Local version.
-	 	 */
+		 */
 		name: string;
 
 		/**
@@ -534,23 +534,23 @@ declare module '@getflywheel/local' {
 		notes?: string;
 
 		/**
-	 	 * A link to the public changelog for this release.
-	 	 */
+		 * A link to the public changelog for this release.
+		 */
 		changelogUrl: string;
 
 		/**
-	 	 * URL to hosted notes about this specific Local release. This page will be embedded into Local using an iframe.
-	 	 */
+		 * URL to hosted notes about this specific Local release. This page will be embedded into Local using an iframe.
+		 */
 		releaseNotesUrl?: string;
 
 		/**
-	 	 * The publish date for this release formatted as an ISO 8601 string.
-	 	 */
+		 * The publish date for this release formatted as an ISO 8601 string.
+		 */
 		pub_date: string;
 
 		/**
-	 	 * Size in bytes of the Local update.
-	 	 */
+		 * Size in bytes of the Local update.
+		 */
 		size: string;
 
 		rollout?: RolloutRules;
@@ -639,10 +639,10 @@ declare module '@getflywheel/local' {
 		 *
 		 * The shape will look something like:
 		 *
-         *     "iso": {
-         *       "1": "dz",
-         *       "2": "dzo"
-         *     },
+		 *     "iso": {
+		 *       "1": "dz",
+		 *       "2": "dzo"
+		 *     },
 		 *
 		 * - https://en.wikipedia.org/wiki/ISO_639
 		 */
@@ -660,7 +660,7 @@ declare module '@getflywheel/local' {
 	 * A response from the WordPress.org Translation installation API.
 	 *
 	 * There's not much canonical info about this API endpoint, but
-     * these resources should help:
+	 * these resources should help:
 	 *
 	 * - https://codex.wordpress.org/WordPress.org_API#Translations
 	 * - https://developer.wordpress.org/reference/functions/translations_api/#return

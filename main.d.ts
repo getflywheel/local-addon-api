@@ -1,9 +1,13 @@
 /* eslint-disable max-classes-per-file, @typescript-eslint/no-use-before-define */
 declare module '@getflywheel/local/main' {
-
 	import * as Local from '@getflywheel/local';
 	import {
-		ExecFileOptions, ChildProcess, Serializable, SendHandle, MessageOptions, SpawnOptions,
+		ExecFileOptions,
+		ChildProcess,
+		Serializable,
+		SendHandle,
+		MessageOptions,
+		SpawnOptions,
 	} from 'child_process';
 	import * as Awilix from 'awilix';
 	import * as Electron from 'electron';
@@ -19,65 +23,70 @@ declare module '@getflywheel/local/main' {
 
 	export { default as gql } from 'graphql-tag';
 
-	export type ServiceContainer = Awilix.AwilixContainer<ServiceContainerServices>;
+	export type ServiceContainer =
+		Awilix.AwilixContainer<ServiceContainerServices>;
 	export const getServiceContainer: () => ServiceContainer;
 
 	export interface ServiceContainerServices {
-		backupService: Services.BackupService
-		deepLink: DeepLinkService
-		wordpressAPIService: Services.WordpressAPIService
-		addonLoader: Services.AddonLoader
-		appEvent: Services.AppEvent
-		adminer: Services.Adminer
-		electron: typeof Electron
-		os: typeof os
-		tempDir: string
-		siteData: Services.SiteDataService
-		featureFlags: Services.FeatureFlagService
-		cache: Services.Cache
-		httpGateway: Services.HttpGateway
-		userData: typeof UserData
-		sendIPCEvent: typeof sendIPCEvent
-		addIpcAsyncListener: typeof addIpcAsyncListener
-		appState: Services.AppState
-		addonInstaller: Services.AddonInstaller
-		downloader: Services.Downloader
-		errorHandler: Services.ErrorHandler
-		siteProvisioner: Services.SiteProvisioner
-		siteProcessManager: Services.SiteProcessManager
-		siteDatabase: Services.SiteDatabase
-		sitesOrganization: Services.SitesOrganizationService
-		changeSiteDomain: Services.ChangeSiteDomain
-		importSite: Services.ImportSite
-		importSQLFile: (site: Local.Site, sqlFile: string) => Promise<string>
-		addSite: Services.AddSite
-		cloneSite: Services.CloneSite
-		exportSite: Services.ExportSite
-		deleteSite: Services.DeleteSite
-		rsync: Services.Rsync
-		ssh: Services.Ssh
-		capi: Services.CAPI
-		siteShellEntry: Services.SiteShellEntry
-		browserManager: Services.BrowserManager
-		wpCli: Services.WpCli
-		vsCode: Services.VSCode
-		ports: Services.Ports
-		configTemplates: Services.ConfigTemplates
-		localLogger: Winston.Logger
-		x509Cert: Services.X509Cert
-		multiSite: Services.MultiSite
-		router: Services.Router
-		formatHomePath: typeof formatHomePath
-		blueprints: Services.Blueprints
-		lightningServices: Services.LightningServices
-		liveLinks: Services.LiveLinks
-		liveLinksMuPlugin: Services.LiveLinksMuPlugin
-		localHubClient: ApolloClient<NormalizedCacheObject>
-		analyticsV2: Services.AnalyticsV2Service
-		userEvent: Services.UserEvent
-		graphql: Services.GraphQLService
-		jobs: Services.JobsService
-		runSiteSQLCmd: (args: { site: Local.Site; query: string; additionalArgs?: string[]; }) => Promise<string>
+		backupService: Services.BackupService;
+		deepLink: DeepLinkService;
+		wordpressAPIService: Services.WordpressAPIService;
+		addonLoader: Services.AddonLoader;
+		appEvent: Services.AppEvent;
+		adminer: Services.Adminer;
+		electron: typeof Electron;
+		os: typeof os;
+		tempDir: string;
+		siteData: Services.SiteDataService;
+		featureFlags: Services.FeatureFlagService;
+		cache: Services.Cache;
+		httpGateway: Services.HttpGateway;
+		userData: typeof UserData;
+		sendIPCEvent: typeof sendIPCEvent;
+		addIpcAsyncListener: typeof addIpcAsyncListener;
+		appState: Services.AppState;
+		addonInstaller: Services.AddonInstaller;
+		downloader: Services.Downloader;
+		errorHandler: Services.ErrorHandler;
+		siteProvisioner: Services.SiteProvisioner;
+		siteProcessManager: Services.SiteProcessManager;
+		siteDatabase: Services.SiteDatabase;
+		sitesOrganization: Services.SitesOrganizationService;
+		changeSiteDomain: Services.ChangeSiteDomain;
+		importSite: Services.ImportSite;
+		importSQLFile: (site: Local.Site, sqlFile: string) => Promise<string>;
+		addSite: Services.AddSite;
+		cloneSite: Services.CloneSite;
+		exportSite: Services.ExportSite;
+		deleteSite: Services.DeleteSite;
+		rsync: Services.Rsync;
+		ssh: Services.Ssh;
+		capi: Services.CAPI;
+		siteShellEntry: Services.SiteShellEntry;
+		browserManager: Services.BrowserManager;
+		wpCli: Services.WpCli;
+		vsCode: Services.VSCode;
+		ports: Services.Ports;
+		configTemplates: Services.ConfigTemplates;
+		localLogger: Winston.Logger;
+		x509Cert: Services.X509Cert;
+		multiSite: Services.MultiSite;
+		router: Services.Router;
+		formatHomePath: typeof formatHomePath;
+		blueprints: Services.Blueprints;
+		lightningServices: Services.LightningServices;
+		liveLinks: Services.LiveLinks;
+		liveLinksMuPlugin: Services.LiveLinksMuPlugin;
+		localHubClient: ApolloClient<NormalizedCacheObject>;
+		analyticsV2: Services.AnalyticsV2Service;
+		userEvent: Services.UserEvent;
+		graphql: Services.GraphQLService;
+		jobs: Services.JobsService;
+		runSiteSQLCmd: (args: {
+			site: Local.Site;
+			query: string;
+			additionalArgs?: string[];
+		}) => Promise<string>;
 	}
 
 	export function sendIPCEvent(channel: string, ...args: any[]): void;
@@ -88,7 +97,10 @@ declare module '@getflywheel/local/main' {
 	 *
 	 * @see LocalRenderer.ipcAsync()
 	 */
-	export function addIpcAsyncListener(channel: string, callback: (...any) => any): void;
+	export function addIpcAsyncListener(
+		channel: string,
+		callback: (...any) => any,
+	): void;
 
 	export function formatHomePath(string: any, untrailingslashit?: boolean): any;
 
@@ -101,13 +113,25 @@ declare module '@getflywheel/local/main' {
 	 * @param replacements Array of replacements to perform: [ [ 'before', 'after' ] ]
 	 * @param replaceStreamArgs Optional arguments for replacestream package.
 	 */
-	export function replaceInFileAsync(file: string, replacements: any, replaceStreamArgs?: any): Promise<void>;
+	export function replaceInFileAsync(
+		file: string,
+		replacements: any,
+		replaceStreamArgs?: any,
+	): Promise<void>;
 
 	export type CustomSend<T extends Serializable> = {
-		(message: T, callback?: ((error: Error | null) => void)): boolean;
-		(message: T, sendHandle?: SendHandle, callback?: ((error: Error | null) => void)): boolean;
-		(message: T, sendHandle?: SendHandle, options?: MessageOptions, callback?:
-		((error: Error | null) => void)): boolean;
+		(message: T, callback?: (error: Error | null) => void): boolean;
+		(
+			message: T,
+			sendHandle?: SendHandle,
+			callback?: (error: Error | null) => void,
+		): boolean;
+		(
+			message: T,
+			sendHandle?: SendHandle,
+			options?: MessageOptions,
+			callback?: (error: Error | null) => void,
+		): boolean;
 	};
 
 	export interface WorkerForkMessage {
@@ -121,7 +145,8 @@ declare module '@getflywheel/local/main' {
 		result?: any;
 	}
 
-	export interface WorkerFork<T extends Serializable> extends Omit<ChildProcess, 'send'> {
+	export interface WorkerFork<T extends Serializable>
+		extends Omit<ChildProcess, 'send'> {
 		send: CustomSend<T>;
 	}
 
@@ -138,23 +163,27 @@ declare module '@getflywheel/local/main' {
 	 * @param envVarDependencies environment variables that need to be copied over to forked process
 	 */
 	export function workerFork<T extends Serializable>(
-		execPath: string, envVarDependencies: Local.GenericObject
+		execPath: string,
+		envVarDependencies: Local.GenericObject,
 	): WorkerFork<T> | undefined;
 
-	export type ChildProcessMessagePromiseHelper = <T>(name: string, payload?: any) => Promise<T>;
+	export type ChildProcessMessagePromiseHelper = <T>(
+		name: string,
+		payload?: any,
+	) => Promise<T>;
 	/**
- 	 * Returns up a helper function to easily communcicate between the main thread and a child thread/process
- 	 * by wrapping an event listener for the "message" event with a promise which allows you to await a "call"
- 	 * to another thread. It also removes the event listener once complete.
- 	 *
- 	 * This pairs nicely with the workerFork helper function
- 	 *
- 	 * @param childProcess childProcess to bind this helper to
- 	 *
- 	 * @returns ChildProcessMessagePromiseHelper
- 	 */
+	 * Returns up a helper function to easily communcicate between the main thread and a child thread/process
+	 * by wrapping an event listener for the "message" event with a promise which allows you to await a "call"
+	 * to another thread. It also removes the event listener once complete.
+	 *
+	 * This pairs nicely with the workerFork helper function
+	 *
+	 * @param childProcess childProcess to bind this helper to
+	 *
+	 * @returns ChildProcessMessagePromiseHelper
+	 */
 	export function childProcessMessagePromiseFactory(
-		childProcess: ChildProcess
+		childProcess: ChildProcess,
 	): ChildProcessMessagePromiseHelper;
 
 	/**
@@ -163,17 +192,20 @@ declare module '@getflywheel/local/main' {
 	export class SiteData {
 		static getSites(): Local.Sites;
 
-		static getSite (siteID: Local.Site['id']) : Local.Site | null;
+		static getSite(siteID: Local.Site['id']): Local.Site | null;
 
-		static getSiteByProperty (property: string, value: any) : Local.Site | null;
+		static getSiteByProperty(property: string, value: any): Local.Site | null;
 
-		static addSite (siteID: Local.Site['id'], site: Local.SiteJSON) : void;
+		static addSite(siteID: Local.Site['id'], site: Local.SiteJSON): void;
 
-		static updateSite (siteID: Local.Site['id'], site: Partial<Local.SiteJSON>) : void;
+		static updateSite(
+			siteID: Local.Site['id'],
+			site: Partial<Local.SiteJSON>,
+		): void;
 
-		static deleteSite (siteID: Local.Site['id']) : void;
+		static deleteSite(siteID: Local.Site['id']): void;
 
-		static reformatSites () : void;
+		static reformatSites(): void;
 	}
 
 	export interface GetOpts {
@@ -227,13 +259,13 @@ declare module '@getflywheel/local/main' {
 		 * @description Name of the Lightning Service
 		 * @TJS-examples ["php"]
 		 */
-		name: string
+		name: string;
 
 		/**
 		 * @description Label of Lightning Service that's suitable for use in a UI
 		 * @TJS-examples ["PHP"]
 		 */
-		label: string
+		label: string;
 
 		/**
 		 * @description Build version of Lightning Service. This is typically the binVersion followed by build metadata.
@@ -241,38 +273,45 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @TJS-examples ["7.3.5+2"]
 		 */
-		version: string
+		version: string;
 
 		/**
 		 * @description Binary version for the service.
 		 *
 		 * @TJS-examples ["7.3.5"]
 		 */
-		binVersion: string
+		binVersion: string;
 	}
 
-	export type RegisteredServices = { [serviceName: string]: { [binVersion: string]: RegisteredService } };
+	export type RegisteredServices = {
+		[serviceName: string]: { [binVersion: string]: RegisteredService };
+	};
 
 	/**
 	 * Registered Services are loaded and registered so downloading the service is not required.
 	 */
 	export interface RegisteredService extends SelectableSiteService {
-		registered: true
+		registered: true;
 
-		platform: LightningServicePlatform
+		platform: LightningServicePlatform;
 	}
 
 	/**
 	 * DownloadableServices, DownloadableService, and ServiceBin can be converted to JSON schema using
-	 * https://github.com/YousefED/typescript-json-schema
+	 * https://github.com/vega/ts-json-schema-generator
 	 *
 	 * Command to generate JSON Schema:
-	 *  typescript-json-schema --required
-	 *      ./DownloadableServices.d.ts DownloadableServices > ./DownloadableServices.schema.json
+	 *  npx ts-json-schema-generator \
+	 *    --path app/api/main.d.ts \
+	 *    --type DownloadableServices | \
+	 *  yarn exec biome format --stdin-file-path=schema.json > \
+	 *    app/shared/types/structures/services/DownloadableServices.schema.json
 	 *
 	 * @description Downloadable/Available Services for Local
 	 */
-	export type DownloadableServices = { [serviceName: string]: { [binVersion: string]: DownloadableService } };
+	export type DownloadableServices = {
+		[serviceName: string]: { [binVersion: string]: DownloadableService };
+	};
 
 	export interface DownloadableService extends SelectableSiteService {
 		/**
@@ -285,8 +324,8 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @TJS-examples ["^5.1.2"]
 			 */
-			'local-by-flywheel': string
-		}
+			'local-by-flywheel': string;
+		};
 
 		/**
 		 * @description Download URL to the core JS and configs for a given service.
@@ -295,25 +334,25 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @TJS-examples ["https://local-cdn.fake-url/lightning/services/php/7.3.5+3/php-7.3.5.tgz"]
 		 */
-		url: string
+		url: string;
 
 		/**
 		 * @description Compressed size (in bytes) of core JS files, configs, etc. (Does not include bins)
 		 * @TJS-type integer
 		 * @TJS-examples [51280]
 		 */
-		size: number
+		size: number;
 
 		/**
 		 * @description Object containing the bin info for each platform. Platforms are optional.
 		 */
 		bins: {
-			['darwin-arm64']?: ServiceBin
-			darwin?: ServiceBin
-			linux?: ServiceBin
-			win32?: ServiceBin
-			win64?: ServiceBin
-		}
+			['darwin-arm64']?: ServiceBin;
+			darwin?: ServiceBin;
+			linux?: ServiceBin;
+			win32?: ServiceBin;
+			win64?: ServiceBin;
+		};
 
 		/**
 		 * @description Date for deprecation of service. If this field exists, the service won't be downloadable
@@ -323,11 +362,13 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @TJS-examples ["2022-10-19T00:00:00z"]
 		 */
-		endOfLife?: string
+		endOfLife?: string;
 	}
 
 	export type AvailableServices = {
-		[serviceName: string]: { [binVersion: string]: DownloadableService | RegisteredService };
+		[serviceName: string]: {
+			[binVersion: string]: DownloadableService | RegisteredService;
+		};
 	};
 
 	interface ServiceBin {
@@ -336,14 +377,14 @@ declare module '@getflywheel/local/main' {
 		 * @TJS-type integer
 		 * @TJS-examples [27355695]
 		 */
-		size: number
+		size: number;
 
 		/**
 		 * @description Compressed size (in bytes) of binaries for a given platform.
 		 * @format uri
 		 * @TJS-examples ["https://local-cdn.fake-url/lightning/services/php/7.3.5+3/bin-darwin.tar.gz"]
 		 */
-		url: string
+		url: string;
 	}
 
 	export enum LightningServicePlatform {
@@ -371,7 +412,7 @@ declare module '@getflywheel/local/main' {
 
 		public _logger: any;
 
-		constructor(_site:Local.Site, _lightningServices: any);
+		constructor(_site: Local.Site, _lightningServices: any);
 
 		/**
 		 * Get properties and computed getters from instance. This is handy for passing the service info from the main
@@ -379,24 +420,25 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @returns Properties and computed getters from instance.
 		 */
-		public toJSON(): Pick<LightningService,
-		'_site'
-		| 'serviceName'
-		| 'binVersion'
-		| 'configTemplatePath'
-		| 'siteConfigTemplatePath'
-		| 'bins'
-		| 'bin'
-		| '$PATH'
-		| '$PATHs'
-		| 'socket'
-		| 'port'
-		| 'ports'
-		| 'env'
-		| 'configVariables'
-		| 'configPath'
-		| 'runPath'
-		| 'logsPath'
+		public toJSON(): Pick<
+			LightningService,
+			| '_site'
+			| 'serviceName'
+			| 'binVersion'
+			| 'configTemplatePath'
+			| 'siteConfigTemplatePath'
+			| 'bins'
+			| 'bin'
+			| '$PATH'
+			| '$PATHs'
+			| 'socket'
+			| 'port'
+			| 'ports'
+			| 'env'
+			| 'configVariables'
+			| 'configPath'
+			| 'runPath'
+			| 'logsPath'
 		>;
 
 		/**
@@ -436,7 +478,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get configTemplatePath() : string | null;
+		get configTemplatePath(): string | null;
 
 		/**
 		 * @returns Path to config templates after they've been copied to the site directory.
@@ -453,7 +495,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get bins() : { [K in LightningServicePlatform]?: { [bin: string]: string } };
+		get bins(): { [K in LightningServicePlatform]?: { [bin: string]: string } };
 
 		/**
 		 * @returns Paths to binaries for service on current platform.
@@ -467,7 +509,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get socket() : string | null;
+		get socket(): string | null;
 
 		/**
 		 * @remarks
@@ -477,7 +519,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get env() : NodeJS.ProcessEnv;
+		get env(): NodeJS.ProcessEnv;
 
 		/**
 		 * @remarks
@@ -487,7 +529,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get $PATHs() : { [K in LightningServicePlatform]?: string };
+		get $PATHs(): { [K in LightningServicePlatform]?: string };
 
 		/**
 		 * @returns Path to be used in $PATH for current platform.
@@ -501,7 +543,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get configVariables() : ConfigVariables;
+		get configVariables(): ConfigVariables;
 
 		/**
 		 * @see LocalSiteJSON.ports
@@ -510,7 +552,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get requiredPorts() : { [portKey: string]: Local.SitePort };
+		get requiredPorts(): { [portKey: string]: Local.SitePort };
 
 		/**
 		 * @see LocalSiteJSON.ports
@@ -568,7 +610,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get siteShellStartupPOSIX() : string;
+		get siteShellStartupPOSIX(): string;
 
 		/**
 		 * @remarks
@@ -578,7 +620,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @getter
 		 */
-		get siteShellStartupBat() : string;
+		get siteShellStartupBat(): string;
 
 		/**
 		 * Ran before a service is started for the first time.
@@ -607,7 +649,7 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @returns Promise
 		 */
-		finalizeNewSite?() : Promise<void>;
+		finalizeNewSite?(): Promise<void>;
 
 		/**
 		 * @returns IProcessOpts[] Necessary processes for a given service.
@@ -620,13 +662,13 @@ declare module '@getflywheel/local/main' {
 		 *
 		 * @returns Promise
 		 */
-		stop?(): Promise<void>
+		stop?(): Promise<void>;
 	}
 
 	export const registerLightningService: (
 		service: typeof LightningService,
-		serviceName:string,
-		binVersion:string,
+		serviceName: string,
+		binVersion: string,
 	) => void;
 
 	export function execFilePromise(
@@ -639,23 +681,23 @@ declare module '@getflywheel/local/main' {
 	 * Downloadable item that can be passed to LocalMain.DownloaderQueue
 	 */
 	export interface DownloaderQueueItem {
-		id?: string
-		size: number
-		url: string
-		label: string
-		extract?: boolean,
-		onCancel?: () => void
-		dest: string
-		status?: 'aborted' | 'waiting' | 'done' | 'in-progress'
+		id?: string;
+		size: number;
+		url: string;
+		label: string;
+		extract?: boolean;
+		onCancel?: () => void;
+		dest: string;
+		status?: 'aborted' | 'waiting' | 'done' | 'in-progress';
 
 		/* bytes downloaded */
-		downloaded?: number
+		downloaded?: number;
 
 		/* md5Hash that the download will be verified against after downloading */
-		md5Hash?: string
+		md5Hash?: string;
 
 		/* Integer (0 to 100) representing progress */
-		progress?: number
+		progress?: number;
 	}
 
 	export class DownloaderQueue {
@@ -663,15 +705,18 @@ declare module '@getflywheel/local/main' {
 
 		public queue: any[];
 
-		static getInstance(id) : DownloaderQueue;
+		static getInstance(id): DownloaderQueue;
 
-		public updateItem(queueItem:DownloaderQueueItem, updated:Partial<DownloaderQueueItem>) : void;
+		public updateItem(
+			queueItem: DownloaderQueueItem,
+			updated: Partial<DownloaderQueueItem>,
+		): void;
 
-		public clear() : void;
+		public clear(): void;
 
-		public addItem(item:DownloaderQueueItem) : void;
+		public addItem(item: DownloaderQueueItem): void;
 
-		public run(args:{ rejectOnCancel: boolean }) : Promise<void>;
+		public run(args: { rejectOnCancel: boolean }): Promise<void>;
 	}
 
 	export class HooksMain {
@@ -690,15 +735,15 @@ declare module '@getflywheel/local/main' {
 	}
 
 	export interface IAppState {
-		siteStatuses: { [siteId: string]: Local.SiteStatus }
-		addons: Local.AddonPackage[]
+		siteStatuses: { [siteId: string]: Local.SiteStatus };
+		addons: Local.AddonPackage[];
 		enabledAddons: { [name: string]: boolean };
-		loadedAddons: Local.AddonPackage[]
+		loadedAddons: Local.AddonPackage[];
 		addonStatuses: { [name: string]: Local.AddonStatus };
-		updatedAddons: Local.AddonPackage['name'][]
-		selectedSites: Local.SiteJSON['id'][]
-		flywheelUser: any
-		flywheelTeams: any
+		updatedAddons: Local.AddonPackage['name'][];
+		selectedSites: Local.SiteJSON['id'][];
+		flywheelUser: any;
+		flywheelTeams: any;
 	}
 
 	/**
@@ -724,7 +769,7 @@ declare module '@getflywheel/local/main' {
 
 		constructor(meta: Local.GenericObject);
 
-		await(promise: Promise<any>) : Promise<Job>;
+		await(promise: Promise<any>): Promise<Job>;
 
 		start(): void;
 
@@ -838,21 +883,21 @@ declare module '@getflywheel/local/main' {
 	 * Importer Interfaces
 	 */
 	export interface IImportSiteSettings extends Local.NewSiteInfo {
-		importData: IImportData
-		zip: string
+		importData: IImportData;
+		zip: string;
 	}
 
 	export interface IImportData {
-		wpVersion?: string,
-		multiSiteInfo?: any,
-		oldSite?: any,
-		fileDir?: string,
+		wpVersion?: string;
+		multiSiteInfo?: any;
+		oldSite?: any;
+		fileDir?: string;
 
 		/**
 		 * An array of paths to SQL files to be imported.
 		 */
-		sql?: string[],
-		metadata?: any,
+		sql?: string[];
+		metadata?: any;
 
 		/**
 		 * A unique, kebab-style string that identifies what kind of an import should be performed
@@ -861,7 +906,7 @@ declare module '@getflywheel/local/main' {
 		 * @example "local-blueprint"
 		 * @example "generic-archive"
 		 */
-		type?: string,
+		type?: string;
 	}
 
 	/**
@@ -886,9 +931,9 @@ declare module '@getflywheel/local/main' {
 				version: string;
 			};
 			nginx?: {
-				name: string,
-				version: string,
-			},
+				name: string;
+				version: string;
+			};
 			apache?: {
 				name: string;
 				version?: string;
@@ -924,7 +969,11 @@ declare module '@getflywheel/local/main' {
 		fileSystem: any;
 		fileSystemJetpack: any;
 		notifier: {
-			notify: ({ title, message, open }: {
+			notify: ({
+				title,
+				message,
+				open,
+			}: {
 				title?: string;
 				message?: string;
 				/** url to open via shell.openExternal */
@@ -951,11 +1000,11 @@ declare module '@getflywheel/local/main' {
 		 * */
 		siteMap: {
 			[siteId: string]: SiteGroup['id'];
-		}
+		};
 		/** Site groups in object format */
 		groups: {
 			[siteGroupId: SiteGroup['id']]: SiteGroup;
-		}
+		};
 		/** Whether to sort sites in a group by last started timestamp. */
 		sortSitesByLastStarted: boolean;
 		/** Open state for the sidebar, as it's collapsable */
@@ -967,19 +1016,20 @@ declare module '@getflywheel/local/main' {
 		Staging: 'staging',
 		Development: 'development',
 	} as const;
-	export type WpeEnvironmentEnum = typeof WpeEnvironmentEnum[keyof typeof WpeEnvironmentEnum];
+	export type WpeEnvironmentEnum =
+		(typeof WpeEnvironmentEnum)[keyof typeof WpeEnvironmentEnum];
 
 	export interface WPEConnectArgs {
-		includeSql?: boolean
-		requiresProvisioning?: boolean
-		wpengineInstallName: string
-		wpengineInstallId: string
-		wpengineSiteId: string
-		wpenginePrimaryDomain: string
-		localSiteId: string
-		environment?: WpeEnvironmentEnum
-		files?: string[],
-		isMagicSync?: boolean,
+		includeSql?: boolean;
+		requiresProvisioning?: boolean;
+		wpengineInstallName: string;
+		wpengineInstallId: string;
+		wpengineSiteId: string;
+		wpenginePrimaryDomain: string;
+		localSiteId: string;
+		environment?: WpeEnvironmentEnum;
+		files?: string[];
+		isMagicSync?: boolean;
 	}
 
 	export interface RsyncRunArgs {
@@ -1072,7 +1122,7 @@ declare module '@getflywheel/local/main' {
 	 * @see ServiceContainer
 	 * @see getServiceContainer()
 	 */
-	export module Services {
+	export namespace Services {
 		export class AddonLoader {
 			loadedAddons: Local.AddonPackage[];
 
@@ -1112,7 +1162,12 @@ declare module '@getflywheel/local/main' {
 
 			has(key: string): boolean;
 
-			set(key: string, val: ValueType, expires?: number, now?: number): Cache<ValueType>;
+			set(
+				key: string,
+				val: ValueType,
+				expires?: number,
+				now?: number,
+			): Cache<ValueType>;
 		}
 
 		export class DeepLinkService {
@@ -1122,11 +1177,11 @@ declare module '@getflywheel/local/main' {
 				handler: DeepLinkHandler,
 				description?: string,
 				priority?: DeepLinkPriority,
-			): void
+			): void;
 
 			unregisterRoute(name: DeepLinkName): boolean;
 
-			async handleUrl(url: DeepLinkUrl): Promise<boolean>;
+			handleUrl(url: DeepLinkUrl): Promise<boolean>;
 		}
 
 		export class FeatureFlagService {
@@ -1142,27 +1197,44 @@ declare module '@getflywheel/local/main' {
 
 			lengthRequest(url: string): Promise<number>;
 
-			jsonRequest(url: string, init?: NodeFetchRequestInit, expires?: number): Promise<any>;
+			jsonRequest(
+				url: string,
+				init?: NodeFetchRequestInit,
+				expires?: number,
+			): Promise<any>;
 		}
 
 		export class LightningServices {
 			listen(): void;
 
-			registerService(service: typeof LightningService, serviceName: string, binVersion: string) : void;
+			registerService(
+				service: typeof LightningService,
+				serviceName: string,
+				binVersion: string,
+			): void;
 
-			deregisterService(serviceName: string, binVersion: string) : void;
+			deregisterService(serviceName: string, binVersion: string): void;
 
 			getMissingServices(site: Local.Site): Array<Local.SiteService>;
 
 			getSiteServices(site: Local.Site): LightningService[];
 
-			getSiteService(site: Local.Site, serviceName: string): LightningService | null;
+			getSiteService(
+				site: Local.Site,
+				serviceName: string,
+			): LightningService | null;
 
-			getSiteServiceByRole(site: Local.Site, role: Local.SiteServiceRole): LightningService | null;
+			getSiteServiceByRole(
+				site: Local.Site,
+				role: Local.SiteServiceRole,
+			): LightningService | null;
 
-			getLatestVersion(serviceName: string, site: Local.Site): LightningService | null;
+			getLatestVersion(
+				serviceName: string,
+				site: Local.Site,
+			): LightningService | null;
 
-			maybeDownload(site: Local.Site) : Promise<DownloaderQueueItem[]>;
+			maybeDownload(site: Local.Site): Promise<DownloaderQueueItem[]>;
 
 			/**
 			 * Retrieves a service from "services" based on a given bin version.
@@ -1175,19 +1247,27 @@ declare module '@getflywheel/local/main' {
 				services?: { [binVersion: string]: ServiceType },
 			): ServiceType | undefined;
 
-			getRequiredDownloads(services: { [service: string]: string }) : Promise<DownloaderQueueItem[]>;
+			getRequiredDownloads(services: {
+				[service: string]: string;
+			}): Promise<DownloaderQueueItem[]>;
 
-			getDownloadableServices(role?: Local.SiteServiceRole) : Promise<DownloadableServices>;
+			getDownloadableServices(
+				role?: Local.SiteServiceRole,
+			): Promise<DownloadableServices>;
 
-			getRegisteredServices(role?: Local.SiteServiceRole) : RegisteredServices;
+			getRegisteredServices(role?: Local.SiteServiceRole): RegisteredServices;
 
-			hasCurrentPlatformBins(bins: LightningService['bins'] | DownloadableService['bins']) : boolean;
+			hasCurrentPlatformBins(
+				bins: LightningService['bins'] | DownloadableService['bins'],
+			): boolean;
 
-			satisfiesEngineRequirement(service: DownloadableService) : boolean;
+			satisfiesEngineRequirement(service: DownloadableService): boolean;
 
-			getServices(role?: Local.SiteServiceRole) : Promise<{
-				[serviceName: string]: { [version: string]: DownloadableService | RegisteredService }
-			}>
+			getServices(role?: Local.SiteServiceRole): Promise<{
+				[serviceName: string]: {
+					[version: string]: DownloadableService | RegisteredService;
+				};
+			}>;
 
 			/**
 			 * Returns the closest Lightning Service string from the provided `AvailableServices`.
@@ -1197,7 +1277,7 @@ declare module '@getflywheel/local/main' {
 			getClosestServiceString(
 				service: string,
 				binVersion: string,
-				services: AvailableServices
+				services: AvailableServices,
 			): string | undefined;
 		}
 
@@ -1232,7 +1312,11 @@ declare module '@getflywheel/local/main' {
 
 			updateAddon(addonName: any, release: any): Promise<void>;
 
-			downloadAndExtractAddon(addon: any, release: any, update: boolean): Promise<unknown>;
+			downloadAndExtractAddon(
+				addon: any,
+				release: any,
+				update: boolean,
+			): Promise<unknown>;
 
 			installFromDisk(zipPath: any): Promise<void>;
 
@@ -1247,11 +1331,11 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export interface IHandledError {
-			error: Error
-			message: string
-			dialogTitle: string
-			dialogMessage: string
-			[metaKey: string]: any
+			error: Error;
+			message: string;
+			dialogTitle: string;
+			dialogMessage: string;
+			[metaKey: string]: any;
 		}
 
 		/**
@@ -1318,7 +1402,7 @@ declare module '@getflywheel/local/main' {
 		export class WordpressAPIService {
 			listen(): void;
 
-			getWordpressTranslations() : Promise<WordpressLanguageTranslation[]>;
+			getWordpressTranslations(): Promise<WordpressLanguageTranslation[]>;
 		}
 
 		export interface StopSiteOptions {
@@ -1329,12 +1413,20 @@ declare module '@getflywheel/local/main' {
 		export class SiteProcessManager {
 			listen(): void;
 
-			start(site: Local.Site, updateStatus?: boolean,
-				compileConfigs?: boolean, restartRouter?: boolean, useCheckPorts?: boolean): Promise<void>;
+			start(
+				site: Local.Site,
+				updateStatus?: boolean,
+				compileConfigs?: boolean,
+				restartRouter?: boolean,
+				useCheckPorts?: boolean,
+			): Promise<void>;
 
 			stop(site: Local.Site, opts?: StopSiteOptions): Promise<void>;
 
-			stopSites(siteIds: Local.Site['id'][], opts?: StopSiteOptions): Promise<void>;
+			stopSites(
+				siteIds: Local.Site['id'][],
+				opts?: StopSiteOptions,
+			): Promise<void>;
 
 			restart(site: Local.Site): Promise<void>;
 
@@ -1346,7 +1438,7 @@ declare module '@getflywheel/local/main' {
 
 			getSiteStatus(site: Local.Site): Local.SiteStatus;
 
-			getSiteStatuses() : { [siteId: string]: Local.SiteStatus };
+			getSiteStatuses(): { [siteId: string]: Local.SiteStatus };
 
 			stopAllSites(opts?: StopSiteOptions): Promise<void>;
 		}
@@ -1354,11 +1446,19 @@ declare module '@getflywheel/local/main' {
 		export class SiteDatabase {
 			listen(): void;
 
-			dump(site: Local.Site, destination?: string, options?: any): Promise<string>;
+			dump(
+				site: Local.Site,
+				destination?: string,
+				options?: any,
+			): Promise<string>;
 
 			waitForDB(site: Local.Site, noPassword?: boolean): Promise<boolean>;
 
-			getTablePrefix(site: Local.Site, allPrefixes?: boolean, useDatabase?: boolean): Promise<string | string[]>;
+			getTablePrefix(
+				site: Local.Site,
+				allPrefixes?: boolean,
+				useDatabase?: boolean,
+			): Promise<string | string[]>;
 
 			runQuery(site: Local.Site, query: string): Promise<string>;
 
@@ -1368,9 +1468,12 @@ declare module '@getflywheel/local/main' {
 		export class SitesOrganizationService {
 			listen(): void;
 
-			saveSortData({ siteId, sortData }: {
-				siteId: string,
-				sortData: { siteLastStartedTimestamp: number }
+			saveSortData({
+				siteId,
+				sortData,
+			}: {
+				siteId: string;
+				sortData: { siteLastStartedTimestamp: number };
 			}): void;
 
 			/**
@@ -1388,7 +1491,7 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @returns Array of SiteGroup objects
 			 */
-			getSiteGroups(): SiteGroup[]
+			getSiteGroups(): SiteGroup[];
 
 			/**
 			 * Get a site group by id.
@@ -1398,7 +1501,7 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @returns SiteGroup object of specified ID
 			 */
-			getSiteGroupById(id: SiteGroup['id']): SiteGroup
+			getSiteGroupById(id: SiteGroup['id']): SiteGroup;
 
 			/**
 			 * Create a new site group. If array of siteIds is passed, those sites are moved from their current groups.
@@ -1412,8 +1515,11 @@ declare module '@getflywheel/local/main' {
 			 * will need to refetch the groups query to update the cache anyway.
 			 */
 			createSiteGroup(
-				name: SiteGroup['name'], siteIds?: SiteGroup['siteIds'], index?: number, open?: boolean
-			): SiteGroup
+				name: SiteGroup['name'],
+				siteIds?: SiteGroup['siteIds'],
+				index?: number,
+				open?: boolean,
+			): SiteGroup;
 
 			/**
 			 * Delete a site group. All sites in the group will be moved to the default "Sites" group
@@ -1423,7 +1529,7 @@ declare module '@getflywheel/local/main' {
 			 * @returns Deleted group. Note - other groups may be affected by group deletion, but the front end
 			 * will need to refetch the groups query to update the cache anyway.
 			 */
-			deleteSiteGroup(groupId: SiteGroup['id']): SiteGroup
+			deleteSiteGroup(groupId: SiteGroup['id']): SiteGroup;
 
 			/**
 			 * Rename a site group.
@@ -1433,7 +1539,7 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @returns renamed group
 			 */
-			renameSiteGroup(id: SiteGroup['id'], name: SiteGroup['name']): SiteGroup
+			renameSiteGroup(id: SiteGroup['id'], name: SiteGroup['name']): SiteGroup;
 
 			/**
 			 * Move sites from their current group to a new group.
@@ -1447,7 +1553,11 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @returns Array of all groups affected by the move, updated to reflect the change.
 			 */
-			moveSitesToGroup(siteIds: string[], id: SiteGroup['id'], refetchGroups?: boolean): SiteGroup[]
+			moveSitesToGroup(
+				siteIds: string[],
+				id: SiteGroup['id'],
+				refetchGroups?: boolean,
+			): SiteGroup[];
 
 			/**
 			 * Remove site ids from their respective groups, and from site-groups.json altogether.
@@ -1458,7 +1568,10 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @returns Array of all groups affected, with sites removed.
 			 */
-			deleteSitesFromGroups(siteIds: string[], refetchGroups?: boolean): SiteGroup[]
+			deleteSitesFromGroups(
+				siteIds: string[],
+				refetchGroups?: boolean,
+			): SiteGroup[];
 
 			/**
 			 * Set the open state for a site group.
@@ -1471,7 +1584,7 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @returns Affected group
 			 */
-			setGroupOpen(id: SiteGroup['id'], open?: boolean): SiteGroup
+			setGroupOpen(id: SiteGroup['id'], open?: boolean): SiteGroup;
 
 			/**
 			 * Moves a site group to a certain index. We are calling those "move" instead of "set" because
@@ -1483,7 +1596,7 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @returns Array of affected groups
 			 */
-			moveGroupToIndex(id: SiteGroup['id'], newIndex: number): SiteGroup[]
+			moveGroupToIndex(id: SiteGroup['id'], newIndex: number): SiteGroup[];
 
 			/**
 			 * Public function to retrieve the current value of SiteGroupsData.sortSitesByLastStarted
@@ -1509,14 +1622,14 @@ declare module '@getflywheel/local/main' {
 			 *
 			 * @returns Value of Localmain.SiteGroupsData.sidebarCollapsed
 			 */
-			setSidebarCollapsed(sidebarCollapsed: boolean): boolean
+			setSidebarCollapsed(sidebarCollapsed: boolean): boolean;
 
 			/**
 			 * Retrieve the current collapsed state for the sites sidebar
 			 *
 			 * @returns new collapsed state
 			 */
-			getSidebarCollapsed(): boolean
+			getSidebarCollapsed(): boolean;
 		}
 
 		interface IDomains {
@@ -1552,9 +1665,12 @@ declare module '@getflywheel/local/main' {
 
 			run(importSiteSettings: IImportSiteSettings): Promise<any>;
 
-			connectV2 (importSiteSettings: any) : any;
+			connectV2(importSiteSettings: any): any;
 
-			connectWPE(importSiteSettings: IImportSiteSettings, site: Local.SiteJSON) : any;
+			connectWPE(
+				importSiteSettings: IImportSiteSettings,
+				site: Local.SiteJSON,
+			): any;
 		}
 
 		interface IWPCredentials {
@@ -1586,17 +1702,14 @@ declare module '@getflywheel/local/main' {
 		}
 
 		interface ICloneSite {
-			site: Local.Site
-			newSiteName: string
+			site: Local.Site;
+			newSiteName: string;
 		}
 
 		export class CloneSite {
 			listen(): void;
 
-			cloneSite({
-				site,
-				newSiteName,
-			}: ICloneSite): Promise<Local.Site>;
+			cloneSite({ site, newSiteName }: ICloneSite): Promise<Local.Site>;
 		}
 
 		interface IExportSite {
@@ -1627,7 +1740,11 @@ declare module '@getflywheel/local/main' {
 
 			deleteSite({ site, trashFiles, updateHosts }: IDeleteSite): Promise<void>;
 
-			deleteSites({ siteIds, trashFiles, updateHosts }: IDeleteSites): Promise<void>;
+			deleteSites({
+				siteIds,
+				trashFiles,
+				updateHosts,
+			}: IDeleteSites): Promise<void>;
 		}
 
 		/**
@@ -1652,13 +1769,13 @@ declare module '@getflywheel/local/main' {
 			getInstall(installId: string): Promise<{
 				id: string;
 				name: string;
-				account: { id?: string; };
+				account: { id?: string };
 				phpVersion: string | null;
 				status?: 'active' | 'pending';
-				site?: { id?: string; } | null;
+				site?: { id?: string } | null;
 				cname?: string;
 				stableIps?: Array<string> | null;
-				environment?: 'production' | 'staging' |'development';
+				environment?: 'production' | 'staging' | 'development';
 				primaryDomain?: string | null;
 				isMultisite?: boolean | null;
 			}>;
@@ -1690,7 +1807,7 @@ declare module '@getflywheel/local/main' {
 		export class BrowserManager {
 			listen(): void;
 
-			getAvailableBrowsers() : Promise<string[]>;
+			getAvailableBrowsers(): Promise<string[]>;
 
 			openInBrowser(siteUrl: string): void;
 		}
@@ -1709,7 +1826,7 @@ declare module '@getflywheel/local/main' {
 			version: string;
 		}
 
-		export interface WpPlugin extends WpTheme{
+		export interface WpPlugin extends WpTheme {
 			file: string;
 		}
 
@@ -1722,7 +1839,11 @@ declare module '@getflywheel/local/main' {
 		export class WpCli {
 			listen(): void;
 
-			run(site: Local.Site, args: string[], opts?: WpCliRunOpts): Promise<string | null>;
+			run(
+				site: Local.Site,
+				args: string[],
+				opts?: WpCliRunOpts,
+			): Promise<string | null>;
 
 			getOption(site: Local.Site, option: string): Promise<string | null>;
 
@@ -1736,9 +1857,9 @@ declare module '@getflywheel/local/main' {
 
 			getWpLatestVersion(site: Local.Site): Promise<string | null>;
 
-			getPlugins(site: Local.Site): Promise<WpPlugin[] | null>
+			getPlugins(site: Local.Site): Promise<WpPlugin[] | null>;
 
-			getThemes(site: Local.Site): Promise<WpTheme[] | null>
+			getThemes(site: Local.Site): Promise<WpTheme[] | null>;
 		}
 
 		type PortServiceAllocationRequest = {
@@ -1749,7 +1870,10 @@ declare module '@getflywheel/local/main' {
 			[portName: string]: number;
 		};
 
-		type PortAllocation = { ports: { [portName: string]: Local.SitePort[] }, blacklistedPorts: number[] };
+		type PortAllocation = {
+			ports: { [portName: string]: Local.SitePort[] };
+			blacklistedPorts: number[];
+		};
 
 		export class Ports {
 			public siteData: SiteDataService;
@@ -1759,11 +1883,13 @@ declare module '@getflywheel/local/main' {
 				portServiceAllocationRequests: PortServiceAllocationRequest,
 			): Promise<Local.Site>;
 
-			getAvailablePort(blacklistedPorts?: Local.SitePort[]): Promise<Local.SitePort>;
+			getAvailablePort(
+				blacklistedPorts?: Local.SitePort[],
+			): Promise<Local.SitePort>;
 
 			checkAndReplaceUnavailablePorts(site: Local.Site): Promise<{
-				site: Local.Site,
-				domains: { old: string, new: string },
+				site: Local.Site;
+				domains: { old: string; new: string };
 			}>;
 		}
 
@@ -1773,7 +1899,7 @@ declare module '@getflywheel/local/main' {
 				templatesDir: string,
 				destDir: string,
 				context: Local.GenericObject,
-			) : Promise<void>;
+			): Promise<void>;
 
 			compileServiceConfigs(site: Local.Site): Promise<void>;
 		}
@@ -1792,7 +1918,10 @@ declare module '@getflywheel/local/main' {
 
 			certificateTrustStatus(site: Local.Site): Promise<any>;
 
-			static generateCert(domains: Array<string> | string, certsPath: any): Promise<SiteCerts | void>;
+			static generateCert(
+				domains: Array<string> | string,
+				certsPath: any,
+			): Promise<SiteCerts | void>;
 
 			static generateSiteCert(site: Local.Site, force?: boolean): Promise<void>;
 		}
@@ -1881,22 +2010,22 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class LiveLinksMuPlugin {
-			getMuPluginsPath(site: Local.Site) : string;
+			getMuPluginsPath(site: Local.Site): string;
 
-			add(site: Local.Site) : void;
+			add(site: Local.Site): void;
 
-			remove(site: Local.Site) : void;
+			remove(site: Local.Site): void;
 		}
 
 		export class LiveLinksBase {
-			start(site: Local.Site) : Promise<Local.GenericObject>;
+			start(site: Local.Site): Promise<Local.GenericObject>;
 
-			stop(site: Local.Site) : Promise<void>;
+			stop(site: Local.Site): Promise<void>;
 
-			getProcesses() : any;
+			getProcesses(): any;
 
 			/**
-	 		 * Hook to call on app shutdown, etc. to do any necessary cleanup
+			 * Hook to call on app shutdown, etc. to do any necessary cleanup
 			 */
 			onDestroy(): void;
 		}
@@ -1910,13 +2039,13 @@ declare module '@getflywheel/local/main' {
 		export class GraphQLService {
 			pubsub: PubSub;
 
-			start() : void;
+			start(): void;
 
 			registerGraphQLService(
 				serviceId: string,
 				typeDefs?: DocumentNode,
-				resolvers?: IResolvers
-			) : void;
+				resolvers?: IResolvers,
+			): void;
 		}
 
 		export class JobsService {
@@ -1926,7 +2055,7 @@ declare module '@getflywheel/local/main' {
 		}
 
 		export class SiteDataService {
-			PUBSUB_TOPIC_SITES_UPDATED:string;
+			PUBSUB_TOPIC_SITES_UPDATED: string;
 
 			PUBSUB_TOPIC_SITE_UPDATED: string;
 
@@ -1934,30 +2063,29 @@ declare module '@getflywheel/local/main' {
 
 			getSites(): Local.Sites;
 
-			upgradeServices(site: Local.SiteJSON) : Local.SiteServices;
+			upgradeServices(site: Local.SiteJSON): Local.SiteServices;
 
-			emitSitesUpdate(sites?: Local.SitesJSON) : void;
+			emitSitesUpdate(sites?: Local.SitesJSON): void;
 
-			emitSiteUpdate(site: Local.SiteJSON) : void;
+			emitSiteUpdate(site: Local.SiteJSON): void;
 
-			getSite (siteID: Local.Site['id']) : Local.Site | null;
+			getSite(siteID: Local.Site['id']): Local.Site | null;
 
-			getSiteByProperty (property: string, value: any) : Local.Site | null;
+			getSiteByProperty(property: string, value: any): Local.Site | null;
 
-			addSite (siteID: Local.Site['id'], site: Local.SiteJSON) : void;
+			addSite(siteID: Local.Site['id'], site: Local.SiteJSON): void;
 
-			updateSite (siteID: Local.Site['id'], site: Partial<Local.SiteJSON>) : void;
+			updateSite(siteID: Local.Site['id'], site: Partial<Local.SiteJSON>): void;
 
-			deleteSite (siteID: Local.Site['id']) : void;
+			deleteSite(siteID: Local.Site['id']): void;
 
-			reformatSites () : void;
+			reformatSites(): void;
 
-			removeHostConnections (host: string) : void;
+			removeHostConnections(host: string): void;
 		}
 
 		export class UserEvent {
 			listen(): void;
 		}
 	}
-
 }
