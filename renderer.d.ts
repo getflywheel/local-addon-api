@@ -75,6 +75,8 @@ declare module '@getflywheel/local/renderer' {
 		[path: string]: {
 			label: string;
 			content: JSX.Element;
+			disabled?: boolean;
+			container?: object;
 		};
 	}
 

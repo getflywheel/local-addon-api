@@ -14,7 +14,6 @@ declare module '@getflywheel/local/main' {
 	import * as Winston from 'winston';
 	import * as os from 'os';
 	import type { DocumentNode } from 'graphql';
-	import type { RequestInit as NodeFetchRequestInit } from 'node-fetch';
 	import type { IResolvers } from '@graphql-tools/utils';
 	import type { PubSub } from 'graphql-subscriptions';
 	import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
@@ -1199,7 +1198,12 @@ declare module '@getflywheel/local/main' {
 
 			jsonRequest(
 				url: string,
-				init?: NodeFetchRequestInit,
+				init?: RequestInit & {
+					timeout?: number;
+					agent?: any;
+					compress?: boolean;
+					size?: number;
+				},
 				expires?: number,
 			): Promise<any>;
 		}
