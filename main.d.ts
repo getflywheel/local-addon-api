@@ -22,6 +22,18 @@ declare module '@getflywheel/local/main' {
 
 	export { default as gql } from 'graphql-tag';
 
+	export interface BrowserInfo {
+		/** User-friendly display name (e.g. "Google Chrome", "Firefox", "Brave") */
+		name: string;
+		/**
+		 * OS-specific identifier used to open the browser:
+		 * - macOS: full .app bundle path (e.g. /Applications/Google Chrome.app)
+		 * - Windows: absolute path to the .exe
+		 * - Linux: executable name or absolute path
+		 */
+		appId: string;
+	}
+
 	export type ServiceContainer =
 		Awilix.AwilixContainer<ServiceContainerServices>;
 	export const getServiceContainer: () => ServiceContainer;
@@ -1811,7 +1823,7 @@ declare module '@getflywheel/local/main' {
 		export class BrowserManager {
 			listen(): void;
 
-			getAvailableBrowsers(): Promise<string[]>;
+			getAvailableBrowsers(): Promise<BrowserInfo[]>;
 
 			openInBrowser(siteUrl: string): void;
 		}

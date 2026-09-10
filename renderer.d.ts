@@ -63,6 +63,12 @@ declare module '@getflywheel/local/renderer' {
 		extends Local.NewSiteInfo,
 			Omit<Local.NewSiteDefaults, 'environment'> {}
 
+	export interface WpCredentials {
+		adminEmail: string;
+		adminUsername: string;
+		adminPassword: string;
+	}
+
 	export interface CreateSiteStep {
 		disabled?: boolean;
 		key: string;
@@ -90,6 +96,8 @@ declare module '@getflywheel/local/renderer' {
 	}
 	export class CreateSiteStore {
 		siteSettings: SiteSettings;
+
+		wpCredentials: WpCredentials;
 
 		/**
 		 * Defines the options and steps associated with creating sites.
@@ -123,7 +131,11 @@ declare module '@getflywheel/local/renderer' {
 
 		resetDefaults(): void;
 
+		resetFlow(): void;
+
 		updateSiteSettings(newSiteSettings: Partial<SiteSettings>): void;
+
+		updateWpCredentials(credentials: Partial<WpCredentials>): void;
 
 		updateCreateSiteDefinitions(
 			updatedSiteDefinitions: CreateSiteDefinition[],
